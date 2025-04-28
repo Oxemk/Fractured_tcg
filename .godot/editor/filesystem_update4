@@ -1,0 +1,5 @@
+res://Scenes/LoginUI/LoginUI.tscn
+res://managers/CardCollectionManager.gd
+res://DeckEditor/DeckEditor.gd
+res://Scenes/DeckEditor/NewDeckPopup.tscn
+res://DeckEditor/DeckSelector.gd

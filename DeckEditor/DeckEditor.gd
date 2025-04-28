@@ -22,14 +22,19 @@ func _ready() -> void:
 		push_error("DeckEditor: No valid deck selected in Globals.selected_deck!")
 		return
 	current_deck = Globals.selected_deck
+	print_debug("Current deck content: ", JSON.stringify(current_deck))
 
 	# Load all cards from the database
 	card_data = CardDatabase.get_all_cards()
 	print_debug("Total cards in database: %d" % card_data.size())
+	
+	if card_data.size() > 0:
+		print_debug("Sample card keys: ", card_data.keys().slice(0, min(5, card_data.size())))
+	else:
+		push_error("No cards loaded from database! Check card_database.json")
 
-	# Instantiate and add the collection manager
-	collection_manager = preload("res://managers/CardCollectionManager.gd").new()
-	add_child(collection_manager)
+	# Rest of the function...
+
 	# For testing, force unlock all cards; later use Globals.is_offline
 	collection_manager.unlock_all_cards = true
 
