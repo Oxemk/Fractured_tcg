@@ -3,3 +3,6 @@ res://managers/CardCollectionManager.gd
 res://DeckEditor/DeckEditor.gd
 res://Scenes/DeckEditor/NewDeckPopup.tscn
 res://DeckEditor/DeckSelector.gd
+res://managers/CardDatabase.gd
+res://DeckEditor/NewDeckPopup.gd
+res://Scenes/DeckEditor/DeckEditor.tscn

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://robtvwd0f6yb"]
+[gd_scene load_steps=3 format=3 uid="uid://robtvwd0f6yb"]
 
 [ext_resource type="Script" uid="uid://co5njr8tnyy2q" path="res://DeckEditor/DeckEditor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bxhsl0467il20" path="res://classcad.png" id="2_kgr0d"]
 
 [node name="DeckEditor" type="Control"]
 layout_mode = 3
@@ -44,12 +45,6 @@ offset_right = 771.0
 offset_bottom = 113.0
 scale = Vector2(9.00051, 13.8043)
 
-[node name="CardPoolScroll" type="ScrollContainer" parent="VBoxContainer2"]
-layout_mode = 2
-
-[node name="CardPool" type="VBoxContainer" parent="VBoxContainer2/CardPoolScroll"]
-layout_mode = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 144.0
@@ -76,3 +71,19 @@ text = "Filter by Type"
 [node name="Sort" type="Button" parent="HBoxContainer2"]
 layout_mode = 2
 text = "Sort"
+
+[node name="CardPoolScroll" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 731.0
+offset_top = 73.0
+offset_right = 771.0
+offset_bottom = 73.0
+scale = Vector2(6.94541, 6.94541)
+
+[node name="CardPool" type="VBoxContainer" parent="CardPoolScroll"]
+layout_mode = 2
+
+[node name="Classcad" type="Sprite2D" parent="CardPoolScroll"]
+position = Vector2(3.31155, 34.6992)
+scale = Vector2(0.0558234, 0.0558234)
+texture = ExtResource("2_kgr0d")

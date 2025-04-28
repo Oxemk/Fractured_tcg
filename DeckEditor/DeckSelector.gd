@@ -1,6 +1,5 @@
 extends Control
 
-
 const MAX_DECKS = 10
 const NEW_DECK_POPUP_PATH := "res://Scenes/DeckEditor/NewDeckPopup.tscn"
 
@@ -32,7 +31,6 @@ func load_decks() -> void:
 	var data = DataUtils.load_data("user://decks.json")
 	deck_data = data if typeof(data) == TYPE_ARRAY else []
 
-
 func save_decks() -> void:
 	DataUtils.save_data("user://decks.json", deck_data)
 
@@ -58,13 +56,21 @@ func _on_new_deck() -> void:
 
 func _on_edit_deck() -> void:
 	if selected_index >= 0 and selected_index < deck_data.size():
-		var popup = load(NEW_DECK_POPUP_PATH).instantiate()
-		popup.parent_selector = self
-		popup.is_edit_mode = true
-		popup.edit_index = selected_index
-		popup.populate_with_deck(deck_data[selected_index])
-		add_child(popup)
-		popup.popup_centered()
+		# Set the selected deck in Globals
+		Globals.selected_deck = deck_data[selected_index].duplicate()
+		# Go to deck editor
+		get_tree().change_scene_to_file("res://Scenes/DeckEditor/DeckEditor.tscn")
+
+func update_deck(index: int, new_deck: Dictionary) -> void:
+	if index >= 0 and index < deck_data.size():
+		deck_data[index] = new_deck.duplicate()
+		save_decks()
+		display_decks()
+
+func create_deck(new_deck: Dictionary) -> void:
+	deck_data.append(new_deck.duplicate())
+	save_decks()
+	display_decks()
 
 func _on_delete_deck() -> void:
 	if selected_index >= 0:
@@ -73,4 +79,4 @@ func _on_delete_deck() -> void:
 		display_decks()
 
 func _on_back() -> void:
-	get_tree().change_scene_to_file("res://Scenes/MainMenu/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu/MainMenu.tscn")	

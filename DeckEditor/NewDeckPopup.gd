@@ -43,7 +43,7 @@ func _ready() -> void:
 	if is_edit_mode and create_button:
 		create_button.text = "Save"
 
-func populate_with_deck(deck_data: Dictionary, index: int) -> void:
+func populate_with_deck(deck_data: Dictionary) -> void:
 	name_input.text = deck_data.get("name", "")
 	var desired_mode = deck_data.get("mode", "")
 	if mode_selector:
@@ -51,8 +51,6 @@ func populate_with_deck(deck_data: Dictionary, index: int) -> void:
 			if mode_selector.get_item_text(i) == desired_mode:
 				mode_selector.select(i)
 				break
-	is_edit_mode = true
-	edit_index = index
 	if create_button:
 		create_button.text = "Save"
 
@@ -61,9 +59,19 @@ func _on_create() -> void:
 	if deck_name == "":
 		error_label.text = "Deck name cannot be empty."
 		return
-	if not is_edit_mode and parent_selector.deck_data.has(deck_name):
-		error_label.text = "Deck name already in use."
-		return
+	
+	# Check if name exists (only for new decks)
+	if not is_edit_mode:
+		var name_exists = false
+		for deck in parent_selector.deck_data:
+			if deck.get("name", "") == deck_name:
+				name_exists = true
+				break
+				
+		if name_exists:
+			error_label.text = "Deck name already in use."
+			return
+			
 	var selected_mode := mode_selector and mode_selector.get_item_text(mode_selector.selected) or ""
 	var cfg = MODES.get(selected_mode, {})
 	var new_deck = {
@@ -87,7 +95,11 @@ func _on_create() -> void:
 		parent_selector.save_decks()
 	if parent_selector.has_method("display_decks"):
 		parent_selector.display_decks()
+	
+	# If this was a new deck, set the selected deck and go to the editor
 	if not is_edit_mode:
+		# Set the global selected deck
+		Globals.selected_deck = new_deck
 		get_tree().change_scene_to_file("res://Scenes/DeckEditor/DeckEditor.tscn")
 	queue_free()
 

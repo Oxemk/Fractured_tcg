@@ -4,7 +4,7 @@ class_name DeckEditor
 
 @onready var deck_info_label: Label   = $DeckInfoLabel
 @onready var card_grid: GridContainer = $VBoxContainer/CardGrid
-@onready var card_pool: VBoxContainer = $VBoxContainer2/CardPoolScroll/CardPool
+@onready var card_pool: VBoxContainer = $CardPoolScroll/CardPool
 @onready var save_button: Button      = $HBoxContainer/save
 
 var current_deck: Dictionary = {}
@@ -17,6 +17,12 @@ var CardDatabase = preload("res://managers/CardDatabase.gd")
 func _ready() -> void:
 	print("--- DeckEditor ready ---")
 
+	# Initialize collection manager
+	collection_manager = $"/root/CardCollectionManager"
+	if not collection_manager:
+		push_error("Failed to find CardCollectionManager singleton!")
+		return
+
 	# Ensure a deck has been selected
 	if not Globals.selected_deck or not Globals.selected_deck.has("cards"):
 		push_error("DeckEditor: No valid deck selected in Globals.selected_deck!")
@@ -27,13 +33,12 @@ func _ready() -> void:
 	# Load all cards from the database
 	card_data = CardDatabase.get_all_cards()
 	print_debug("Total cards in database: %d" % card_data.size())
+	print_debug("Card data: ", JSON.stringify(card_data))
 	
 	if card_data.size() > 0:
 		print_debug("Sample card keys: ", card_data.keys().slice(0, min(5, card_data.size())))
 	else:
 		push_error("No cards loaded from database! Check card_database.json")
-
-	# Rest of the function...
 
 	# For testing, force unlock all cards; later use Globals.is_offline
 	collection_manager.unlock_all_cards = true
