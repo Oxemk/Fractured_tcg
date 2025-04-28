@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlsi128gi2ynr"]
+
+[ext_resource type="Script" uid="uid://byjar7g120tam" path="res://DeckEditor/NewDeckPopup.gd" id="1_o1g4n"]
+
+[node name="NewDeckPopup" type="Popup"]
+size = Vector2i(180, 147)
+visible = true
+script = ExtResource("1_o1g4n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Create New Deck"
+
+[node name="DeckNameInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="mode" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ModeLabel" type="Label" parent="VBoxContainer/mode"]
+layout_mode = 2
+text = "Select Game Mode"
+
+[node name="ModeSelector" type="OptionButton" parent="VBoxContainer/mode"]
+layout_mode = 2
+
+[node name="buttons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CreateButton" type="Button" parent="VBoxContainer/buttons"]
+layout_mode = 2
+text = "Create"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/buttons"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ErrorLabel" type="Label" parent="."]
+offset_top = 124.0
+offset_right = 180.0
+offset_bottom = 147.0

@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjno6rqex4rce"]
+
+[ext_resource type="Script" uid="uid://t0bl7rsph5r6" path="res://UI/LoginUI.gd" id="1_jx1hq"]
+
+[node name="LogandReg" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00253, 1)
+script = ExtResource("1_jx1hq")
+
+[node name="User" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 134.0
+offset_right = 574.0
+offset_bottom = 174.0
+scale = Vector2(1.82829, 1.82829)
+
+[node name="userLabel" type="Label" parent="User"]
+layout_mode = 2
+text = "Username"
+
+[node name="USERNAME" type="LineEdit" parent="User"]
+layout_mode = 2
+placeholder_text = "username"
+
+[node name="Password" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 220.0
+offset_right = 569.0
+offset_bottom = 260.0
+scale = Vector2(1.82829, 1.82829)
+
+[node name="Passwordlable" type="Label" parent="Password"]
+layout_mode = 2
+text = "Password"
+vertical_alignment = 1
+
+[node name="Password" type="LineEdit" parent="Password"]
+layout_mode = 2
+placeholder_text = "Password"
+
+[node name="LogandReg" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 312.0
+offset_right = 608.0
+offset_bottom = 352.0
+scale = Vector2(1.82829, 1.82829)
+
+[node name="Login" type="Button" parent="LogandReg"]
+layout_mode = 2
+text = "Login"
+
+[node name="Register" type="Button" parent="LogandReg"]
+layout_mode = 2
+text = "Register"
+
+[node name="Offline" type="Button" parent="LogandReg"]
+layout_mode = 2
+text = "offline"

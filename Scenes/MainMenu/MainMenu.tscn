@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt4yrygwixm72"]
+
+[ext_resource type="Script" uid="uid://dr4w85s6yq3js" path="res://UI/MainMenu.gd" id="1_cdkru"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdkru")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Menu" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="mode_label" type="Label" parent="HBoxContainer/Menu"]
+layout_mode = 2
+
+[node name="story_button" type="Button" parent="HBoxContainer/Menu"]
+layout_mode = 2
+text = "Story"
+
+[node name="casual_button" type="Button" parent="HBoxContainer/Menu"]
+layout_mode = 2
+text = "Casual"
+
+[node name="ranked_button" type="Button" parent="HBoxContainer/Menu"]
+layout_mode = 2
+text = "Ranked"
+
+[node name="profile_button" type="Button" parent="HBoxContainer/Menu"]
+layout_mode = 2
+text = "Profile"
+
+[node name="settings_button" type="Button" parent="HBoxContainer/Menu"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit_button" type="Button" parent="HBoxContainer/Menu"]
+layout_mode = 2
+text = "Quit"
+
+[node name="SubMenuContainer" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="mode_label" type="Label" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="VSComputer_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "VSComputer"
+
+[node name="P1vsP2_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "P1vsP2"
+
+[node name="DeckEditor_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "Deck Edit"
+
+[node name="Shop_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "Shop"
+
+[node name="Collection_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "Collection"
+
+[node name="Backb" type="Button" parent="HBoxContainer/SubMenuContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="HBoxContainer/Menu/story_button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/Menu/casual_button" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="HBoxContainer/Menu/ranked_button" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="HBoxContainer/Menu/profile_button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/Menu/settings_button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/Menu/Quit_button" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/PlayButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/VSComputer_Button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/P1vsP2_Button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/DeckEditor_Button" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/Shop_Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/Collection_Button" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer/Backb" to="." method="_on_quit_pressed"]

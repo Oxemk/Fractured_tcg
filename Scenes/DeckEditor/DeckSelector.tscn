@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://mwvyd0pcc7yy"]
+
+[ext_resource type="Script" uid="uid://km54bs0jyh0t" path="res://DeckEditor/DeckSelector.gd" id="1_e4jka"]
+[ext_resource type="Script" uid="uid://byjar7g120tam" path="res://DeckEditor/NewDeckPopup.gd" id="2_0tvfx"]
+
+[node name="DeckSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4jka")
+
+[node name="new_deck_popup" type="Popup" parent="."]
+script = ExtResource("2_0tvfx")
+metadata/_custom_type_script = "uid://byjar7g120tam"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 1.0
+offset_right = 508.0
+offset_bottom = 167.0
+scale = Vector2(2.93755, 2.93755)
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DeckList2" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DeckList" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Edit" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Edit"
+
+[node name="Delete" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Edit"
+
+[node name="NewDeckButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Create deck"
+
+[node name="back" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "NewDeckPopup"

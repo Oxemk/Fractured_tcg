@@ -1,0 +1,4 @@
+[gd_scene load_steps=1 format=3]
+
+[node name="VS_Computer" type="Control"]
+# Add UI for selecting difficulty and starting vs AI here

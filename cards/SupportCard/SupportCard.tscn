@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp4smp3yukxms"]
+
+[ext_resource type="Script" uid="uid://c4kwmhhkjgmc2" path="res://cards/SupportCard/SupportCard.gd" id="1_1pxud"]
+[ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="1_3x7rb"]
+
+[node name="SupportCard" type="Node2D"]
+script = ExtResource("1_1pxud")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Charcard" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(191.807, 253.807)
+scale = Vector2(0.355092, 0.355092)
+texture = ExtResource("1_3x7rb")
+
+[node name="Name" type="Label" parent="CanvasLayer"]
+offset_left = 111.0
+offset_top = 376.0
+offset_right = 194.0
+offset_bottom = 399.0
+scale = Vector2(1.18901, 0.91939)
+horizontal_alignment = 1
+
+[node name="decrip" type="Label" parent="CanvasLayer"]
+offset_left = 83.0
+offset_top = 291.0
+offset_right = 166.0
+offset_bottom = 314.0
+scale = Vector2(0.692259, 0.535282)
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 0
+horizontal_alignment = 1
+max_lines_visible = 7
+visible_characters = 0
+visible_characters_behavior = 3
+visible_ratio = 0.0
+
+[node name="leveld" type="Label" parent="CanvasLayer"]
+offset_left = 299.943
+offset_top = 70.0
+offset_right = 339.943
+offset_bottom = 93.0
+rotation = 0.823759
+scale = Vector2(0.885482, 0.885482)
+text = "LV\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="CanvasLayer"]
+offset_left = 309.943
+offset_top = 81.0
+offset_right = 349.943
+offset_bottom = 104.0
+rotation = 0.823759
+scale = Vector2(0.885482, 0.885482)
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Race" type="Label" parent="CanvasLayer"]
+offset_left = 86.0
+offset_top = 141.0
+offset_right = 126.0
+offset_bottom = 164.0
+rotation = 1.57409
+scale = Vector2(1.19378, 1.19378)
+text = "Race"
+
+[node name="Healthd" type="Label" parent="CanvasLayer"]
+offset_left = 119.0
+offset_top = 72.0
+offset_right = 173.0
+offset_bottom = 95.0
+scale = Vector2(1.08203, 1.08203)
+text = "HP:"
+
+[node name="Health" type="Label" parent="CanvasLayer"]
+offset_left = 147.0
+offset_top = 72.0
+offset_right = 201.0
+offset_bottom = 95.0
+scale = Vector2(1.08203, 1.08203)
+
+[node name="defenced" type="Label" parent="CanvasLayer"]
+offset_left = 203.0
+offset_top = 71.0
+offset_right = 253.0
+offset_bottom = 94.0
+scale = Vector2(1.08203, 1.08203)
+text = "Def:"
+
+[node name="defence" type="Label" parent="CanvasLayer"]
+offset_left = 236.0
+offset_top = 71.0
+offset_right = 286.0
+offset_bottom = 94.0
+scale = Vector2(1.08203, 1.08203)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 336.0
+offset_top = 124.0
+offset_right = 520.0
+offset_bottom = 164.0
+rotation = 1.57234
+
+[node name="attackname" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "."
+
+[node name="Label4" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Dam"
+
+[node name="attack_damage" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "."
+
+[node name="cooldown" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "turns"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

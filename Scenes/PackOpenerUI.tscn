@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dja560f81njc7"]
+
+[ext_resource type="Script" uid="uid://c1arvkan4pm0f" path="res://UI/PackOpeningUI.gd" id="1_tadag"]
+
+[node name="PackOpeningUi" type="Node"]
+script = ExtResource("1_tadag")
+
+[node name="OpenPackButton" type="Button" parent="."]
+offset_right = 40.0
+offset_bottom = 8.0
+text = "OpenPack"
+
+[node name="OpenedCardsContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
