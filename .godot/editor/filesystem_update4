@@ -11,3 +11,4 @@ res://cards/FieldCard/FieldCard.tscn
 res://cards/SupportCard/SupportCard.tscn
 res://cards/TrapCard/TrapCard.tscn
 res://cards/WeaponCard/WeaponCard.tscn
+res://DeckEditor/DeckEditor.gd
