@@ -83,6 +83,9 @@ scale = Vector2(6.94541, 6.94541)
 [node name="CardPool" type="VBoxContainer" parent="CardPoolScroll"]
 layout_mode = 2
 
+[node name="CardGrid2" type="GridContainer" parent="CardPoolScroll/CardPool"]
+layout_mode = 2
+
 [node name="Classcad" type="Sprite2D" parent="CardPoolScroll"]
 position = Vector2(3.31155, 34.6992)
 scale = Vector2(0.0558234, 0.0558234)
