@@ -8,24 +8,24 @@ func load_card_data(data: Dictionary) -> Node:
 	
 	match t:
 		"Character":
-			inst = preload("res://cards/CharacterCard/Charcard.tscn").new()
+			inst = preload("res://cards/CharacterCard/Charcard.tscn").instantiate()
 		"Weapon":
-			inst = preload("res://cards/WeaponCard/WeaponCard.tscn").new()
+			inst = preload("res://cards/WeaponCard/WeaponCard.tscn").instantiate()
 		"Armor":
-			inst = preload("res://cards/ArmorCard/ArmorCard.tscn").new()
+			inst = preload("res://cards/ArmorCard/ArmorCard.tscn").instantiate()
 		"Support":
-			inst = preload("res://cards/SupportCard/SupportCard.tscn").new()
+			inst = preload("res://cards/SupportCard/SupportCard.tscn").instantiate()
 		"Trap":
-			inst = preload("res://cards/TrapCard/TrapCard.tscn").new()
+			inst = preload("res://cards/TrapCard/TrapCard.tscn").instantiate()
 		"Field":
-			inst = preload("res://cards/FieldCard/FieldCard.tscn").new()
+			inst = preload("res://cards/FieldCard/FieldCard.tscn").instantiate()
 		"Class":
-			inst = preload("res://cards/ClassCard/ClassCard.tscn").new()
+			inst = preload("res://cards/ClassCard/ClassCard.tscn").instantiate()
 		_:
 			return null
 	
 	if inst:
-		inst.initialize_card(data)
+		inst.initialize_card(data)  # Assuming your cards have this method to initialize them
 	return inst
 
 func load_cards_from_json(path: String) -> Array:
