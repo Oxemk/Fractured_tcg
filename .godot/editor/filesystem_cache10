@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1745803573
+::res://::1745861535
 charcard.png::CompressedTexture2D/CompressedTexture2D::4499632338029877475::1745802626::1745802749::1::::<><><>0<>0<>173c505c5a757ad542c28c3050ea06e8<>res://.godot/imported/charcard.png-10b835a91b50e27c777951b0b1a0862d.ctex::
 classcad.png::CompressedTexture2D/CompressedTexture2D::4016328640583685179::1745802626::1745802749::1::::<><><>0<>0<>66f6bb1a02e1934e85b3708868d56ffa<>res://.godot/imported/classcad.png-c55071661bace9efd90114e9d02b25ff.ctex::
 Weapcardpl.png::CompressedTexture2D/CompressedTexture2D::2413964814985726649::1745802626::1745802749::1::::<><><>0<>0<>06325c4a27ce50f96d12a1f91ec668f7<>res://.godot/imported/Weapcardpl.png-a72c40ac50229ab869add7063e85562f.ctex::
@@ -65,7 +65,7 @@ P1vsP2.tscn::PackedScene/PackedScene::-1::1745802626::0::1::::<><><>0<>0<><>::
 VS_Computer.tscn::PackedScene/PackedScene::-1::1745802626::0::1::::<><><>0<>0<><>::
 ::res://Scenes/DeckEditor/::1745824594
 cardpopup.gd::GDScript/GDScript::9026758790594563334::1745825810::0::1::::CardPopup<>Popup<><>0<>0<><>::
-Cardpopup.tscn::PackedScene::9047791801808956279::1745835285::0::1::::<><><>0<>0<><>::uid://d1uvnsu46xmxa::::res://Scenes/DeckEditor/cardpopup.gd<>uid://b5dwj1ahq2vvn::::res://charcard.png
+Cardpopup.tscn::PackedScene::9047791801808956279::1745861331::0::1::::<><><>0<>0<><>::uid://d1uvnsu46xmxa::::res://Scenes/DeckEditor/cardpopup.gd<>uid://b5dwj1ahq2vvn::::res://charcard.png
 DeckEditor.tscn::PackedScene::1222207414626344901::1745835285::0::1::::<><><>0<>0<><>::uid://co5njr8tnyy2q::::res://DeckEditor/DeckEditor.gd
 DeckSelector.tscn::PackedScene/PackedScene::889000547021998232::1745802626::0::1::::<><><>0<>0<><>::uid://km54bs0jyh0t::::res://DeckEditor/DeckSelector.gd<>uid://byjar7g120tam::::res://DeckEditor/NewDeckPopup.gd
 NewDeckPopup.tscn::PackedScene::7969031766647786627::1745835285::0::1::::<><><>0<>0<><>::uid://byjar7g120tam::::res://DeckEditor/NewDeckPopup.gd

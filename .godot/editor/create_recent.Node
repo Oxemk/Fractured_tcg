@@ -1,9 +1,11 @@
+Control
+Popup
+Node
+AnimationPlayer
 CardPopup
 Button
 VBoxContainer
-Popup
 ScrollContainer
 GridContainer
 ColorRect
 TextureRect
-Control

@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1522rj7ssdlf"]
+[gd_scene load_steps=6 format=3 uid="uid://d1522rj7ssdlf"]
 
 [ext_resource type="Script" uid="uid://d1uvnsu46xmxa" path="res://Scenes/DeckEditor/cardpopup.gd" id="1_mlxko"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_7jaoj"]
+[ext_resource type="Script" uid="uid://dwbamnrvo6ep6" path="res://DeckEditor/Tween.gd" id="2_fcdes"]
+
+[sub_resource type="Animation" id="Animation_7jaoj"]
+resource_name = "open_popup"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcdes"]
+_data = {
+&"open_popup": SubResource("Animation_7jaoj")
+}
 
 [node name="CardPopup" type="Popup"]
 size = Vector2i(399, 299)
@@ -9,16 +18,20 @@ visible = true
 script = ExtResource("1_mlxko")
 metadata/_custom_type_script = "uid://d1uvnsu46xmxa"
 
+[node name="Tween" type="Popup" parent="."]
+visible = true
+script = ExtResource("2_fcdes")
+
+[node name="Charcard" type="Sprite2D" parent="."]
+position = Vector2(245, 114)
+scale = Vector2(0.21739, 0.21739)
+texture = ExtResource("2_7jaoj")
+
 [node name="CardContainer" type="VBoxContainer" parent="."]
 offset_left = 191.0
 offset_top = 71.0
 offset_right = 231.0
 offset_bottom = 111.0
-
-[node name="Charcard" type="Sprite2D" parent="CardContainer"]
-position = Vector2(54, 43)
-scale = Vector2(0.21739, 0.21739)
-texture = ExtResource("2_7jaoj")
 
 [node name="AddButton" type="Button" parent="."]
 offset_left = 168.0
@@ -33,3 +46,8 @@ offset_top = 244.0
 offset_right = 296.0
 offset_bottom = 275.0
 text = "Remove"
+
+[node name="open_popup" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fcdes")
+}

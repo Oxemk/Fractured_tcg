@@ -1,1 +1,13 @@
 res://Scenes/DeckEditor/Cardpopup.tscn
+res://Scenes/DeckEditor/cardpopup.gd
+res://DeckEditor/Tween.gd
+res://Scenes/LoginUI/LoginUI.tscn
+res://Scenes/DeckEditor/NewDeckPopup.tscn
+res://Scenes/DeckEditor/DeckEditor.tscn
+res://cards/CharacterCard/Charcard.tscn
+res://cards/ArmorCard/ArmorCard.tscn
+res://cards/BaseCard/basecard.tscn
+res://cards/FieldCard/FieldCard.tscn
+res://cards/SupportCard/SupportCard.tscn
+res://cards/TrapCard/TrapCard.tscn
+res://cards/WeaponCard/WeaponCard.tscn
