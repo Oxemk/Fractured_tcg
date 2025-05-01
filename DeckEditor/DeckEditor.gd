@@ -2,7 +2,7 @@ extends Control
 class_name DeckEditor
 
 @onready var deck_info_label: Label   = $DeckInfoLabel
-@onready var card_grid: GridContainer = $VBoxContainer/CardGrid
+@onready var card_grid: GridContainer = $CardPoolScroll2/VBoxContainer/CardGrid
 @onready var card_pool: VBoxContainer = $CardPoolScroll/CardPool
 @onready var save_button: Button      = $HBoxContainer/save
 

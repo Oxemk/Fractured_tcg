@@ -16,4 +16,4 @@ func initialize_card(data: Dictionary) -> void:
 
 	var abil_lbl = get_node_or_null("CanvasLayer/ClassAbility")
 	if abil_lbl:
-		abil_lbl.text = class_ability
+		abil_lbl.text = class_ability 

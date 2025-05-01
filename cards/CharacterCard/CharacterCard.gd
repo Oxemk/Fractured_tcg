@@ -38,4 +38,5 @@ func apply_damage(d: int) -> void:
 		health -= rem
 	if health <= 0:
 		queue_free()
-	print(card_name, "DEF:", defense, "HP:", health)
+	print(card_name, "DEF:", defense, "HP:", health) 
+	

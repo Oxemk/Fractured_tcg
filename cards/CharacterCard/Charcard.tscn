@@ -18,6 +18,7 @@ scale = Vector2(0.721072, 0.721072)
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_top = -1.0
 offset_right = 40.0
 offset_bottom = 39.0
