@@ -47,7 +47,6 @@ layout_mode = 2
 text = "Quit"
 
 [node name="SubMenuContainer" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="mode_label" type="Label" parent="HBoxContainer/SubMenuContainer"]
@@ -56,14 +55,6 @@ layout_mode = 2
 [node name="PlayButton" type="Button" parent="HBoxContainer/SubMenuContainer"]
 layout_mode = 2
 text = "Play"
-
-[node name="VSComputer_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
-layout_mode = 2
-text = "VSComputer"
-
-[node name="P1vsP2_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
-layout_mode = 2
-text = "P1vsP2"
 
 [node name="DeckEditor_Button" type="Button" parent="HBoxContainer/SubMenuContainer"]
 layout_mode = 2
@@ -81,6 +72,25 @@ text = "Collection"
 layout_mode = 2
 text = "Back"
 
+[node name="SubMenuContainer2" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="mode_label" type="Label" parent="HBoxContainer/SubMenuContainer2"]
+layout_mode = 2
+
+[node name="VSComputer_Button" type="Button" parent="HBoxContainer/SubMenuContainer2"]
+layout_mode = 2
+text = "VSComputer"
+
+[node name="P1vsP2_Button" type="Button" parent="HBoxContainer/SubMenuContainer2"]
+layout_mode = 2
+text = "P1vsP2"
+
+[node name="Backb" type="Button" parent="HBoxContainer/SubMenuContainer2"]
+layout_mode = 2
+text = "Back"
+
 [connection signal="pressed" from="HBoxContainer/Menu/story_button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/Menu/casual_button" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="HBoxContainer/Menu/ranked_button" to="." method="_on_multiplayer_pressed"]
@@ -88,9 +98,10 @@ text = "Back"
 [connection signal="pressed" from="HBoxContainer/Menu/settings_button" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="HBoxContainer/Menu/Quit_button" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="HBoxContainer/SubMenuContainer/PlayButton" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="HBoxContainer/SubMenuContainer/VSComputer_Button" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="HBoxContainer/SubMenuContainer/P1vsP2_Button" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="HBoxContainer/SubMenuContainer/DeckEditor_Button" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="HBoxContainer/SubMenuContainer/Shop_Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/SubMenuContainer/Collection_Button" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="HBoxContainer/SubMenuContainer/Backb" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer2/VSComputer_Button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer2/P1vsP2_Button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubMenuContainer2/Backb" to="." method="_on_quit_pressed"]

@@ -1,29 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp4smp3yukxms"]
+[gd_scene load_steps=2 format=3 uid="uid://dqh2j5ne288dc"]
 
-[ext_resource type="Script" uid="uid://c4kwmhhkjgmc2" path="res://cards/SupportCard/SupportCard.gd" id="1_1pxud"]
-[ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="1_3x7rb"]
+[ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="1_vqd2v"]
 
-[node name="SupportCard" type="Control"]
-custom_minimum_size = Vector2(180, 240)
+[node name="C" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-scale = Vector2(1.28326, 1.28326)
-script = ExtResource("1_1pxud")
-
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_top = -1.0
-offset_right = 40.0
-offset_bottom = 39.0
-scale = Vector2(4.58973, 6.10973)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Charcard" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(116.663, 154.766)
 scale = Vector2(0.298372, 0.298372)
-texture = ExtResource("1_3x7rb")
+texture = ExtResource("1_vqd2v")
 
 [node name="CardName" type="Label" parent="CanvasLayer"]
 offset_left = 39.0

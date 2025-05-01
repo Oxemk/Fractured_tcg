@@ -1,6 +1,5 @@
 extends Node
 
-
 static func save_data(path: String, data: Variant) -> void:
 	var f = FileAccess.open(path, FileAccess.WRITE)
 	if f:
