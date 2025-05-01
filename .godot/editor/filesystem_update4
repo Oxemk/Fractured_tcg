@@ -7,6 +7,10 @@ res://cards/BaseCard/basecard.tscn
 res://cards/FieldCard/FieldCard.tscn
 res://cards/SupportCard/SupportCard.tscn
 res://cards/TrapCard/TrapCard.tscn
-res://cards/WeaponCard/WeaponCard.tscn
 res://Scenes/DeckEditor/Cardpopup.tscn
+res://cards/WeaponCard/Weaponcard.tscn
+res://cards/WeaponCard/WeaponCard.tscn
+res://Scenes/DeckEditor/cardpopup.gd
 res://DeckEditor/DeckEditor.gd
+res://cards/CharacterCard/CharacterCard.gd
+res://cards/BaseCard/BaseCard.gd

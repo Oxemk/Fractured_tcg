@@ -1,3 +1,5 @@
+TextureRect
+ColorRect
 Control
 Popup
 Node
@@ -7,5 +9,3 @@ Button
 VBoxContainer
 ScrollContainer
 GridContainer
-ColorRect
-TextureRect

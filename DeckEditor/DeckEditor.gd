@@ -1,13 +1,9 @@
-# DeckEditor.gd (updated)
 extends Control
 class_name DeckEditor
 
-# Preload the CardPopup scene
-const CARD_POPUP_SCENE = preload("res://Scenes/DeckEditor/CardPopup.tscn")
-
 @onready var deck_info_label: Label   = $DeckInfoLabel
-@onready var card_grid: GridContainer = $CardPoolScroll/CardGrid2
-@onready var card_pool: GridContainer = $CardPoolScroll2/VBoxContainer/CardGrid
+@onready var card_grid: GridContainer = $VBoxContainer/CardGrid
+@onready var card_pool: VBoxContainer = $CardPoolScroll/CardPool
 @onready var save_button: Button      = $HBoxContainer/save
 
 var current_deck: Dictionary = {}
@@ -15,6 +11,7 @@ var card_data: Dictionary = {}
 var collection_manager: Node
 var card_popup: CardPopup
 
+var CardDatabase = preload("res://managers/CardDatabase.gd")
 
 func _ready() -> void:
 	print("--- DeckEditor ready ---")
@@ -22,67 +19,124 @@ func _ready() -> void:
 	# Initialize collection manager
 	collection_manager = get_node("/root/CardCollectionManager")
 	if not collection_manager:
-		push_error("Failed to find CardCollectionManager singleton!")
+
 		return
 
-	# Load the full card database from the autoload
-	var db_node = get_node("/root/CardDatabase")
-	if not db_node:
-		push_error("CardDatabase autoload not found at /root/CardDatabase")
+	# Ensure a deck has been selected
+	if not Globals.selected_deck or not Globals.selected_deck.has("cards"):
+		push_error("DeckEditor: No valid deck selected in Globals.selected_deck!")
 		return
-	card_data = db_node.get_all_cards()  # or db_node.cards
+	current_deck = Globals.selected_deck
+	print_debug("Current deck content: %s" % [JSON.stringify(current_deck)])
 
-	# Instantiate and hide CardPopup
-	card_popup = CARD_POPUP_SCENE.instantiate()
-	add_child(card_popup)
-	card_popup.hide()
+	# Load all cards from the database
+	card_data = CardDatabase.get_all_cards()
+	print_debug("Total cards in database: %d" % card_data.size())
+	# Load all cards from the database
+	card_data = CardDatabase.get_all_cards()
+	print_debug("Total cards in database: %d" % card_data.size())
 
-	# Display the pool and the current deck
-	load_card_pool()
-	display_deck()
+	if card_data.size() == 0:
+		push_error("No cards loaded from database! Check card_database.json")
+	else:
+		print_debug("Card data loaded: %d cards." % card_data.size())
+		# Optionally show a preview of a few entries
+		var preview_keys = card_data.keys().slice(0, 5)
+		for key in preview_keys:
+			print_debug("- %s: %s" % [key, card_data[key].get("name", "Unnamed")])
+
+
+	# For testing, force unlock all cards; later use Globals.is_offline
+	collection_manager.unlock_all_cards = true
 
 	# Connect save button
 	save_button.pressed.connect(_on_save)
 
+	# Instantiate and add the CardPopup scene to the DeckEditor
+	card_popup = preload("res://Scenes/DeckEditor/Cardpopup.tscn").instantiate()
+	add_child(card_popup)
+
+	# Populate UI
+	display_deck()
+	load_card_pool()
+
+	# Connect signals for the popup
+	card_popup.add_card_to_deck.connect(_on_card_added_to_deck)
+	card_popup.remove_card_from_deck.connect(_on_card_removed_from_deck)
+
+func display_deck() -> void:
+	# Update deck info label
+	var deck_name = current_deck.get("name", "Unnamed Deck")
+	var mode = current_deck.get("mode", "Unknown")
+	deck_info_label.text = "Editing Deck: %s [%s]" % [deck_name, mode]
+
+	clear_children(card_grid)
+	# Add a label for each card in the deck
+	for cid in current_deck.get("cards", []):
+		var data = card_data.get(cid)
+		if typeof(data) != TYPE_DICTIONARY:
+			push_warning("Card data for %s is not a Dictionary. Data: %s" % [cid, str(data)])
+			data = {}
+		var text = data.get("name", cid)
+		var lbl = Label.new()
+		lbl.text = text
+		card_grid.add_child(lbl)
+
 func load_card_pool() -> void:
-	var collection = collection_manager.get_collection()
+	var coll = collection_manager.get_collection()
+	print_debug("load_card_pool(): found %d cards" % coll.size())
+
 	clear_children(card_pool)
 
-	for cid in collection.keys():
+	# Add a Button for each card in the collection
+	for cid in coll.keys():
 		var data = card_data.get(cid)
 		if not data:
 			push_warning("Card data not found for ID: %s" % cid)
 			continue
 
-		var card_scene = CardLoader.load_card_data(data)  # use your autoload here
-		if card_scene:
-			card_scene.connect("gui_input", func(event):
-				if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-					_on_card_selected(cid)
-			)
-			card_pool.add_child(card_scene)
-		else:
-			push_warning("Card scene not loaded for ID: %s" % cid)
+		var btn_text = data.get("name", cid)
+		var btn = Button.new()
+		btn.text = btn_text
 
-func display_deck() -> void:
-	# Update deck info label
-	deck_info_label.text = "Editing Deck: %s [%s]" % [
-		current_deck.get("name", "Unnamed Deck"),
-		current_deck.get("mode", "Unknown")
-	]
+		# FIXED SIZE 100×40
+		var sz = Vector2(100, 40)
+		btn.custom_minimum_size = sz
+		# Optionally shrink within its minimum bounds
+		btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		btn.size_flags_vertical   = Control.SIZE_SHRINK_CENTER
 
-	clear_children(card_grid)
-	for cid in current_deck.get("cards", []):
-		var data = card_data.get(cid)
-		var lbl = Label.new()
-		lbl.text = data.get("name", cid)
-		card_grid.add_child(lbl)
+		# Connect button signal
+		btn.pressed.connect(_on_card_selected.bind(cid))
+		card_pool.add_child(btn)
+
+	print_debug("CardPool contains %d buttons." % card_pool.get_child_count())
 
 func _on_card_selected(cid: String) -> void:
-	var data = card_data.get(cid)
-	if data:
-		card_popup.setup(data)
+	var card_info = card_data.get(cid)
+	if card_info:
+		card_popup.setup(card_info)
 		card_popup.popup_centered()
+
+
+func _on_card_added_to_deck(card_id: String) -> void:
+	var cards = current_deck.get("cards", [])
+	var limit = int(current_deck.get("card_limit", cards.size() + 1))
+	if cards.size() < limit:
+		cards.append(card_id)
+		current_deck["cards"] = cards
+		display_deck()
+	else:
+		print_debug("Reached card limit of %d" % limit)
+
+func _on_card_removed_from_deck(card_id: String) -> void:
+	var cards = current_deck.get("cards", [])
+	if card_id in cards:
+		cards.erase(card_id)
+		current_deck["cards"] = cards
+		display_deck()
+	else:
+		print_debug("Card not found in the deck")
 
 func _on_save() -> void:
 	DeckManager.create_deck(current_deck)

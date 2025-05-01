@@ -9,6 +9,12 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_q3nh8")
 
+[node name="Background" type="ColorRect" parent="."]
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 39.0
+scale = Vector2(4.58973, 6.10973)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Charcard" type="Sprite2D" parent="CanvasLayer"]
@@ -24,7 +30,15 @@ offset_bottom = 233.0
 scale = Vector2(0.827071, 0.639524)
 horizontal_alignment = 1
 
-[node name="decrip" type="Label" parent="CanvasLayer"]
+[node name="effect" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 173.0
+offset_right = 113.0
+offset_bottom = 196.0
+scale = Vector2(0.827071, 0.639524)
+horizontal_alignment = 1
+
+[node name="description" type="Label" parent="CanvasLayer"]
 offset_left = 16.0
 offset_top = 135.0
 offset_right = 99.0
@@ -128,13 +142,10 @@ layout_mode = 2
 layout_mode = 2
 text = "turns"
 
-[node name="CardImage" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
-offset_left = 26.0
-offset_top = 16.0
-offset_right = 66.0
-offset_bottom = 56.0
-scale = Vector2(3.27848, 3.27848)
+[node name="image_path" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 14.0
+offset_right = 75.0
+offset_bottom = 54.0
+scale = Vector2(2.97302, 3.25663)

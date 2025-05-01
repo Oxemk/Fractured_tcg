@@ -3,12 +3,14 @@ class_name BaseCard
 
 @export var card_name: String = "Unnamed"
 @export var card_type: String = "Unknown"
+@export var description: String = "Unknown"
 @export var level: int = 1
 @export var image_path: String = "res://assets/Images/placeholder.png"
 @export var special_ability: String = "None"
 @export var attack_move: Dictionary = {}
 @export var cooldown: int = 0
-@export var effect: Dictionary = {}
+@export var effect: String = "none"
+
 
 func _ready(): 
 	pass
@@ -27,8 +29,10 @@ func initialize_card(data: Dictionary) -> void:
 	cooldown = data.get("cooldown", 0)
 	effect = data.get("effect", {})
 	
-	$CardName.text = card_name
-	$CardImage.texture = load(image_path)
+	$CanvasLayer/CardName.text = card_name
+	$image_path.texture = load(image_path)
+	$CanvasLayer/description.text = description
+
 	_set_card_color(card_type)
 
 func _set_card_color(t: String) -> void:
