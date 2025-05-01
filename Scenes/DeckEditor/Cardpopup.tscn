@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1522rj7ssdlf"]
 
-[ext_resource type="Script" uid="uid://d1uvnsu46xmxa" path="res://Scenes/DeckEditor/cardpopup.gd" id="1_mlxko"]
+[ext_resource type="Script" uid="uid://d1uvnsu46xmxa" path="res://DeckEditor/cardpopup.gd" id="1_mlxko"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_7jaoj"]
 
 [sub_resource type="Animation" id="Animation_7jaoj"]

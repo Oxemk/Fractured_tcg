@@ -2,6 +2,7 @@ extends Control
 
 @export var card_data_path: String = "res://data/card_database.json"
 
+# Load card data based on card type
 func load_card_data(data: Dictionary) -> Node:
 	var t = data.get("card_type", "")
 	var inst: Node = null
@@ -28,6 +29,7 @@ func load_card_data(data: Dictionary) -> Node:
 		inst.initialize_card(data)  # Assuming your cards have this method to initialize them
 	return inst
 
+# Load all cards from the JSON file
 func load_cards_from_json(path: String) -> Array:
 	var f = FileAccess.open(path, FileAccess.READ)
 	if f:

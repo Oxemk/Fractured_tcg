@@ -38,9 +38,9 @@ scale = Vector2(9.00051, 13.8043)
 [node name="CardPoolScroll2" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(350, 500)
 layout_mode = 0
-offset_left = 339.0
+offset_left = 793.0
 offset_top = 81.0
-offset_right = 689.0
+offset_right = 1143.0
 offset_bottom = 581.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardPoolScroll2"]
@@ -76,20 +76,13 @@ text = "Filter by Type"
 layout_mode = 2
 text = "Sort"
 
-[node name="CardGrid2" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 731.0
-offset_top = 73.0
-offset_right = 731.0
-offset_bottom = 73.0
-
 [node name="CardPoolScroll" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(350, 500)
 layout_mode = 0
-offset_left = 746.0
+offset_left = 325.0
 offset_top = 81.0
-offset_right = 1096.0
+offset_right = 675.0
 offset_bottom = 581.0
 
-[node name="CardPool" type="VBoxContainer" parent="CardPoolScroll"]
+[node name="CardGrid2" type="GridContainer" parent="CardPoolScroll"]
 layout_mode = 2
