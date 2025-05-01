@@ -1899,22 +1899,15 @@
 	  "rarity": "Uncommon"
 	},
 	{
-	  "id": "char_wolven_ashencircle_001",
-	  "name": "Wolven Slave – Ashen Circle",
-	  "description": "A Wolven slave whose wild spirit is subdued under the icy rule of Ashen Circle.",
-	  "card_type": "Character",
-	  "race": "Wolven",
-	  "faction": "Ashen Circle",
-	  "level": 1,
-	  "health": 27,
-	  "defense": 37,
-	  "attack-name": "Unarmed Strike",
-	  "attack_power": 6,
-	  "effect": "none",
-	  "cooldown": 0,
-	  "special_ability": "none",
-	  "special_description": "none",
-	  "rarity": "Uncommon"
+"card_type": "Class",
+	  "name": "Ashstrider",
+
+	  "description": "A fiery warrior fueled by burning resolve.",
+	  "attack": 10,
+	  "defense": 5,
+	  "hp": 10,
+	  "passive": "Burns enemy for 5 damage per turn for 2 turns.",
+	  "cooldown": 3 
 	},
 	{
 	  "id": "char_ratfoke_ashencircle_001",

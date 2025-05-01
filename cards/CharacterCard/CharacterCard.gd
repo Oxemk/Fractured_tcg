@@ -1,28 +1,41 @@
 extends BaseCard
 class_name CharacterCard
 
-@export var health: int = 100
+@export var health: int  = 100
 @export var defense: int = 10
 
-
-
 func initialize_card(data: Dictionary) -> void:
-
-	# Optional: Update visuals using data values here
 	super.initialize_card(data)
-	health = data.get("health",100)
-	defense = data.get("defense",10)
-	$Health.text = str(health)
-	$Defense.text = str(defense)
-	$Level.text = "Lvl %d" % level
 
-func apply_damage(d:int) -> void:
+	health  = data.get("health", health)
+	defense = data.get("defense", defense)
+
+	var h_lbl = get_node_or_null("CanvasLayer/Health")
+	if h_lbl:
+		h_lbl.text = str(health)
+	else:
+		push_error("CharacterCard: 'Health' not found!")
+
+	var d_lbl = get_node_or_null("CanvasLayer/Defense")
+	if d_lbl:
+		d_lbl.text = str(defense)
+	else:
+		push_error("CharacterCard: 'Defense' not found!")
+
+	var lvl_lbl = get_node_or_null("CanvasLayer/Level")
+	if lvl_lbl:
+		lvl_lbl.text = "Lvl %d" % level
+	else:
+		push_error("CharacterCard: 'Level' not found!")
+
+func apply_damage(d: int) -> void:
 	var rem = d
-	if defense>0:
-		var d1 = min(defense,rem)
-		defense -= d1; rem -= d1
-	if rem>0:
+	if defense > 0:
+		var d1 = min(defense, rem)
+		defense -= d1
+		rem -= d1
+	if rem > 0:
 		health -= rem
-	if health<=0:
+	if health <= 0:
 		queue_free()
 	print(card_name, "DEF:", defense, "HP:", health)

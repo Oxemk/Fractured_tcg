@@ -3,30 +3,49 @@
 [ext_resource type="Script" uid="uid://dc8whdj3vunkw" path="res://cards/ClassCard/ClassCard.gd" id="1_sjhta"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_f8m6e"]
 
-[node name="ClassCard" type="Node2D"]
+[node name="ClassCard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_sjhta")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 39.0
+scale = Vector2(4.58973, 6.10973)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Charcard" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(191.807, 253.807)
-scale = Vector2(0.355092, 0.355092)
+position = Vector2(92, 121)
+scale = Vector2(0.237602, 0.237602)
 texture = ExtResource("2_f8m6e")
 
-[node name="Name" type="Label" parent="CanvasLayer"]
-offset_left = 111.0
-offset_top = 376.0
-offset_right = 194.0
-offset_bottom = 399.0
-scale = Vector2(1.18901, 0.91939)
+[node name="CardName" type="Label" parent="CanvasLayer"]
+offset_left = 27.0
+offset_top = 204.0
+offset_right = 145.92
+offset_bottom = 279.0
+scale = Vector2(1.057, 0.667)
+text = "13131 1331313 131313"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="effect" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 173.0
+offset_right = 113.0
+offset_bottom = 196.0
+scale = Vector2(0.827071, 0.639524)
 horizontal_alignment = 1
 
-[node name="decrip" type="Label" parent="CanvasLayer"]
-offset_left = 83.0
-offset_top = 291.0
-offset_right = 166.0
-offset_bottom = 314.0
-scale = Vector2(0.692259, 0.535282)
+[node name="description" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 135.0
+offset_right = 99.0
+offset_bottom = 158.0
+scale = Vector2(0.481533, 0.37234)
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 0
 horizontal_alignment = 1
@@ -36,72 +55,77 @@ visible_characters_behavior = 3
 visible_ratio = 0.0
 
 [node name="leveld" type="Label" parent="CanvasLayer"]
-offset_left = 299.943
-offset_top = 70.0
-offset_right = 339.943
-offset_bottom = 93.0
+offset_left = 160.394
+offset_top = -4.0
+offset_right = 200.394
+offset_bottom = 19.0
 rotation = 0.823759
-scale = Vector2(0.885482, 0.885482)
+scale = Vector2(0.615938, 0.615938)
 text = "LV\""
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="CanvasLayer"]
-offset_left = 309.943
-offset_top = 81.0
-offset_right = 349.943
-offset_bottom = 104.0
+[node name="Level" type="Label" parent="CanvasLayer"]
+offset_left = 170.394
+offset_top = 7.0
+offset_right = 210.394
+offset_bottom = 30.0
 rotation = 0.823759
-scale = Vector2(0.885482, 0.885482)
+scale = Vector2(0.615938, 0.615938)
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Race" type="Label" parent="CanvasLayer"]
-offset_left = 86.0
-offset_top = 141.0
-offset_right = 126.0
-offset_bottom = 164.0
+[node name="Race2" type="Label" parent="CanvasLayer"]
+offset_left = 22.0
+offset_top = 36.0
+offset_right = 62.0
+offset_bottom = 59.0
 rotation = 1.57409
-scale = Vector2(1.19378, 1.19378)
-text = "Race"
+scale = Vector2(0.830389, 0.830389)
+text = "Race:"
+
+[node name="Race" type="Label" parent="CanvasLayer"]
+offset_left = 22.0
+offset_top = 74.0
+offset_right = 62.0
+offset_bottom = 97.0
+rotation = 1.57409
+scale = Vector2(0.830389, 0.830389)
 
 [node name="Healthd" type="Label" parent="CanvasLayer"]
-offset_left = 119.0
-offset_top = 72.0
-offset_right = 173.0
-offset_bottom = 95.0
-scale = Vector2(1.08203, 1.08203)
+offset_left = 37.0
+offset_right = 91.0
+offset_bottom = 23.0
+scale = Vector2(0.634314, 0.634314)
 text = "HP:"
 
 [node name="Health" type="Label" parent="CanvasLayer"]
-offset_left = 147.0
-offset_top = 72.0
-offset_right = 201.0
-offset_bottom = 95.0
-scale = Vector2(1.08203, 1.08203)
+offset_left = 61.0
+offset_right = 115.0
+offset_bottom = 23.0
+scale = Vector2(0.634314, 0.634314)
 
 [node name="defenced" type="Label" parent="CanvasLayer"]
-offset_left = 203.0
-offset_top = 71.0
-offset_right = 253.0
-offset_bottom = 94.0
-scale = Vector2(1.08203, 1.08203)
+offset_left = 82.0
+offset_right = 132.0
+offset_bottom = 23.0
+scale = Vector2(0.634314, 0.634314)
 text = "Def:"
 
-[node name="defence" type="Label" parent="CanvasLayer"]
-offset_left = 236.0
-offset_top = 71.0
-offset_right = 286.0
-offset_bottom = 94.0
-scale = Vector2(1.08203, 1.08203)
+[node name="Defense" type="Label" parent="CanvasLayer"]
+offset_left = 115.0
+offset_right = 165.0
+offset_bottom = 23.0
+scale = Vector2(0.634314, 0.634314)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 336.0
-offset_top = 124.0
-offset_right = 520.0
-offset_bottom = 164.0
+offset_left = 189.0
+offset_top = 50.0
+offset_right = 373.0
+offset_bottom = 90.0
 rotation = 1.57234
+scale = Vector2(0.695596, 0.695596)
 
 [node name="attackname" type="Label" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
@@ -128,6 +152,9 @@ layout_mode = 2
 layout_mode = 2
 text = "turns"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CardImage" type="TextureRect" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 14.0
+offset_right = 75.0
+offset_bottom = 54.0
+scale = Vector2(2.97302, 3.25663)

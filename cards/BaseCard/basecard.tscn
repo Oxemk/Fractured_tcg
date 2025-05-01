@@ -10,6 +10,7 @@ anchors_preset = 0
 script = ExtResource("1_q3nh8")
 
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 offset_top = -1.0
 offset_right = 40.0
 offset_bottom = 39.0
@@ -23,34 +24,32 @@ scale = Vector2(0.237602, 0.237602)
 texture = ExtResource("2_bx2il")
 
 [node name="CardName" type="Label" parent="CanvasLayer"]
-offset_left = 40.0
-offset_top = 210.0
-offset_right = 123.0
-offset_bottom = 233.0
-scale = Vector2(0.827071, 0.639524)
+offset_left = 27.0
+offset_top = 204.0
+offset_right = 145.92
+offset_bottom = 279.0
+scale = Vector2(1.057, 0.667)
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="description" type="Label" parent="CanvasLayer"]
+offset_left = 12.0
+offset_top = 141.0
+offset_right = 157.415
+offset_bottom = 216.0
+scale = Vector2(1.057, 0.667)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="effect" type="Label" parent="CanvasLayer"]
 offset_left = 30.0
-offset_top = 173.0
+offset_top = 59.0
 offset_right = 113.0
-offset_bottom = 196.0
+offset_bottom = 82.0
+rotation = 1.57633
 scale = Vector2(0.827071, 0.639524)
 horizontal_alignment = 1
-
-[node name="description" type="Label" parent="CanvasLayer"]
-offset_left = 16.0
-offset_top = 135.0
-offset_right = 99.0
-offset_bottom = 158.0
-scale = Vector2(0.481533, 0.37234)
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 0
-horizontal_alignment = 1
-max_lines_visible = 7
-visible_characters = 0
-visible_characters_behavior = 3
-visible_ratio = 0.0
 
 [node name="leveld" type="Label" parent="CanvasLayer"]
 offset_left = 160.394
@@ -63,7 +62,7 @@ text = "LV\""
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="CanvasLayer"]
+[node name="Level" type="Label" parent="CanvasLayer"]
 offset_left = 170.394
 offset_top = 7.0
 offset_right = 210.394
@@ -74,14 +73,22 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Race" type="Label" parent="CanvasLayer"]
+[node name="Race2" type="Label" parent="CanvasLayer"]
 offset_left = 22.0
 offset_top = 36.0
 offset_right = 62.0
 offset_bottom = 59.0
 rotation = 1.57409
 scale = Vector2(0.830389, 0.830389)
-text = "Race"
+text = "Race:"
+
+[node name="Race" type="Label" parent="CanvasLayer"]
+offset_left = 22.0
+offset_top = 74.0
+offset_right = 62.0
+offset_bottom = 97.0
+rotation = 1.57409
+scale = Vector2(0.830389, 0.830389)
 
 [node name="Healthd" type="Label" parent="CanvasLayer"]
 offset_left = 37.0
@@ -91,8 +98,8 @@ scale = Vector2(0.634314, 0.634314)
 text = "HP:"
 
 [node name="Health" type="Label" parent="CanvasLayer"]
-offset_left = 65.0
-offset_right = 119.0
+offset_left = 61.0
+offset_right = 115.0
 offset_bottom = 23.0
 scale = Vector2(0.634314, 0.634314)
 
@@ -103,7 +110,7 @@ offset_bottom = 23.0
 scale = Vector2(0.634314, 0.634314)
 text = "Def:"
 
-[node name="defence" type="Label" parent="CanvasLayer"]
+[node name="Defense" type="Label" parent="CanvasLayer"]
 offset_left = 115.0
 offset_right = 165.0
 offset_bottom = 23.0
@@ -142,8 +149,7 @@ layout_mode = 2
 layout_mode = 2
 text = "turns"
 
-[node name="image_path" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="CardImage" type="TextureRect" parent="CanvasLayer"]
 offset_left = 35.0
 offset_top = 14.0
 offset_right = 75.0

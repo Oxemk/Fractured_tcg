@@ -14,3 +14,6 @@ res://Scenes/DeckEditor/cardpopup.gd
 res://DeckEditor/DeckEditor.gd
 res://cards/CharacterCard/CharacterCard.gd
 res://cards/BaseCard/BaseCard.gd
+res://cards/ClassCard/ClassCard.tscn
+res://cards/ClassCard/ClassCard.gd
+res://data/card_database.json
