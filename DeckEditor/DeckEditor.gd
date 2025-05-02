@@ -19,7 +19,6 @@ func _ready() -> void:
 	# Initialize collection manager
 	collection_manager = get_node("/root/CardCollectionManager")
 	if not collection_manager:
-
 		return
 
 	# Ensure a deck has been selected
@@ -32,19 +31,11 @@ func _ready() -> void:
 	# Load all cards from the database
 	card_data = CardDatabase.get_all_cards()
 	print_debug("Total cards in database: %d" % card_data.size())
-	# Load all cards from the database
-	card_data = CardDatabase.get_all_cards()
-	print_debug("Total cards in database: %d" % card_data.size())
 
 	if card_data.size() == 0:
 		push_error("No cards loaded from database! Check card_database.json")
 	else:
 		print_debug("Card data loaded: %d cards." % card_data.size())
-		# Optionally show a preview of a few entries
-		var preview_keys = card_data.keys().slice(0, 5)
-		for key in preview_keys:
-			print_debug("- %s: %s" % [key, card_data[key].get("name", "Unnamed")])
-
 
 	# For testing, force unlock all cards; later use Globals.is_offline
 	collection_manager.unlock_all_cards = true
@@ -53,7 +44,7 @@ func _ready() -> void:
 	save_button.pressed.connect(_on_save)
 
 	# Instantiate and add the CardPopup scene to the DeckEditor
-	card_popup = preload("res://Scenes/DeckEditor/Cardpopup.tscn").instantiate()
+	card_popup = preload("res://Scenes/DeckEditor/CardPopup.tscn").instantiate()
 	add_child(card_popup)
 
 	# Populate UI
@@ -71,16 +62,22 @@ func display_deck() -> void:
 	deck_info_label.text = "Editing Deck: %s [%s]" % [deck_name, mode]
 
 	clear_children(card_grid)
-	# Add a label for each card in the deck
+	# Add a Button for each card in the deck
 	for cid in current_deck.get("cards", []):
 		var data = card_data.get(cid)
 		if typeof(data) != TYPE_DICTIONARY:
 			push_warning("Card data for %s is not a Dictionary. Data: %s" % [cid, str(data)])
 			data = {}
-		var text = data.get("name", cid)
-		var lbl = Label.new()
-		lbl.text = text
-		card_grid.add_child(lbl)
+		var btn = Button.new()
+		btn.text = data.get("name", cid)
+		# Match card pool button style
+		var sz = Vector2(100, 40)
+		btn.custom_minimum_size = sz
+		btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		# Connect to removal on press
+		btn.pressed.connect(_on_card_removed_from_deck.bind(cid))
+		card_grid.add_child(btn)
 
 func load_card_pool() -> void:
 	var coll = collection_manager.get_collection()
@@ -95,14 +92,12 @@ func load_card_pool() -> void:
 			push_warning("Card data not found for ID: %s" % cid)
 			continue
 
-		var btn_text = data.get("name", cid)
 		var btn = Button.new()
-		btn.text = btn_text
+		btn.text = data.get("name", cid)
 
 		# FIXED SIZE 100×40
 		var sz = Vector2(100, 40)
 		btn.custom_minimum_size = sz
-		# Optionally shrink within its minimum bounds
 		btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		btn.size_flags_vertical   = Control.SIZE_SHRINK_CENTER
 
@@ -117,7 +112,6 @@ func _on_card_selected(cid: String) -> void:
 	if card_info:
 		card_popup.setup(card_info)
 		card_popup.popup_centered()
-
 
 func _on_card_added_to_deck(card_id: String) -> void:
 	var cards = current_deck.get("cards", [])

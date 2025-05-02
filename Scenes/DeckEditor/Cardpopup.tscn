@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1522rj7ssdlf"]
 
-[ext_resource type="Script" uid="uid://d1uvnsu46xmxa" path="res://Scenes/DeckEditor/cardpopup.gd" id="1_mlxko"]
+[ext_resource type="Script" uid="uid://d1uvnsu46xmxa" path="res://DeckEditor/cardpopup.gd" id="1_mlxko"]
 
 [sub_resource type="Animation" id="Animation_7jaoj"]
 resource_name = "open_popup"
@@ -14,7 +14,6 @@ _data = {
 size = Vector2i(399, 405)
 visible = true
 script = ExtResource("1_mlxko")
-metadata/_custom_type_script = "uid://d1uvnsu46xmxa"
 
 [node name="CardContainer" type="VBoxContainer" parent="."]
 offset_left = 216.0

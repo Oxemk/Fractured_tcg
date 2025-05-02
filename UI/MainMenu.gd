@@ -108,6 +108,7 @@ func _on_back2() -> void:
 	sub2.visible = false
 	sub1.visible = true
 
+
 func _on_p1p2() -> void:
 	Globals.vs_mode = "P1vsP2"
 	get_tree().change_scene_to_file("res://Scenes/Battle/VSDeckSelector.tscn")
