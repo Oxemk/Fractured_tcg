@@ -22,3 +22,8 @@ res://DeckEditor/NewDeckPopup.gd
 res://Battle/VSDeckSelector.gd
 res://DeckEditor/cardpopup.gd
 res://data/card_database.json
+res://data/decks.json
+res://DeckEditor/DeckSelector.gd
+res://Scenes/Battle/VS_Computer.tscn
+res://scripts/DataUtils.gd
+res://managers/DeckManager.gd

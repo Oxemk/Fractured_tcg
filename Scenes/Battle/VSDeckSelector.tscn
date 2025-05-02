@@ -26,7 +26,21 @@ layout_mode = 2
 [node name="P1Deck" type="VBoxContainer" parent="VBoxContainer/PDeck"]
 layout_mode = 2
 
+[node name="CardPoolScroll" type="ScrollContainer" parent="VBoxContainer/PDeck/P1Deck"]
+custom_minimum_size = Vector2(350, 500)
+layout_mode = 2
+
+[node name="CardPool" type="VBoxContainer" parent="VBoxContainer/PDeck/P1Deck/CardPoolScroll"]
+layout_mode = 2
+
 [node name="P2Deck" type="VBoxContainer" parent="VBoxContainer/PDeck"]
+layout_mode = 2
+
+[node name="CardPoolScroll" type="ScrollContainer" parent="VBoxContainer/PDeck/P2Deck"]
+custom_minimum_size = Vector2(350, 500)
+layout_mode = 2
+
+[node name="CardPool" type="VBoxContainer" parent="VBoxContainer/PDeck/P2Deck/CardPoolScroll"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -49,3 +63,19 @@ text = "Back"
 
 [node name="SameDeckDialog" type="Panel" parent="."]
 layout_mode = 0
+
+[node name="P1Deck" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="P1DeckList" type="VBoxContainer" parent="P1Deck"]
+layout_mode = 2
+
+[node name="P1Deck2" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="P1DeckList" type="VBoxContainer" parent="P1Deck2"]
+layout_mode = 2

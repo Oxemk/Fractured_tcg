@@ -1,4 +1,5 @@
-[gd_scene load_steps=1 format=3]
+[gd_scene format=3 uid="uid://p0q12r8nagb1"]
 
 [node name="VS_Computer" type="Control"]
-# Add UI for selecting difficulty and starting vs AI here
+layout_mode = 3
+anchors_preset = 0

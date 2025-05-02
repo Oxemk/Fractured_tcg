@@ -1,0 +1,25 @@
+{
+  "decks": [
+	{
+	  "name": "Starter Deck",
+	  "rows": 1,
+	  "owner": "Player",
+	  "mode": "Duelist",
+	"level": "1",
+	  "cards": [
+		{ "id": "char_human_001", "count": 2 },
+		{ "id": "arm_001",        "count": 1 }
+	  ]
+	},
+	{
+	  "name": "Goblin Horde",
+	  "owner": "AI",
+	  "levelmode": "Duelist",
+	 "level": "1",
+	  "cards": [
+		{ "id": "char_goblin_002", "count": 3 },
+		{ "id": "trap_spike_001",  "count": 2 }
+	  ]
+	}
+  ]
+}

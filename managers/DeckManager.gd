@@ -58,7 +58,7 @@ func load_decks() -> void:
 
 # Load AI decks (from static file)
 func load_ai_decks() -> void:
-	var data = DataUtils.load_data("res://data/ai_decks.json")
+	var data = DataUtils.load_data("res://data/decks.json")
 	if data is Array:
 		ai_decks = data.duplicate()
 		print("AI decks loaded successfully.")

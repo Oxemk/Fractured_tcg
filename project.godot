@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="FracturedKingdom"
+config/name="FracturedKingdom_TCG"
 run/main_scene="uid://bjno6rqex4rce"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
