@@ -13,3 +13,12 @@ static func load_data(path: String) -> Dictionary:
 	var res = JSON.parse_string(f.get_as_text())
 	f.close()
 	return res if typeof(res) == TYPE_DICTIONARY else {}
+static func get_decks_by_mode(path: String, mode: String) -> Array:
+	var data = load_data(path)
+	var decks = data.get("decks", [])
+	
+	if typeof(decks) != TYPE_ARRAY:
+		return []
+	
+	return decks.filter(func(deck):
+		return typeof(deck) == TYPE_DICTIONARY and deck.get("mode", "") == mode)

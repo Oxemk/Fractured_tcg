@@ -13,7 +13,8 @@ var current_card_data: Dictionary = {}
 var card_scenes: Dictionary = {
 	"Character": preload("res://cards/CharacterCard/Charcard.tscn"),
 	"Weapon":    preload("res://cards/WeaponCard/Weaponcard.tscn"),
-	# … other types …
+##and the others
+
 }
 
 func setup(data: Dictionary) -> void:

@@ -10,7 +10,7 @@
 	  "level": 1,
 	  "health": 20,
 	  "defense": 45,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 5,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -28,7 +28,7 @@
 	  "level": 1,
 	  "health": 22,
 	  "defense": 44,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 5,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -46,7 +46,7 @@
 	  "level": 1,
 	  "health": 24,
 	  "defense": 43,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 4,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -55,7 +55,7 @@
 	  "rarity": "Common"
 	},
 	{
-	  "id": "char_wraithkin_crimsonbanner_001",
+	  "id": "char_wraithkin_001",
 	  "name": "Wraithkin Slave",
 	  "description": "A Wraithkin slave.",
 	  "card_type": "Character",
@@ -64,7 +64,7 @@
 	  "level": 1,
 	  "health": 26,
 	  "defense": 42,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 6,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -82,7 +82,7 @@
 	  "level": 1,
 	  "health": 28,
 	  "defense": 41,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 7,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -100,7 +100,7 @@
 	  "level": 1,
 	  "health": 30,
 	  "defense": 40,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 8,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -118,7 +118,7 @@
 	  "level": 1,
 	  "health": 32,
 	  "defense": 39,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 5,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -136,7 +136,7 @@
 	  "level": 1,
 	  "health": 34,
 	  "defense": 38,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 5,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -145,16 +145,16 @@
 	  "rarity": "Common"
 	},
 	{
-	  "id": "char_bonewalkers_001",
-	  "name": "Bonewalkers Slave",
+	  "id": "char_bonewalker_001",
+	  "name": "Bonewalker Slave",
 	  "description": "A Bonewalker slave.",
 	  "card_type": "Character",
-	  "race": "Bonewalkers",
+	  "race": "Bonewalker",
 	  "faction": "Crimson Banner",
 	  "level": 1,
 	  "health": 36,
 	  "defense": 37,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 5,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -172,7 +172,7 @@
 	  "level": 1,
 	  "health": 38,
 	  "defense": 36,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 6,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -190,7 +190,7 @@
 	  "level": 1,
 	  "health": 40,
 	  "defense": 35,
-	  "attack-name": "Unarmed Strike",
+	  "attack_name": "Unarmed Strike",
 	  "attack_power": 7,
 	  "effect": "none",
 	  "cooldown": 0,
@@ -201,6 +201,7 @@
   ],
   "class_cards": [
 	{
+	  "id": "class_001",
 	  "card_type": "Class",
 	  "name": "Brawler",
 	  "rarity": "Common",
@@ -212,6 +213,7 @@
 	  "cooldown": null
 	},
 	{
+	  "id": "class_002",
 	  "card_type": "Class",
 	  "name": "Pit Brawler",
 	  "rarity": "Common",
@@ -223,6 +225,7 @@
 	  "cooldown": null
 	},
 	{
+	  "id": "class_003",
 	  "card_type": "Class",
 	  "name": "Junk Knight",
 	  "rarity": "Common",
@@ -234,6 +237,7 @@
 	  "cooldown": null
 	},
 	{
+	  "id": "class_004",
 	  "card_type": "Class",
 	  "name": "Torchbearer",
 	  "rarity": "Uncommon",
@@ -245,6 +249,7 @@
 	  "cooldown": 2
 	},
 	{
+	  "id": "class_005",
 	  "card_type": "Class",
 	  "name": "Monk",
 	  "rarity": "Uncommon",
@@ -256,6 +261,7 @@
 	  "cooldown": 3
 	},
 	{
+	  "id": "class_006",
 	  "card_type": "Class",
 	  "name": "Weld Beast",
 	  "rarity": "Rare",
@@ -266,10 +272,10 @@
 	  "passive": "Deals an extra 2 fire damage to adjacent units.",
 	  "cooldown": 3
 	},
-	
 	{
+	  "id": "class_007",
 	  "card_type": "Class",
-	  "name": "beast tamer",
+	  "name": "Beast Tamer",
 	  "rarity": "Uncommon",
 	  "description": "Commands loyal beasts in battle.",
 	  "attack": 7,
@@ -277,11 +283,13 @@
 	  "hp": 8,
 	  "passive": "Summons a hound with 1 HP each turn.",
 	  "cooldown": 2
-	},
+	}
+  ],
+  "weapon_cards": [
 	{
 	  "id": "wpn_001",
 	  "level": 1,
-	  "type": "Weapon",
+	  "card_type": "Weapon",
 	  "rarity": "Common",
 	  "name": "Worn Shortsword",
 	  "attack": 4,
@@ -298,7 +306,7 @@
 	{
 	  "id": "wpn_002",
 	  "level": 1,
-	  "type": "Weapon",
+	  "card_type": "Weapon",
 	  "rarity": "Common",
 	  "name": "Rusty Hatchet",
 	  "attack": 5,
@@ -315,7 +323,7 @@
 	{
 	  "id": "wpn_003",
 	  "level": 1,
-	  "type": "Weapon",
+	  "card_type": "Weapon",
 	  "rarity": "Common",
 	  "name": "Broken Club",
 	  "attack": 3,
@@ -332,7 +340,7 @@
 	{
 	  "id": "wpn_004",
 	  "level": 1,
-	  "type": "Weapon",
+	  "card_type": "Weapon",
 	  "rarity": "Common",
 	  "name": "Wooden Spear",
 	  "attack": 5,
@@ -349,7 +357,7 @@
 	{
 	  "id": "wpn_005",
 	  "level": 1,
-	  "type": "Weapon",
+	  "card_type": "Weapon",
 	  "rarity": "Common",
 	  "name": "Rusty Dagger",
 	  "attack": 4,
@@ -362,12 +370,13 @@
 	  },
 	  "cooldown": 0,
 	  "effect": null
-	},
-		
+	}
+  ],
+  "armor_cards": [
 	{
 	  "id": "arm_001",
 	  "level": 1,
-	  "type": "Armor",
+	  "card_type": "Armor",
 	  "rarity": "Common",
 	  "name": "Worn Leather Vest",
 	  "defense": 3,
@@ -384,7 +393,7 @@
 	{
 	  "id": "arm_002",
 	  "level": 1,
-	  "type": "Armor",
+	  "card_type": "Armor",
 	  "rarity": "Common",
 	  "name": "Ragged Robes",
 	  "defense": 2,
@@ -401,7 +410,7 @@
 	{
 	  "id": "arm_003",
 	  "level": 1,
-	  "type": "Armor",
+	  "card_type": "Armor",
 	  "rarity": "Common",
 	  "name": "Rusty Chainmail",
 	  "defense": 4,
@@ -418,7 +427,7 @@
 	{
 	  "id": "arm_004",
 	  "level": 1,
-	  "type": "Armor",
+	  "card_type": "Armor",
 	  "rarity": "Common",
 	  "name": "Cracked Breastplate",
 	  "defense": 5,
@@ -435,7 +444,7 @@
 	{
 	  "id": "arm_005",
 	  "level": 1,
-	  "type": "Armor",
+	  "card_type": "Armor",
 	  "rarity": "Common",
 	  "name": "Improvised Gear",
 	  "defense": 3,
@@ -448,221 +457,12 @@
 	  },
 	  "cooldown": 2,
 	  "effect": null
-	},
-	{
-	  "id": "arm_006",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Faded Cloak",
-	  "defense": 1,
-	  "image_path": "path_to_image",
-	  "special_ability": "Ghost Step",
-	  "armor_effect": {
-		"effect_type": "Evasion",
-		"value": 8,
-		"duration": 1
-	  },
-	  "cooldown": 1,
-	  "effect": null
-	},
-	{
-	  "id": "arm_007",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Broken Scale Armor",
-	  "defense": 4,
-	  "image_path": "path_to_image",
-	  "special_ability": "Scale Shield",
-	  "armor_effect": {
-		"effect_type": "Block Chance",
-		"value": 15,
-		"duration": 1
-	  },
-	  "cooldown": 3,
-	  "effect": null
-	},
-	{
-	  "id": "arm_008",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Tattered Gambeson",
-	  "defense": 2,
-	  "image_path": "path_to_image",
-	  "special_ability": "Absorb",
-	  "armor_effect": {
-		"effect_type": "Damage Reduction",
-		"value": 1,
-		"duration": 2
-	  },
-	  "cooldown": 2,
-	  "effect": null
-	},
-	{
-	  "id": "arm_009",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Rusted Plating",
-	  "defense": 5,
-	  "image_path": "path_to_image",
-	  "special_ability": "Rustguard",
-	  "armor_effect": {
-		"effect_type": "Stagger Block",
-		"value": 5,
-		"duration": 1
-	  },
-	  "cooldown": 2,
-	  "effect": null
-	},
-	{
-	  "id": "arm_010",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Makeshift Pads",
-	  "defense": 2,
-	  "image_path": "path_to_image",
-	  "special_ability": "Last Stand",
-	  "armor_effect": {
-		"effect_type": "Survival Boost",
-		"value": 1,
-		"duration": 1
-	  },
-	  "cooldown": 3,
-	  "effect": null
-	},
-	{
-	  "id": "arm_011",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Worn Leather Vest",
-	  "defense": 3,
-	  "image_path": "path_to_image",
-	  "special_ability": "Flexible Guard",
-	  "armor_effect": {
-		"effect_type": "Evasion",
-		"value": 10,
-		"duration": 1
-	  },
-	  "cooldown": 1,
-	  "effect": null
-	},
-	{
-	  "id": "arm_012",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Cracked Chainmail",
-	  "defense": 4,
-	  "image_path": "path_to_image",
-	  "special_ability": "Chain Buffer",
-	  "armor_effect": {
-		"effect_type": "Minor Knockback Resist",
-		"value": 10,
-		"duration": 1
-	  },
-	  "cooldown": 2,
-	  "effect": null
-	},
-	{
-	  "id": "arm_013",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Uncommon",
-	  "name": "Salvaged Plate Armor",
-	  "defense": 6,
-	  "image_path": "path_to_image",
-	  "special_ability": "Iron Body",
-	  "armor_effect": {
-		"effect_type": "Minor Stun Resist",
-		"value": 5,
-		"duration": 1
-	  },
-	  "cooldown": 2,
-	  "effect": null
-	},
-	{
-	  "id": "arm_014",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Threadbare Robes",
-	  "defense": 1,
-	  "image_path": "path_to_image",
-	  "special_ability": "Mystic Flare",
-	  "armor_effect": {
-		"effect_type": "Buff Effect Duration",
-		"value": 1,
-		"duration": 1
-	  },
-	  "cooldown": 3,
-	  "effect": null
-	},
-	{
-	  "id": "arm_015",
-	  "level": 1,
-	  "type": "Armor",
-	  "rarity": "Common",
-	  "name": "Improvised Rags",
-	  "defense": 1,
-	  "image_path": "path_to_image",
-	  "special_ability": "Evade Burst",
-	  "armor_effect": {
-		"effect_type": "Dodge Boost",
-		"value": 12,
-		"duration": 1
-	  },
-	  "cooldown": 2,
-	  "effect": null
-	},
-	{
-	  "id": "field_001",
-	  "type": "Field",
-	  "rarity": "ultra",
-	  "name": "Undead World",
-	  "effect": "Revive as Undead with 50% HP upon death; Undead gain +2 ATK",
-	  "description": "Each time a character dies, 50% chance to revive as Undead at half health; Undead units gain +2 ATK.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Graveyard World, shaping all who stand within.",
-	  "image_path": "assets/fields/graveyard_world.png"
-	},
-	{
-	  "id": "field_002",
-	  "type": "Field",
-	  "name": "Skyborn Citadel",
-	  "effect": "Hobgoblin units gain +2 ATK",
-	  "description": "All Hobgoblin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Skyborn Citadel, shaping all who stand within.",
-	  "image_path": "assets/fields/skyborn_citadel.png"
-	},
-	{
-	  "id": "field_003",
-	  "type": "Field",
-	  "name": "Forge of Cinders",
-	  "effect": "Machines gain +1 ATK/DEF and ignore trap effects",
-	  "description": "Machine units gain +1 ATK and +1 DEF and are immune to trap effects.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Forge of Cinders, shaping all who stand within.",
-	  "image_path": "assets/fields/forge_of_cinders.png"
-	},
-	{
-	  "id": "field_004",
-	  "type": "Field",
-	  "name": "Beastcaller's Den",
-	  "effect": "Beasts gain +1 ATK, cannot be feared; summon Level 1 Beast on Beast death",
-	  "description": "Beast units gain +1 ATK and immunity to Fear; once per field, summon a Level 1 Beast when a Beast ally dies.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Beastcaller's Den, shaping all who stand within.",
-	  "image_path": "assets/fields/beastcallers_den.png"
-	},
+	}
+  ],
+  "field_cards": [
 	{
 	  "id": "field_005",
-	  "type": "Field",
+	  "card_type": "Field",
 	  "name": "Clockwork Wastes",
 	  "effect": "Machines gain +1 ATK/DEF and ignore trap effects",
 	  "description": "Machine units gain +1 ATK and +1 DEF and are immune to trap effects.",
@@ -672,7 +472,7 @@
 	},
 	{
 	  "id": "field_006",
-	  "type": "Field",
+	  "card_type": "Field",
 	  "name": "Holy Sanctuary",
 	  "effect": "Healing effects doubled; Undead take 2 damage at turn start",
 	  "description": "All healing effects are doubled. Undead units take 2 damage at the start of their turn.",
@@ -682,7 +482,7 @@
 	},
 	{
 	  "id": "field_007",
-	  "type": "Field",
+	  "card_type": "Field",
 	  "name": "Cursed Battlefield",
 	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
 	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
@@ -692,7 +492,7 @@
 	},
 	{
 	  "id": "field_008",
-	  "type": "Field",
+	  "card_type": "Field",
 	  "name": "Mirror Realm",
 	  "effect": "Reflect 25% of damage back to attacker",
 	  "description": "All damage dealt by characters is reflected 25% back at the attacker.",
@@ -702,7 +502,7 @@
 	},
 	{
 	  "id": "field_009",
-	  "type": "Field",
+	  "card_type": "Field",
 	  "name": "Arcane Academy",
 	  "effect": "Draw an extra card on OnPlay",
 	  "description": "When you play a card, draw one extra card.",
@@ -712,7 +512,7 @@
 	},
 	{
 	  "id": "field_010",
-	  "type": "Field",
+	  "card_type": "Field",
 	  "name": "Frozen Tundra",
 	  "effect": "Enemies take 1 cold damage at turn start; -1 SPD",
 	  "description": "Enemies take 1 cold damage at the start of their turn and have -1 SPD.",
@@ -721,404 +521,25 @@
 	  "image_path": "assets/fields/frozen_tundra.png"
 	},
 	{
-	  "id": "field_011",
-	  "type": "Field",
-	  "name": "Desert of Sands",
-	  "effect": "Enemies take 1 burn damage when they attack",
-	  "description": "Whenever an enemy attacks, they take 1 burn damage.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Desert of Sands, shaping all who stand within.",
-	  "image_path": "assets/fields/desert_of_sands.png"
-	},
+	  "id": "sup_001",
+	  "card_type": "Support",
+	  "name": "Healing Fountain",
+	  "effect": "Heal 5 HP to all friendly units",
+	  "description": "A soothing spring revitalizes allies.",
+	  "duration": 2,
+	  "image_path": "assets/supports/healing_fountain.png"
+	}
+  ],
+
+  "trap_cards": [
 	{
-	  "id": "field_012",
-	  "type": "Field",
-	  "name": "Volcanic Ruins",
-	  "effect": "Enemies take 1 burn damage when they attack",
-	  "description": "Whenever an enemy attacks, they take 1 burn damage.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Volcanic Ruins, shaping all who stand within.",
-	  "image_path": "assets/fields/volcanic_ruins.png"
-	},
-	{
-	  "id": "field_013",
-	  "type": "Field",
-	  "name": "Shadowfell",
-	  "effect": "Nightshade units gain +2 ATK",
-	  "description": "All Nightshade units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Shadowfell, shaping all who stand within.",
-	  "image_path": "assets/fields/shadowfell.png"
-	},
-	{
-	  "id": "field_014",
-	  "type": "Field",
-	  "name": "Radiant Grove",
-	  "effect": "Human units gain +2 ATK",
-	  "description": "All Human units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Radiant Grove, shaping all who stand within.",
-	  "image_path": "assets/fields/radiant_grove.png"
-	},
-	{
-	  "id": "field_015",
-	  "type": "Field",
-	  "name": "Celestial Spire",
-	  "effect": "Reflect 25% of damage back to attacker",
-	  "description": "All damage dealt by characters is reflected 25% back at the attacker.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Celestial Spire, shaping all who stand within.",
-	  "image_path": "assets/fields/celestial_spire.png"
-	},
-	{
-	  "id": "field_016",
-	  "type": "Field",
-	  "name": "Abyssal Depths",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Abyssal Depths, shaping all who stand within.",
-	  "image_path": "assets/fields/abyssal_depths.png"
-	},
-	{
-	  "id": "field_017",
-	  "type": "Field",
-	  "name": "Emerald Marsh",
-	  "effect": "Goblin units gain +2 ATK",
-	  "description": "All Goblin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Emerald Marsh, shaping all who stand within.",
-	  "image_path": "assets/fields/emerald_marsh.png"
-	},
-	{
-	  "id": "field_018",
-	  "type": "Field",
-	  "name": "Sunken Temple",
-	  "effect": "Runeborn units gain +2 ATK",
-	  "description": "All Runeborn units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Sunken Temple, shaping all who stand within.",
-	  "image_path": "assets/fields/sunken_temple.png"
-	},
-	{
-	  "id": "field_019",
-	  "type": "Field",
-	  "name": "Crystal Plains",
-	  "effect": "Revenant units gain +2 ATK",
-	  "description": "All Revenant units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Crystal Plains, shaping all who stand within.",
-	  "image_path": "assets/fields/crystal_plains.png"
-	},
-	{
-	  "id": "field_020",
-	  "type": "Field",
-	  "name": "Whispering Woods",
-	  "effect": "Ratfoke units gain +2 ATK",
-	  "description": "All Ratfoke units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Whispering Woods, shaping all who stand within.",
-	  "image_path": "assets/fields/whispering_woods.png"
-	},
-	{
-	  "id": "field_021",
-	  "type": "Field",
-	  "name": "Thunder Plateau",
-	  "effect": "Hobgoblin units gain +2 ATK",
-	  "description": "All Hobgoblin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Thunder Plateau, shaping all who stand within.",
-	  "image_path": "assets/fields/thunder_plateau.png"
-	},
-	{
-	  "id": "field_022",
-	  "type": "Field",
-	  "name": "Ethereal Veil",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Ethereal Veil, shaping all who stand within.",
-	  "image_path": "assets/fields/ethereal_veil.png"
-	},
-	{
-	  "id": "field_023",
-	  "type": "Field",
-	  "name": "Blighted Heath",
-	  "effect": "Enemies take 1 cold damage at turn start; -1 SPD",
-	  "description": "Enemies take 1 cold damage at the start of their turn and have -1 SPD.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Blighted Heath, shaping all who stand within.",
-	  "image_path": "assets/fields/blighted_heath.png"
-	},
-	{
-	  "id": "field_024",
-	  "type": "Field",
-	  "name": "Lunar Eclipse Field",
-	  "effect": "Undead units gain +2 ATK",
-	  "description": "All Undead units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Lunar Eclipse Field, shaping all who stand within.",
-	  "image_path": "assets/fields/lunar_eclipse_field.png"
-	},
-	{
-	  "id": "field_025",
-	  "type": "Field",
-	  "name": "Solar Flare Field",
-	  "effect": "Humans gain +2 ATK",
-	  "description": "All Human units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Solar Flare Field, shaping all who stand within.",
-	  "image_path": "assets/fields/solar_flare_field.png"
-	},
-	{
-	  "id": "field_026",
-	  "type": "Field",
-	  "name": "Iron Citadel",
-	  "effect": "Machines gain +1 ATK/DEF and ignore trap effects",
-	  "description": "Machine units gain +1 ATK and +1 DEF and are immune to trap effects.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Iron Citadel, shaping all who stand within.",
-	  "image_path": "assets/fields/iron_citadel.png"
-	},
-	{
-	  "id": "field_027",
-	  "type": "Field",
-	  "name": "Mystic Falls",
-	  "effect": "Draw an extra card on OnPlay",
-	  "description": "When you play a card, draw one extra card.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Mystic Falls, shaping all who stand within.",
-	  "image_path": "assets/fields/mystic_falls.png"
-	},
-	{
-	  "id": "field_028",
-	  "type": "Field",
-	  "name": "Gloom Caverns",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Gloom Caverns, shaping all who stand within.",
-	  "image_path": "assets/fields/gloom_caverns.png"
-	},
-	{
-	  "id": "field_029",
-	  "type": "Field",
-	  "name": "Phantom Meadows",
-	  "effect": "Revive as Undead with 50% HP upon death; Undead gain +2 ATK",
-	  "description": "Each time a character dies, 50% chance to revive as Undead at half health; Undead units gain +2 ATK.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Phantom Meadows, shaping all who stand within.",
-	  "image_path": "assets/fields/phantom_meadows.png"
-	},
-	{
-	  "id": "field_030",
-	  "type": "Field",
-	  "name": "Storm Coast",
-	  "effect": "Goblin units gain +2 ATK",
-	  "description": "All Goblin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Storm Coast, shaping all who stand within.",
-	  "image_path": "assets/fields/storm_coast.png"
-	},
-	{
-	  "id": "field_031",
-	  "type": "Field",
-	  "name": "Shattered Isles",
-	  "effect": "Beasts gain +1 ATK, cannot be feared; summon Level 1 Beast on Beast death",
-	  "description": "Beast units gain +1 ATK and immunity to Fear; once per field, summon a Level 1 Beast when a Beast ally dies.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Shattered Isles, shaping all who stand within.",
-	  "image_path": "assets/fields/shattered_isles.png"
-	},
-	{
-	  "id": "field_032",
-	  "type": "Field",
-	  "name": "Ember Fields",
-	  "effect": "Enemies take 1 burn damage when they attack",
-	  "description": "Whenever an enemy attacks, they take 1 burn damage.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Ember Fields, shaping all who stand within.",
-	  "image_path": "assets/fields/ember_fields.png"
-	},
-	{
-	  "id": "field_033",
-	  "type": "Field",
-	  "name": "Frostbite Expanse",
-	  "effect": "Enemies take 1 cold damage at turn start; -1 SPD",
-	  "description": "Enemies take 1 cold damage at the start of their turn and have -1 SPD.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Frostbite Expanse, shaping all who stand within.",
-	  "image_path": "assets/fields/frostbite_expanse.png"
-	},
-	{
-	  "id": "field_034",
-	  "type": "Field",
-	  "name": "Bloodfell Moors",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Bloodfell Moors, shaping all who stand within.",
-	  "image_path": "assets/fields/bloodfell_moors.png"
-	},
-	{
-	  "id": "field_035",
-	  "type": "Field",
-	  "name": "Rift Zone",
-	  "effect": "Wraithkin units gain +2 ATK",
-	  "description": "All Wraithkin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Rift Zone, shaping all who stand within.",
-	  "image_path": "assets/fields/rift_zone.png"
-	},
-	{
-	  "id": "field_036",
-	  "type": "Field",
-	  "name": "Nether Spire",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Nether Spire, shaping all who stand within.",
-	  "image_path": "assets/fields/nether_spire.png"
-	},
-	{
-	  "id": "field_037",
-	  "type": "Field",
-	  "name": "Titan's Arena",
-	  "effect": "Humans gain +2 ATK",
-	  "description": "All Human units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Titan's Arena, shaping all who stand within.",
-	  "image_path": "assets/fields/titans_arena.png"
-	},
-	{
-	  "id": "field_038",
-	  "type": "Field",
-	  "name": "Sanctuary of Souls",
-	  "effect": "Revive as Undead with 50% HP upon death; Undead gain +2 ATK",
-	  "description": "Each time a character dies, 50% chance to revive as Undead at half health; Undead units gain +2 ATK.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Sanctuary of Souls, shaping all who stand within.",
-	  "image_path": "assets/fields/sanctuary_of_souls.png"
-	},
-	{
-	  "id": "field_039",
-	  "type": "Field",
-	  "name": "Vampiric Orphanage",
-	  "effect": "Revive as Undead with 50% HP upon death; Undead gain +2 ATK",
-	  "description": "Each time a character dies, 50% chance to revive as Undead at half health; Undead units gain +2 ATK.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Vampiric Orphanage, shaping all who stand within.",
-	  "image_path": "assets/fields/vampiric_orphanage.png"
-	},
-	{
-	  "id": "field_040",
-	  "type": "Field",
-	  "name": "Ancient Coliseum",
-	  "effect": "Hobgoblin units gain +2 ATK",
-	  "description": "All Hobgoblin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Ancient Coliseum, shaping all who stand within.",
-	  "image_path": "assets/fields/ancient_coliseum.png"
-	},
-	{
-	  "id": "field_041",
-	  "type": "Field",
-	  "name": "Mechanized Forge",
-	  "effect": "Machines gain +1 ATK/DEF and ignore trap effects",
-	  "description": "Machine units gain +1 ATK and +1 DEF and are immune to trap effects.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Mechanized Forge, shaping all who stand within.",
-	  "image_path": "assets/fields/mechanized_forge.png"
-	},
-	{
-	  "id": "field_042",
-	  "type": "Field",
-	  "name": "Celestial Observatory",
-	  "effect": "Reflect 25% of damage back to attacker",
-	  "description": "All damage dealt by characters is reflected 25% back at the attacker.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Celestial Observatory, shaping all who stand within.",
-	  "image_path": "assets/fields/celestial_observatory.png"
-	},
-	{
-	  "id": "field_043",
-	  "type": "Field",
-	  "name": "Demonic Crucible",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Demonic Crucible, shaping all who stand within.",
-	  "image_path": "assets/fields/demonic_crucible.png"
-	},
-	{
-	  "id": "field_044",
-	  "type": "Field",
-	  "name": "Void Nexus",
-	  "effect": "Revenant units gain +2 ATK",
-	  "description": "All Revenant units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Void Nexus, shaping all who stand within.",
-	  "image_path": "assets/fields/void_nexus.png"
-	},
-	{
-	  "id": "field_045",
-	  "type": "Field",
-	  "name": "Enchanted Glade",
-	  "effect": "Draw an extra card on OnPlay",
-	  "description": "When you play a card, draw one extra card.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Enchanted Glade, shaping all who stand within.",
-	  "image_path": "assets/fields/enchanted_glade.png"
-	},
-	{
-	  "id": "field_046",
-	  "type": "Field",
-	  "name": "Infernal Pits",
-	  "effect": "Enemies take 1 burn damage when they attack",
-	  "description": "Whenever an enemy attacks, they take 1 burn damage.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Infernal Pits, shaping all who stand within.",
-	  "image_path": "assets/fields/infernal_pits.png"
-	},
-	{
-	  "id": "field_047",
-	  "type": "Field",
-	  "name": "Ruins of Eldoria",
-	  "effect": "Runeborn units gain +2 ATK",
-	  "description": "All Runeborn units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Ruins of Eldoria, shaping all who stand within.",
-	  "image_path": "assets/fields/ruins_of_eldoria.png"
-	},
-	{
-	  "id": "field_048",
-	  "type": "Field",
-	  "name": "Sanguine Marsh",
-	  "effect": "Apply Plague: deal 2 damage to random enemy on each death",
-	  "description": "Whenever a character dies, apply Plague to a random enemy, dealing 2 damage per turn for 2 turns.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Sanguine Marsh, shaping all who stand within.",
-	  "image_path": "assets/fields/sanguine_marsh.png"
-	},
-	{
-	  "id": "field_049",
-	  "type": "Field",
-	  "name": "Timeless Sands",
-	  "effect": "Trollkin units gain +2 ATK",
-	  "description": "All Trollkin units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Timeless Sands, shaping all who stand within.",
-	  "image_path": "assets/fields/timeless_sands.png"
-	},
-	{
-	  "id": "field_050",
-	  "type": "Field",
-	  "name": "Veil of Memories",
-	  "effect": "Ratfoke units gain +2 ATK",
-	  "description": "All Ratfoke units gain +2 ATK while this field is active.",
-	  "duration": 3,
-	  "flavor_text": "The domain of Veil of Memories, shaping all who stand within.",
-	  "image_path": "assets/fields/veil_of_memories.png"
+	  "id": "trap_001",
+	  "card_type": "Trap",
+	  "name": "Pitfall Trap",
+	  "effect": "Deal 3 damage and immobilize for 1 turn",
+	  "description": "A hidden pit snares the unwary.",
+	  "trigger": "OnEnter",
+	  "image_path": "assets/traps/pitfall_trap.png"
 	}
   ]
 }

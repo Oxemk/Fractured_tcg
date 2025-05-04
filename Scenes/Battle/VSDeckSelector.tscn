@@ -1,57 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://3hhmj11t67xm"]
+[gd_scene load_steps=2 format=3 uid="uid://b7y8suijvef73"]
 
 [ext_resource type="Script" uid="uid://cckxbrjj0fdof" path="res://Battle/VSDeckSelector.gd" id="1_y7cdl"]
 
-[node name="VsDeckSelector_tscn" type="Control"]
+[node name="VsDeckSelector" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.995245, 1.01533)
 script = ExtResource("1_y7cdl")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 317.51
-offset_top = 139.855
-offset_right = 357.51
-offset_bottom = 179.855
-scale = Vector2(0.904288, 0.904288)
-
-[node name="PDeck" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="P1Deck" type="VBoxContainer" parent="VBoxContainer/PDeck"]
-layout_mode = 2
-
-[node name="CardPoolScroll" type="ScrollContainer" parent="VBoxContainer/PDeck/P1Deck"]
-custom_minimum_size = Vector2(350, 500)
-layout_mode = 2
-
-[node name="CardPool" type="VBoxContainer" parent="VBoxContainer/PDeck/P1Deck/CardPoolScroll"]
-layout_mode = 2
-
-[node name="P2Deck" type="VBoxContainer" parent="VBoxContainer/PDeck"]
-layout_mode = 2
-
-[node name="CardPoolScroll" type="ScrollContainer" parent="VBoxContainer/PDeck/P2Deck"]
-custom_minimum_size = Vector2(350, 500)
-layout_mode = 2
-
-[node name="CardPool" type="VBoxContainer" parent="VBoxContainer/PDeck/P2Deck/CardPoolScroll"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 571.719
-offset_top = 565.331
-offset_right = 666.719
-offset_bottom = 605.331
+offset_left = 521.0
+offset_top = 539.0
+offset_right = 616.0
+offset_bottom = 579.0
+scale = Vector2(1.7624, 1.7624)
 
 [node name="StartButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -61,21 +27,41 @@ text = "Start"
 layout_mode = 2
 text = "Back"
 
-[node name="SameDeckDialog" type="Panel" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 50)
 layout_mode = 0
+offset_left = 410.0
+offset_right = 710.0
+offset_bottom = 50.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="P1Deck" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 162.0
+offset_top = 108.0
+offset_right = 462.0
+offset_bottom = 408.0
 
-[node name="P1DeckList" type="VBoxContainer" parent="P1Deck"]
+[node name="P1DeckList" type="ItemList" parent="P1Deck"]
+custom_minimum_size = Vector2(300, 500)
 layout_mode = 2
 
-[node name="P1Deck2" type="ScrollContainer" parent="."]
+[node name="P2Deck" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 653.0
+offset_top = 123.0
+offset_right = 953.0
+offset_bottom = 423.0
+scale = Vector2(0.59, 0.59)
 
-[node name="P1DeckList" type="VBoxContainer" parent="P1Deck2"]
+[node name="P2DeckList" type="ItemList" parent="P2Deck"]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
+
+[node name="SameDeckDialog" type="AcceptDialog" parent="."]
+position = Vector2i(0, 36)
+visible = true

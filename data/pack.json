@@ -5,10 +5,10 @@
 	  "name": "Starter Pack",
 	  "type": "general",
 	  "cards": [
-		{ "id": "char_human_crimsonbanner_001", "count": 2 },
-		{ "id": "char_hobgoblin_crimsonbanner_001", "count": 1 },
-		{ "id": "char_goblin_crimsonbanner_001", "count": 1 },
-		{ "id": "char_wraithkin_crimsonbanner_001", "count": 1 }
+		{ "id": "char_human__001", "count": 2 },
+		{ "id": "char_hobgoblin_", "count": 1 },
+		{ "id": "char_goblin_", "count": 1 },
+		{ "id": "char_wraithkin__001", "count": 1 }
 	  ]
 	},
 	"human_pack": {
@@ -17,9 +17,9 @@
 	  "type": "faction",
 	  "faction": "Human",
 	  "cards": [
-		{ "id": "char_human_crimsonbanner_001", "count": 2 },
-		{ "id": "char_hobgoblin_crimsonbanner_001", "count": 1 },
-		{ "id": "char_runeborn_crimsonbanner_001", "count": 1 }
+		{ "id": "char_human__001", "count": 2 },
+		{ "id": "char_hobgoblin__001", "count": 1 },
+		{ "id": "char_runeborn__001", "count": 1 }
 	  ]
 	}
   }

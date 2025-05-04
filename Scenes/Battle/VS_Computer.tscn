@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://p0q12r8nagb1"]
-
-[node name="VS_Computer" type="Control"]
-layout_mode = 3
-anchors_preset = 0

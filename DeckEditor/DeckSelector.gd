@@ -16,6 +16,7 @@ func _ready():
 	load_decks()
 	display_decks()
 	_check_button_states()
+	
 	new_deck_button.pressed.connect(_on_new_deck)
 	edit_button.pressed.connect(_on_edit_deck)
 	delete_button.pressed.connect(_on_delete_deck)
@@ -28,16 +29,33 @@ func _check_button_states() -> void:
 	delete_button.disabled = selected_index < 0
 
 func load_decks() -> void:
-	var data = DataUtils.load_data("user://decks.json")
-	deck_data = data if typeof(data) == TYPE_ARRAY else []
+	deck_data.clear()
+	if FileAccess.file_exists("user://decks.json"):
+		var file = FileAccess.open("user://decks.json", FileAccess.READ)
+		var content = file.get_as_text()
+		var json = JSON.new()
+		if json.parse(content) == OK:
+			var data = json.get_data()
+			if data is Array:
+				deck_data = data
+			else:
+				print("Deck data is not an array.")
+		else:
+			print("Failed to parse decks.json")
+	else:
+		print("No saved decks file found.")
 
 func save_decks() -> void:
-	DataUtils.save_data("user://decks.json", deck_data)
+	var file = FileAccess.open("user://decks.json", FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(deck_data, "\t"))
+		file.close()
+		print("Deck data saved successfully.")
 
 func display_decks() -> void:
 	deck_list.clear()
 	for deck in deck_data:
-		var name = deck.get("name", "Unnamed Deck")
+		var name = deck.get("name", "Unnamed")
 		var mode = deck.get("mode", "Unknown")
 		deck_list.add_item("%s (%s)" % [name, mode])
 	selected_index = -1
@@ -51,15 +69,26 @@ func _on_new_deck() -> void:
 	var popup = load(NEW_DECK_POPUP_PATH).instantiate()
 	popup.parent_selector = self
 	popup.is_edit_mode = false
+	popup.edit_index = -1
 	add_child(popup)
 	popup.popup_centered()
 
 func _on_edit_deck() -> void:
 	if selected_index >= 0 and selected_index < deck_data.size():
-		# Set the selected deck in Globals
-		Globals.selected_deck = deck_data[selected_index].duplicate()
-		# Go to deck editor
-		get_tree().change_scene_to_file("res://Scenes/DeckEditor/DeckEditor.tscn")
+		var popup = load(NEW_DECK_POPUP_PATH).instantiate()
+		popup.parent_selector = self
+		popup.is_edit_mode = true
+		popup.edit_index = selected_index
+		add_child(popup)
+		popup.popup_centered()
+
+func create_deck(new_deck: Dictionary) -> void:
+	if deck_data.size() < MAX_DECKS:
+		deck_data.append(new_deck.duplicate())
+		save_decks()
+		display_decks()
+	else:
+		print("Deck limit reached!")
 
 func update_deck(index: int, new_deck: Dictionary) -> void:
 	if index >= 0 and index < deck_data.size():
@@ -67,16 +96,11 @@ func update_deck(index: int, new_deck: Dictionary) -> void:
 		save_decks()
 		display_decks()
 
-func create_deck(new_deck: Dictionary) -> void:
-	deck_data.append(new_deck.duplicate())
-	save_decks()
-	display_decks()
-
 func _on_delete_deck() -> void:
-	if selected_index >= 0:
+	if selected_index >= 0 and selected_index < deck_data.size():
 		deck_data.remove_at(selected_index)
 		save_decks()
 		display_decks()
 
 func _on_back() -> void:
-	get_tree().change_scene_to_file("res://Scenes/MainMenu/MainMenu.tscn")	
+	get_tree().change_scene_to_file("res://Scenes/MainMenu/MainMenu.tscn")

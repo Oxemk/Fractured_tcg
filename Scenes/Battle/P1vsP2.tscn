@@ -1,4 +1,0 @@
-[gd_scene load_steps=1 format=3]
-
-[node name="P1vsP2" type="Control"]
-# Add UI for P1 and P2 deck selection here

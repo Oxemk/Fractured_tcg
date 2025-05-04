@@ -1,0 +1,478 @@
+[gd_scene load_steps=3 format=3 uid="uid://bswlac7p0hkcb"]
+
+[ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="3_oq6j5"]
+
+[sub_resource type="GDScript" id="GDScript_3u56r"]
+
+[node name="GameBoard" type="Node2D"]
+
+[node name="CanvasLayer" type="HSlider" parent="."]
+visible = false
+offset_left = 33.0
+offset_top = 46.0
+offset_right = 41.0
+offset_bottom = 62.0
+min_value = 0.5
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Button_P2" type="Button" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = -46.0
+offset_right = 232.0
+offset_bottom = -15.0
+text = "P2 View"
+
+[node name="Button_P1" type="Button" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -296.0
+offset_right = 46.0
+offset_bottom = -265.0
+text = "P1 View"
+
+[node name="Button_Center" type="Button" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 422.0
+offset_right = 154.0
+offset_bottom = 453.0
+text = "Center View"
+
+[node name="ZoomSlider" type="HSlider" parent="CanvasLayer"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+
+[node name="PlayerBoard" type="Node2D" parent="."]
+position = Vector2(-285, 144)
+rotation = 6.28319
+scale = Vector2(1.43271, 1.43271)
+script = SubResource("GDScript_3u56r")
+
+[node name="TroopRow" type="Node2D" parent="PlayerBoard"]
+position = Vector2(569.197, 258.726)
+
+[node name="TroopSlot1" type="Node2D" parent="PlayerBoard/TroopRow"]
+position = Vector2(-193, 0)
+
+[node name="Charcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="TroopSlot2" type="Node2D" parent="PlayerBoard/TroopRow"]
+
+[node name="Charcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="TroopSlot3" type="Node2D" parent="PlayerBoard/TroopRow"]
+position = Vector2(193, 0)
+
+[node name="Charcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="BodyguardRow" type="Node2D" parent="PlayerBoard"]
+position = Vector2(569.197, 428.556)
+
+[node name="DeckmasterSlot" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+
+[node name="Charcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap2" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+position = Vector2(190, 0)
+
+[node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/support_trap2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+position = Vector2(-180, 0)
+
+[node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/support_trap"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="DeckmasterRow" type="Node2D" parent="PlayerBoard"]
+position = Vector2(569, 600)
+
+[node name="DeckmasterSlot" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+
+[node name="Charcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/DeckmasterSlot"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapon" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="class" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+position = Vector2(190, 0)
+
+[node name="Tscard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/support_trap"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap2" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+position = Vector2(-180, 0)
+
+[node name="TScard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/support_trap2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="EnemyBoard" type="Node2D" parent="."]
+position = Vector2(1242, 619)
+rotation = 3.14159
+scale = Vector2(1.43271, 1.43271)
+script = SubResource("GDScript_3u56r")
+
+[node name="TroopRow" type="Node2D" parent="EnemyBoard"]
+position = Vector2(569.197, 258.726)
+
+[node name="TroopSlot1" type="Node2D" parent="EnemyBoard/TroopRow"]
+position = Vector2(-193, 0)
+
+[node name="Charcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="TroopSlot2" type="Node2D" parent="EnemyBoard/TroopRow"]
+
+[node name="Charcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="TroopSlot3" type="Node2D" parent="EnemyBoard/TroopRow"]
+position = Vector2(193, 0)
+
+[node name="Charcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="BodyGuardRow" type="Node2D" parent="EnemyBoard"]
+position = Vector2(569.197, 428.556)
+
+[node name="DeckmasterSlot" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
+
+[node name="Charcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/DeckmasterSlot"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
+position = Vector2(190, 0)
+
+[node name="Tscard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/support_trap"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap2" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
+position = Vector2(-180, 0)
+
+[node name="TScard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/support_trap2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="DeckmasterRow" type="Node2D" parent="EnemyBoard"]
+position = Vector2(569, 600)
+
+[node name="DeckmasterSlot" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
+
+[node name="Charcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/DeckmasterSlot"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
+position = Vector2(-63, 0)
+
+[node name="weapcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
+position = Vector2(64, 0)
+
+[node name="Armcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
+position = Vector2(0, -85)
+
+[node name="Classcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
+position = Vector2(190, 0)
+
+[node name="Tscard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/support_trap"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap2" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
+position = Vector2(-180, 0)
+
+[node name="TScard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/support_trap2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Camera2D_Player1" type="Camera2D" parent="."]
+position = Vector2(488, 385)
+rotation = 1.5708
+ignore_rotation = false
+zoom = Vector2(0.8, 0.689)
+drag_horizontal_offset = -0.1
+
+[node name="Camera2D_Player2" type="Camera2D" parent="."]
+position = Vector2(577, 10)
+
+[node name="Camera2D_Main" type="Camera2D" parent="."]
+position = Vector2(749, 759)
+
+[node name="Camera2D_Center" type="Camera2D" parent="."]
+position = Vector2(1176, 287)
+
+[node name="Player1" type="Node" parent="."]
+
+[node name="ItemList" type="ItemList" parent="Player1"]
+offset_right = 40.0
+offset_bottom = 40.0
+max_columns = 7

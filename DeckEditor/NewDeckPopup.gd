@@ -1,4 +1,3 @@
-# res://Scenes/DeckEditor/NewDeckPopup.gd
 extends Popup
 class_name NewDeckPopup
 
@@ -26,7 +25,7 @@ func _ready() -> void:
 	name_input     = find_child("DeckNameInput") as LineEdit
 	mode_selector  = find_child("ModeSelector")  as OptionButton
 	create_button  = find_child("CreateButton")  as Button
-	cancel_button  = find_child("CancelButton")  as Button
+	cancel_button  = find_child("CancelButton") as Button
 	error_label    = find_child("ErrorLabel")    as Label
 
 	# Sanity‐checks
@@ -60,7 +59,6 @@ func _ready() -> void:
 		if edit_index >= 0 and edit_index < decks.size():
 			populate_with_deck(decks[edit_index])
 
-
 func populate_with_deck(deck_data: Dictionary) -> void:
 	name_input.text = deck_data.get("name", "")
 	var desired = deck_data.get("mode", "")
@@ -68,7 +66,6 @@ func populate_with_deck(deck_data: Dictionary) -> void:
 		if mode_selector.get_item_text(i) == desired:
 			mode_selector.select(i)
 			break
-
 
 func _on_create() -> void:
 	error_label.text = ""
@@ -81,14 +78,11 @@ func _on_create() -> void:
 	# Prevent duplicates
 	if not is_edit_mode and parent_selector:
 		for d in parent_selector.deck_data:
-			if d.get("name","") == deck_name:
+			if d.get("name", "") == deck_name:
 				error_label.text = "Deck name already in use."
 				return
 
-	# Ensure mode chosen
-	if not mode_selector:
-		push_error("ModeSelector missing; cannot set card_limit.")
-		return
+	# Mode config lookup
 	var idx = mode_selector.get_selected()
 	var selected = mode_selector.get_item_text(idx)
 	var cfg = MODES.get(selected)
@@ -96,16 +90,16 @@ func _on_create() -> void:
 		push_error("Unknown mode: %s" % selected)
 		return
 
-	# Build deck
+	# Build deck — tag with Globals.current_mode
 	var new_deck = {
 		"name":       deck_name,
-		"mode":       selected,
+		"mode":       Globals.current_mode,
 		"card_limit": cfg.card_limit,
 		"rows":       cfg.rows,
 		"cards":      []
 	}
 
-	# Create or update
+	# Create or update…
 	if is_edit_mode and parent_selector:
 		if parent_selector.has_method("update_deck"):
 			parent_selector.update_deck(edit_index, new_deck)
@@ -125,12 +119,11 @@ func _on_create() -> void:
 		if parent_selector.has_method("display_decks"):
 			parent_selector.display_decks()
 
-	# If new, jump into editor
+	# If new, jump into full editor
 	if not is_edit_mode:
 		get_tree().change_scene_to_file("res://Scenes/DeckEditor/DeckEditor.tscn")
 
 	queue_free()
-
 
 func _on_cancel() -> void:
 	queue_free()
