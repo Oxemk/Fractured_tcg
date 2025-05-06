@@ -1,113 +1,200 @@
+# GameBoard.gd
 extends Node
 class_name GameBoard
-	
-# --- CAMERA + UI ---
-@onready var cam_main: Camera2D = $Camera2D_Main
-@onready var cam_p1: Camera2D = $Camera2D_Player1
-@onready var cam_p2: Camera2D = $Camera2D_Player2
-@onready var cam_center: Camera2D = $Camera2D_Center
 
-@onready var button_p1: Button = $CanvasLayer/Button_P1
-@onready var button_p2: Button = $CanvasLayer/Button_P2
-@onready var button_center: Button = $CanvasLayer/Button_Center
-@onready var zoom_slider: HSlider = $CanvasLayer/ZoomSlider
+# --- CAMERA + UI ---
+@onready var cam_main   : Camera2D = $Camera2D_Main
+@onready var cam_p1     : Camera2D = $Camera2D_Player1
+@onready var cam_p2     : Camera2D = $Camera2D_Player2
+@onready var cam_center : Camera2D = $Camera2D_Center
+
+@onready var button_p1     : Button = $CanvasLayer/Button_P1
+@onready var button_p2     : Button = $CanvasLayer/Button_P2
+@onready var button_center : Button = $CanvasLayer/Button_Center
 
 var target_pos: Vector2
-var target_zoom: Vector2
 
-# --- GAME LOGIC ---
-@onready var PlayerBoard = $PlayerBoard
-@onready var EnemyBoard = $EnemyBoard
-@onready var PlayerHand_P1 = $Player1/PlayerHand
-@onready var PlayerHand_P2 = $Player2/PlayerHand
-@onready var PlayerZone_P1 = $Player1
-@onready var PlayerZone_P2 = $Player2
+# --- ZONES & HANDS ---
+@onready var PlayerBoard : Node = $PlayerBoard
+@onready var EnemyBoard  : Node = $EnemyBoard
+@onready var PlayerHand  : Node = $Player1/PlayerHand
+@onready var EnemyHand   : Node = $Player2/PlayerHand
 
+# --- DECK STORAGE ---
+var player_deck: Array = []
+var ai_deck    : Array = []
+
+# --- CONFIG & INSTANCES ---
 var config: Dictionary
 var player_instances: Array = []
 var ai_instances: Array = []
-var current_player: int = 1  # 1 for Player 1, 2 for Player 2
+var current_player: int = 1
+var is_turn_in_progress: bool = false
+
+# --- DRAW SETTINGS ---
+var draw_count_per_turn: int = 5
+
+# --- PHASE TRACKING ---
+var current_phase: Node = null
 
 func _ready() -> void:
-	# --- CAMERA UI SETUP ---
+	# Camera button setup
 	button_p1.pressed.connect(func(): switch_to_camera("p1"))
 	button_p2.pressed.connect(func(): switch_to_camera("p2"))
 	button_center.pressed.connect(func(): switch_to_camera("center"))
-	zoom_slider.value_changed.connect(_on_zoom_changed)
 	target_pos = cam_center.global_position
-	target_zoom = Vector2(zoom_slider.value, zoom_slider.value)
 	cam_main.make_current()
 
-	# --- GAME SETUP ---
-	config = Globals.selected_deck
-	print(config)
-
-	if config.has("cards"):
-		for cid in config.cards:
-			var card = CardLoader.load_card_data(_load_card_json(cid))
-			PlayerBoard.add_child(card)
-			player_instances.append(card)
+	# Determine config: use selected_deck if valid, otherwise fallback
+	if Globals.selected_deck and Globals.selected_deck.has("cards") and Globals.selected_deck["cards"] is Array and Globals.selected_deck["cards"].size() > 0:
+		config = Globals.selected_deck
 	else:
-		print("Error: 'cards' key not found in config")
+		config = {}
+		# Fallback: player deck
+		if Globals.p1_deck and Globals.p1_deck.has("cards") and Globals.p1_deck.cards is Array:
+			config["cards"] = Globals.p1_deck.cards
+		else:
+			config["cards"] = []
+		# Fallback: mode
+		if Globals.selected_deck and Globals.selected_deck.has("mode"):
+			config["mode"] = Globals.selected_deck.mode
+		else:
+			config["mode"] = Globals.current_mode
+		# Fallback: ai difficulty
+		if Globals.p2_deck and Globals.p2_deck.has("level"):
+			config["ai_difficulty"] = Globals.p2_deck.level
+		else:
+			config["ai_difficulty"] = null
 
-	if config.has("ai_difficulty"):
-		var ai_ids = AiManager.get_deck(config.ai_difficulty, config.mode)
-		for cid in ai_ids:
-			var card = CardLoader.load_card_data(_load_card_json(cid))
-			EnemyBoard.add_child(card)
-			ai_instances.append(card)
+	print("DEBUG: Final Config Loaded: %s" % str(config))
 
+	# Validate config
+	if not config.has("cards") or not config["cards"] is Array:
+		push_error("Invalid deck config: %s" % str(config))
+		return
+
+	# Build player_deck raw data
+	for cid in config.cards:
+		var data = _load_card_json(cid)
+		if typeof(data) == TYPE_DICTIONARY and data.size() > 0:
+			player_deck.append(data)
+		else:
+				push_error("Invalid or missing card data for ID '%s'; skipping." % cid)
+
+	# Build ai_deck if difficulty & mode are present
+	if config.has("ai_difficulty") and config["ai_difficulty"] and config.has("mode"):
+		var diff = config["ai_difficulty"]
+		var mode = config["mode"]
+		if typeof(diff) != TYPE_STRING:
+			push_warning("ai_difficulty is not a string, skipping AI deck generation: %s" % str(diff))
+		else:
+			var ai_ids = AiManager.get_deck(diff, mode)
+			for cid in ai_ids:
+				var data = _load_card_json(cid)
+				if typeof(data) == TYPE_DICTIONARY and data.size() > 0:
+					ai_deck.append(data)
+				else:
+					push_error("Invalid or missing AI card data for ID '%s'; skipping." % cid)
+	else:
+		push_warning("Skipping AI deck generation: ai_difficulty or mode missing in config: %s" % str(config))
+
+	# Shuffle decks
+	player_deck.shuffle()
+	ai_deck.shuffle()
+
+	# Start game flow
 	_startup_phase()
 
 func _process(delta: float) -> void:
 	cam_main.global_position = cam_main.global_position.lerp(target_pos, delta * 5)
-	cam_main.zoom = cam_main.zoom.lerp(target_zoom, delta * 5)
 
 func switch_to_camera(target: String) -> void:
 	match target:
 		"p1":
 			target_pos = cam_p1.global_position
-			target_zoom = Vector2(1, 1)
 		"p2":
 			target_pos = cam_p2.global_position
-			target_zoom = Vector2(1, 1)
 		"center":
 			target_pos = cam_center.global_position
-			target_zoom = Vector2(zoom_slider.value, zoom_slider.value)
+		_:
+			push_warning("Unknown camera target: %s" % target)
 
-func _on_zoom_changed(value: float) -> void:
-	if target_pos == cam_center.global_position:
-		target_zoom = Vector2(value, value)
+# --- PUBLIC INTERFACE ---
+func draw_cards(count: int, is_player: bool = true) -> void:
+	var deck = player_deck if is_player else ai_deck
+	var hand = PlayerHand   if is_player else EnemyHand
 
-func _load_card_json(card_id: String) -> Dictionary:
-	var file = FileAccess.open("res://cards/Data/card_database.json", FileAccess.READ)
-	if file:
-		var json_string = file.get_as_text()
-		var json = JSON.new()
-		var data = json.parse(json_string)
-		if data.error == OK:
-			return data.result["cards"].get(card_id, {})
+	# Only draw up to the number of cards left
+	var actual_draw = min(count, deck.size())
+	for i in range(actual_draw):
+		var data = deck.pop_front()
+		if typeof(data) != TYPE_DICTIONARY or data.size() == 0:
+			push_error("Tried to draw invalid card data; skipping.")
+			continue
+
+		var card = CardLoader.load_card_data(data)
+		if card:
+			hand.add_child(card)
 		else:
-			print("Error parsing JSON:", data.error_string)
+			push_error("CardLoader failed to instantiate card for data: %s" % str(data))
+
+func enable_combat_ui() -> void:
+	# placeholder for combat UI logic
+	pass
+
+func cleanup_end_phase() -> void:
+	# placeholder for end-phase cleanup
+	pass
+
+func check_victory() -> bool:
+	if PlayerBoard.get_child_count() == 0:
+		print("Player has no cards left.")
+		return true
+	if EnemyBoard.get_child_count() == 0:
+		print("Enemy has no cards left.")
+		return true
+	return false
+
+func display_victory() -> void:
+	print("Victory! Returning to main menu.")
+	get_tree().change_scene_to_file("res://main/MainMenu.tscn")
+
+# --- INTERNAL: LOADING & PHASE SWITCHING ---
+func _load_card_json(card_id: String) -> Dictionary:
+	var file = FileAccess.open("res://Data/card_database.json", FileAccess.READ)
+	if not file:
+		push_error("Could not open card database file.")
+		return {}
+
+	var js = JSON.new()
+	if js.parse(file.get_as_text()) != OK:
+		push_error("Failed to parse card database JSON.")
+		return {}
+
+	var db = js.get_data()
+	if db.has("cards") and db.cards.has(card_id):
+		return db.cards[card_id]
+
+	push_error("Card ID '%s' not found in database." % card_id)
 	return {}
 
 func _startup_phase() -> void:
 	var phase = preload("res://phases/StartupPhase.gd").new()
-	add_child(phase)
-	phase.start_phase(self)
+	switch_to_phase(phase)
 
-func switch_to_turn() -> void:
-	var phase = preload("res://phases/TurnPhase.gd").new()
-	add_child(phase)
-	phase.start_phase(self)
+func switch_to_phase(phase_node: Node) -> void:
+	if not phase_node:
+		push_error("Attempted to switch to a null phase.")
+		return
 
-func switch_to_victory() -> void:
-	var phase = preload("res://phases/VictoryPhase.gd").new()
-	add_child(phase)
-	phase.start_phase(self)
+	# Clean up old phase
+	if current_phase and current_phase.is_inside_tree():
+		remove_child(current_phase)
+		current_phase.queue_free()
 
-func check_victory() -> bool:
-	return PlayerBoard.get_child_count() == 0 or EnemyBoard.get_child_count() == 0
+	# Add new phase
+	add_child(phase_node)
+	current_phase = phase_node
 
-func display_victory() -> void:
-	get_tree().change_scene_to_file("res://main/MainMenu.tscn")
+	# Defer starting the phase to avoid stack overflow
+	phase_node.call_deferred("start_phase", self)

@@ -1,5 +1,6 @@
 extends Control
 
+
 @export var card_data_path: String = "res://data/card_database.json"
 
 func load_card_data(data: Dictionary) -> Node:
@@ -22,17 +23,25 @@ func load_card_data(data: Dictionary) -> Node:
 		"Class":
 			inst = preload("res://cards/ClassCard/ClassCard.tscn").instantiate()
 		_:
+			print("Unknown card type:", t)
 			return null
 	
-	if inst:
-		inst.initialize_card(data)  # Assuming your cards have this method to initialize them
+	if inst and inst.has_method("initialize_card"):
+		inst.initialize_card(data)
 	return inst
 
-func load_cards_from_json(path: String) -> Array:
+func load_all_cards_flat(path: String) -> Dictionary:
+	var flat: Dictionary = {}
 	var f = FileAccess.open(path, FileAccess.READ)
 	if f:
-		var r = JSON.parse_string(f.get_as_text())
+		var json = JSON.parse_string(f.get_as_text())
 		f.close()
-		if typeof(r) == TYPE_DICTIONARY and r.has("cards"):
-			return r["cards"]
-	return []
+		if typeof(json) == TYPE_DICTIONARY:
+			for category_name in json.keys():
+				var category = json[category_name]
+				if category is Array:
+					for card in category:
+						var card_id = card.get("id", card.get("name", ""))
+						if card_id != "":
+							flat[card_id] = card
+	return flat

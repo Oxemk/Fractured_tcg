@@ -17,60 +17,63 @@ var card_data: Dictionary = {}
 func _ready():
 	pass
 
+# Safe value getters
+func get_safe_string(dict: Dictionary, key: String, fallback: String) -> String:
+	var value = dict.get(key)
+	return value if typeof(value) == TYPE_STRING and value != null else fallback
+
+func get_safe_int(dict: Dictionary, key: String, fallback: int) -> int:
+	var value = dict.get(key)
+	return value if typeof(value) == TYPE_INT and value != null else fallback
+
+func get_safe_dict(dict: Dictionary, key: String, fallback: Dictionary) -> Dictionary:
+	var value = dict.get(key)
+	return value if typeof(value) == TYPE_DICTIONARY and value != null else fallback
+
+# Main initializer
 func initialize_card(data: Dictionary) -> void:
 	card_data = data
-	# Populate from JSON
-	card_name       = data.get("name", card_name)
-	card_type       = data.get("card_type", card_type)
-	race            = data.get("race", race)
-	description     = data.get("description", description)
-	level           = data.get("level", level)
-	image_path      = data.get("image_path", image_path)
-	special_ability = data.get("special_ability", special_ability)
-	attack_move     = data.get("attack_move", attack_move)
-	cooldown        = data.get("cooldown", cooldown)
-	effect          = data.get("effect", effect)
+
+	card_name       = get_safe_string(data, "name", card_name)
+	card_type       = get_safe_string(data, "card_type", card_type)
+	race            = get_safe_string(data, "race", race)
+	description     = get_safe_string(data, "description", description)
+	level           = get_safe_int(data, "level", level)
+	image_path      = get_safe_string(data, "image_path", image_path)
+	special_ability = get_safe_string(data, "special_ability", special_ability)
+	attack_move     = get_safe_dict(data, "attack_move", attack_move)
+	cooldown        = get_safe_int(data, "cooldown", cooldown)
+	effect          = get_safe_string(data, "effect", effect)
 
 	# Safe UI updates
-	var name_lbl = get_node_or_null("CanvasLayer/CardName")
+	var name_lbl := get_node_or_null("CanvasLayer/CardName") as Label
 	if name_lbl:
 		name_lbl.text = card_name
 	else:
 		push_error("BaseCard: 'CardName' not found!")
 
-	var race_lbl = get_node_or_null("CanvasLayer/Race")
+	var race_lbl := get_node_or_null("CanvasLayer/Race") as Label
 	if race_lbl:
 		race_lbl.text = race.capitalize()
 	else:
 		push_error("BaseCard: 'Race' not found!")
 
-	var img_node = get_node_or_null("CanvasLayer/CardImage")
+	# --- Guarded image loading ---
+	var img_node := get_node_or_null("CanvasLayer/CardImage") as TextureRect
 	if img_node:
-		img_node.texture = ResourceLoader.load(image_path) as Texture
+		if image_path != "" and ResourceLoader.exists(image_path, "Texture"):
+			var texture = load(image_path)
+			if texture is Texture2D:
+				img_node.texture = texture
+			else:
+				push_error("BaseCard: Resource at '%s' is not a Texture2D." % image_path)
+		else:
+			push_warning("BaseCard: Skipping image load; invalid or missing path '%s'" % image_path)
 	else:
 		push_error("BaseCard: 'CardImage' not found!")
 
-	var desc_lbl = get_node_or_null("CanvasLayer/description")
+	var desc_lbl := get_node_or_null("CanvasLayer/description") as Label
 	if desc_lbl:
 		desc_lbl.text = description
 	else:
 		push_error("BaseCard: 'Description' not found!")
-
-	_set_card_color(card_type)
-
-func _set_card_color(t: String) -> void:
-	var color_map = {
-		"Character": Color("#7A7C84"),
-		"Weapon":    Color("#A9A9A9"),
-		"Armor":     Color("#8B6F47"),
-		"Support":   Color("#D4AF37"),
-		"Trap":      Color("#CC5500"),
-		"Field":     Color("#8F00FF")
-	}
-	var bg = get_node_or_null("Background")
-	if bg and bg is ColorRect:
-		bg.color = color_map.get(t, Color("#444444"))
-	elif bg and bg is TextureRect:
-		bg.modulate = color_map.get(t, Color("#444444"))
-	else:
-		push_error("BaseCard: 'Background' not found or unsupported!")

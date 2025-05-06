@@ -1,6 +1,5 @@
 extends Node
 
-
 var easy_pool: Array = []
 var medium_pool: Array = []
 var hard_pool: Array = []
@@ -21,6 +20,7 @@ func _prepare_pools() -> void:
 	easy_pool.clear()
 	medium_pool.clear()
 	hard_pool.clear()
+
 	for cid in card_data.keys():
 		var r = card_data[cid].get("rarity", "common").to_lower()
 		match r:
@@ -42,6 +42,7 @@ func get_deck(diff: String, mode: String) -> Array:
 			pool = (easy_pool + medium_pool + hard_pool).duplicate()
 		_:
 			return []
+
 	pool.shuffle()
 	var size = MODE_SIZES.get(mode.to_lower(), 20)
 	return pool.slice(0, min(size, pool.size()))

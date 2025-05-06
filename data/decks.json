@@ -2,39 +2,55 @@
 	{
 		"card_limit": 20,
 		"cards": [
-			"char_trollkin_001",
-			"carmor_001"
+			"char_001",
+			"char_wraithkin_001",
+			"char_runeborn_001",
+			"char_wolven_001",
+			"class_001",
+			"class_002",
+			"arm_001",
+			"trap_001",
+			"sup_001",
+			"sup_002"
 		],
 		"mode": "casual",
-		"name": "Goblins",
+		"name": "12",
 		"rows": 1
-	},	{
-		"card_limit": 20,
-		"cards": [
-			"char_trollkin_001",
-			"char_wolven_001"
-		],
-		"mode": "casual",
-		"name": "human",
-		"rows": 1
-	},	{
-		"card_limit": 20,
-		"cards": [
-			"char_trollkin_001",
-			"char_wolven_001"
-		],
-		"mode": "casual",
-		"name": "Beasts",
-		"rows": 1
-	},	
+	},
 	{
 		"card_limit": 20,
 		"cards": [
-			"char_trollkin_001",
-			"char_wolven_001"
+			"char_001",
+			"char_wraithkin_001",
+			"char_runeborn_001",
+			"char_wolven_001",
+			"class_001",
+			"class_002",
+			"arm_001",
+			"trap_001",
+			"sup_001",
+			"sup_002"
 		],
 		"mode": "casual",
-		"name": "Undead",
+		"name": "12",
+		"rows": 1
+	},
+	{
+		"card_limit": 20,
+		"cards": [
+			"char_001",
+			"char_wraithkin_001",
+			"char_runeborn_001",
+			"char_wolven_001",
+			"class_001",
+			"class_002",
+			"arm_001",
+			"trap_001",
+			"sup_001",
+			"sup_002"
+		],
+		"mode": "casual",
+		"name": "12",
 		"rows": 1
 	}
 ]

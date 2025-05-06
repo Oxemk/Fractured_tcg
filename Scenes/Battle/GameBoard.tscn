@@ -48,9 +48,9 @@ offset_right = 8.0
 offset_bottom = 16.0
 
 [node name="PlayerBoard" type="Node2D" parent="."]
-position = Vector2(-302, 85)
+position = Vector2(-315, 65)
 rotation = 6.28319
-scale = Vector2(1.00518, 1.00518)
+scale = Vector2(1.04446, 1.04446)
 script = ExtResource("2_106lg")
 
 [node name="TroopRow" type="Node2D" parent="PlayerBoard"]
@@ -161,26 +161,60 @@ position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
 
-[node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+[node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/Weapon"]
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot/Weapon"]
 position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
 
-[node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+[node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/armor"]
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot/armor"]
 position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
 
-[node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+[node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/Class"]
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot/Class"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="DeckmasterSlot2" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+
+[node name="Charcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+position = Vector2(-63, -3.05176e-05)
+scale = Vector2(1, 1)
+
+[node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/Weapon"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+position = Vector2(64, -3.05176e-05)
+scale = Vector2(1, 1)
+
+[node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/armor"]
+position = Vector2(-1, 1.99998)
+scale = Vector2(0.080121, 0.080121)
+texture = ExtResource("3_oq6j5")
+
+[node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+position = Vector2(0, -85)
+scale = Vector2(1, 1)
+
+[node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/Class"]
 position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
@@ -193,10 +227,15 @@ position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
 
-[node name="support_trap" type="Node2D" parent="PlayerBoard/BodyguardRow"]
-position = Vector2(-180, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerBoard/BodyguardRow"]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/support_trap"]
+[node name="support_trap" type="Node2D" parent="PlayerBoard/BodyguardRow/VBoxContainer"]
+position = Vector2(-180, -3.05176e-05)
+scale = Vector2(1, 1)
+
+[node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/VBoxContainer/support_trap"]
 position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
@@ -252,9 +291,9 @@ scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
 
 [node name="EnemyBoard" type="Node2D" parent="."]
-position = Vector2(1479, 584)
+position = Vector2(1497, 609)
 rotation = 3.14159
-scale = Vector2(1.00518, 1.00518)
+scale = Vector2(1.04446, 1.04446)
 script = ExtResource("2_106lg")
 
 [node name="TroopRow" type="Node2D" parent="EnemyBoard"]
@@ -455,21 +494,6 @@ position = Vector2(-1, 1.99998)
 scale = Vector2(0.080121, 0.080121)
 texture = ExtResource("3_oq6j5")
 
-[node name="Camera2D_Player1" type="Camera2D" parent="."]
-position = Vector2(598, 334)
-ignore_rotation = false
-zoom = Vector2(0.929, 0.8)
-drag_horizontal_offset = -0.1
-
-[node name="Camera2D_Player2" type="Camera2D" parent="."]
-position = Vector2(577, 10)
-
-[node name="Camera2D_Main" type="Camera2D" parent="."]
-position = Vector2(749, 759)
-
-[node name="Camera2D_Center" type="Camera2D" parent="."]
-position = Vector2(-885, 287)
-
 [node name="Player1" type="Node" parent="."]
 
 [node name="ItemList" type="ItemList" parent="Player1"]
@@ -478,11 +502,47 @@ offset_top = 593.0
 offset_right = 683.0
 offset_bottom = 633.0
 max_columns = 7
+metadata/_edit_use_anchors_ = true
+
+[node name="Player3" type="Node" parent="."]
+
+[node name="PlayerHand" type="ItemList" parent="Player3"]
+offset_left = 643.0
+offset_top = 593.0
+offset_right = 683.0
+offset_bottom = 633.0
+max_columns = 7
+metadata/_edit_use_anchors_ = true
 
 [node name="Player2" type="Node" parent="."]
 
-[node name="ItemList" type="ItemList" parent="Player2"]
+[node name="PlayerHand" type="ItemList" parent="Player2"]
 offset_left = 110.0
 offset_right = 150.0
 offset_bottom = 40.0
 max_columns = 7
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D_Player1" type="Camera2D" parent="."]
+position = Vector2(603, 337)
+ignore_rotation = false
+zoom = Vector2(0.929, 0.8)
+drag_horizontal_offset = -0.1
+
+[node name="Camera2D_Player2" type="Camera2D" parent="."]
+position = Vector2(603, 337)
+ignore_rotation = false
+zoom = Vector2(0.929, 0.8)
+drag_horizontal_offset = -0.1
+
+[node name="Camera2D_Center" type="Camera2D" parent="."]
+position = Vector2(603, 337)
+ignore_rotation = false
+zoom = Vector2(0.929, 0.8)
+drag_horizontal_offset = -0.1
+
+[node name="Camera2D_Main" type="Camera2D" parent="."]
+position = Vector2(603, 337)
+ignore_rotation = false
+zoom = Vector2(0.929, 0.8)
+drag_horizontal_offset = -0.1

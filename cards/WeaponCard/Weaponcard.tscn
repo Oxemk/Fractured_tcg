@@ -143,7 +143,7 @@ text = "."
 layout_mode = 2
 text = "Dam"
 
-[node name="attack_damage" type="Label" parent="CanvasLayer/HBoxContainer"]
+[node name="Attack" type="Label" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer"]

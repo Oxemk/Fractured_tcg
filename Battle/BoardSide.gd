@@ -1,73 +1,98 @@
+# BoardSide.gd
 extends Node2D
 
-# Reference to the TroopRow and other slots
-@export var troop_row : Node2D
-@export var troop_slot1 : Node2D
-@export var troop_slot2 : Node2D
-@export var troop_slot3 : Node2D
+# Reference to the Rows and other slots
+@export var troop_row        : Node2D
+@export var troop_slot1      : Node2D
+@export var troop_slot2      : Node2D
+@export var troop_slot3      : Node2D
 
-@export var bodyguard_zone : Node2D
-@export var deckmaster_row : Node2D
-@export var deck_zone : Node2D
-@export var retired_zone : Node2D
+@export var bodyguard_zone   : Node2D
+@export var Bodyguard_slot1  : Node2D
+@export var Bodyguard_slot2  : Node2D
+@export var deckmaster_row   : Node2D
+@export var deckmaster_slot  : Node2D
+@export var deck_zone        : Node2D
+@export var retired_zone     : Node2D
 
 # Variables to handle card setup and interactions
-var weapon_cards = []
-var armor_cards = []
-var class_cards = []
-var support_trap_cards = []
+var weapon_cards        = []
+var armor_cards         = []
+var class_cards         = []
+var support_trap_cards  = []
 
-# Function to initialize or set up the player's board
 func _ready():
-	# Initialize the slots for Troops and Bodyguard
 	initialize_troops()
 	initialize_deck()
 
-# Function to initialize troop slots
+func safe_get_node(base: Node, path: String) -> Node:
+	if base and base.has_node(path):
+		return base.get_node(path)
+	else:
+		push_warning("Missing node at path: '%s' in %s" % [path, base])
+		return null
+
 func initialize_troops():
-	# Set up card texture or logic for the first TroopSlot
-	troop_slot1.get_node("Weapon/weapcard").texture = preload("res://charcard.png")
-	troop_slot1.get_node("Armor/Armcard").texture = preload("res://charcard.png")
-	troop_slot1.get_node("Class/Classcard").texture = preload("res://charcard.png")
+	var troop_slots = [troop_slot1, troop_slot2, troop_slot3]
+	for i in troop_slots.size():
+		var slot = troop_slots[i]
+		if slot == null:
+			push_warning("Troop slot %d is null." % i)
+			continue
 
-	# Similarly initialize the other troop slots
-	troop_slot2.get_node("Weapon/weapcard").texture = preload("res://charcard.png")
-	troop_slot2.get_node("Armor/Armcard").texture = preload("res://charcard.png")
-	troop_slot2.get_node("Class/Classcard").texture = preload("res://charcard.png")
+		var weap = safe_get_node(slot, "Weapon/weapcard") as Sprite2D
+		var arm  = safe_get_node(slot, "Armor/Armcard") as Sprite2D
+		var cls  = safe_get_node(slot, "Class/Classcard") as Sprite2D
 
-	troop_slot3.get_node("Weapon/weapcard").texture = preload("res://charcard.png")
-	troop_slot3.get_node("Armor/Armcard").texture = preload("res://charcard.png")
-	troop_slot3.get_node("Class/Classcard").texture = preload("res://charcard.png")
+		if weap: weap.texture = preload("res://charcard.png")
+		if arm:  arm.texture  = preload("res://charcard.png")
+		if cls:  cls.texture  = preload("res://charcard.png")
 
-# Function to initialize the Deck zone and any retired cards
 func initialize_deck():
-	# Setup the Deck Zone for Player1 (or Player2 based on context)
-	deck_zone.get_node("deck").texture = preload("res://charcard.png")
-	retired_zone.get_node("Retired").texture = preload("res://charcard.png")
+	if deck_zone:
+		var deck = safe_get_node(deck_zone, "deck") as Sprite2D
+		if deck:
+			deck.texture = preload("res://charcard.png")
+		else:
+			push_warning("deck sprite not found inside deck_zone")
+	else:
+		push_warning("deck_zone is null.")
 
-# Function to swap views for Player 1 or Player 2
+	if retired_zone:
+		var retired = safe_get_node(retired_zone, "Retired") as Sprite2D
+		if retired:
+			retired.texture = preload("res://charcard.png")
+		else:
+			push_warning("retired sprite not found inside retired_zone")
+	else:
+		push_warning("retired_zone is null.")
+
 func set_view(view: String):
 	match view:
 		"P1":
-			self.position = Vector2(-183, 168)
-			self.scale = Vector2(1.28428, 1.28428)
+			position = Vector2(-183, 168)
+			scale    = Vector2(1.28428, 1.28428)
 		"P2":
-			self.position = Vector2(1339, 507)
-			self.rotation = 3.14159
-			self.scale = Vector2(1.28428, 1.28428)
+			position = Vector2(1339, 507)
+			rotation = PI
+			scale    = Vector2(1.28428, 1.28428)
+		_:
+			push_warning("Unknown view: %s" % view)
 
-# Function to handle any actions with the cards (for instance, removing or adding cards)
 func handle_card_action(card: Sprite2D, action: String):
 	match action:
 		"remove":
-			card.queue_free()
+			if card: card.queue_free()
+			else: push_warning("No card to remove.")
 		"add":
-			# Add logic to place a new card
-			pass
+			push_warning("Add logic not implemented.")
+		_:
+			push_warning("Unknown action: %s" % action)
 
-# Function to handle deck interactions, like drawing cards, etc.
 func draw_card_from_deck():
-	# Logic to draw a card from the deck (add more logic as needed)
 	var card = Sprite2D.new()
 	card.texture = preload("res://charcard.png")
-	deck_zone.add_child(card)
+	if deck_zone:
+		deck_zone.add_child(card)
+	else:
+		push_warning("Cannot draw card: deck_zone is null.")
