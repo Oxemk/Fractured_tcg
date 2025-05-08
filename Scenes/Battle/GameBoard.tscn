@@ -194,7 +194,6 @@ texture = ExtResource("3_oq6j5")
 
 [node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
 position = Vector2(-63, -3.05176e-05)
-scale = Vector2(1, 1)
 
 [node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/Weapon"]
 position = Vector2(-1, 1.99998)
@@ -203,7 +202,6 @@ texture = ExtResource("3_oq6j5")
 
 [node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
 position = Vector2(64, -3.05176e-05)
-scale = Vector2(1, 1)
 
 [node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/armor"]
 position = Vector2(-1, 1.99998)
@@ -212,7 +210,6 @@ texture = ExtResource("3_oq6j5")
 
 [node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
 position = Vector2(0, -85)
-scale = Vector2(1, 1)
 
 [node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/Class"]
 position = Vector2(-1, 1.99998)
@@ -233,7 +230,6 @@ offset_bottom = 40.0
 
 [node name="support_trap" type="Node2D" parent="PlayerBoard/BodyguardRow/VBoxContainer"]
 position = Vector2(-180, -3.05176e-05)
-scale = Vector2(1, 1)
 
 [node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/VBoxContainer/support_trap"]
 position = Vector2(-1, 1.99998)
@@ -496,7 +492,7 @@ texture = ExtResource("3_oq6j5")
 
 [node name="Player1" type="Node" parent="."]
 
-[node name="ItemList" type="ItemList" parent="Player1"]
+[node name="PlayerHand" type="ItemList" parent="Player1"]
 offset_left = 643.0
 offset_top = 593.0
 offset_right = 683.0

@@ -1,4 +1,7 @@
+Window
+DifficultyPopup
 VBoxContainer
+Button
 Node
 Node3D
 Control
@@ -9,6 +12,3 @@ ScrollContainer
 VScrollBar
 AcceptDialog
 Label
-Button
-HBoxContainer
-Panel

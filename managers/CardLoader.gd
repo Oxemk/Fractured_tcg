@@ -1,5 +1,5 @@
 extends Control
-
+class_name myCardLoader
 
 @export var card_data_path: String = "res://data/card_database.json"
 

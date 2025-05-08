@@ -1,7 +1,7 @@
 {
   "Character": [
 	{
-	  "id": "char_001",
+	  "id": "char_Human_001",
 	  "card_type": "Character",
 	  "name": "Human Slave",
 	  "description": "A Human slave.",
@@ -224,7 +224,7 @@
 	  "rarity": "Common"
 	},    
 	{
-	  "id": "sup_001",
+	  "id": "sup_003",
 	  "card_type": "Support",
 	  "name": "Healing Fountain",
 	  "description": "A soothing spring revitalizes allies.",

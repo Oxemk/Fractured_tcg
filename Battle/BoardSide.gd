@@ -1,19 +1,15 @@
-# BoardSide.gd
 extends Node2D
 
 # Reference to the Rows and other slots
 @export var troop_row        : Node2D
-@export var troop_slot1      : Node2D
-@export var troop_slot2      : Node2D
-@export var troop_slot3      : Node2D
-
 @export var bodyguard_zone   : Node2D
-@export var Bodyguard_slot1  : Node2D
-@export var Bodyguard_slot2  : Node2D
 @export var deckmaster_row   : Node2D
 @export var deckmaster_slot  : Node2D
 @export var deck_zone        : Node2D
 @export var retired_zone     : Node2D
+@export var troop_slot1      : Node2D
+@export var troop_slot2      : Node2D
+@export var troop_slot3      : Node2D
 
 # Variables to handle card setup and interactions
 var weapon_cards        = []
@@ -34,7 +30,7 @@ func safe_get_node(base: Node, path: String) -> Node:
 
 func initialize_troops():
 	var troop_slots = [troop_slot1, troop_slot2, troop_slot3]
-	for i in troop_slots.size():
+	for i in range(troop_slots.size()):
 		var slot = troop_slots[i]
 		if slot == null:
 			push_warning("Troop slot %d is null." % i)
@@ -82,8 +78,10 @@ func set_view(view: String):
 func handle_card_action(card: Sprite2D, action: String):
 	match action:
 		"remove":
-			if card: card.queue_free()
-			else: push_warning("No card to remove.")
+			if card:
+				card.queue_free()
+			else:
+				push_warning("No card to remove.")
 		"add":
 			push_warning("Add logic not implemented.")
 		_:

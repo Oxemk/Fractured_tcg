@@ -1,0 +1,3 @@
+res://data/decks.json
+res://data/card_database.json
+res://managers/AIManager.gd

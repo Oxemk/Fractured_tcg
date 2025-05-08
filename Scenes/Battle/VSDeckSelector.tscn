@@ -11,6 +11,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y7cdl")
 
+[node name="DifficultyPopup" type="Window" parent="."]
+position = Vector2i(0, 36)
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 521.0
@@ -61,7 +64,3 @@ scale = Vector2(0.59, 0.59)
 [node name="P2DeckList" type="ItemList" parent="P2Deck"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-
-[node name="SameDeckDialog" type="AcceptDialog" parent="."]
-position = Vector2i(0, 36)
-visible = true
