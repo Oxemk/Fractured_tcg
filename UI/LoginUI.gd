@@ -1,3 +1,4 @@
+# LoginUI.gd
 extends Control
 class_name LoginUI
 

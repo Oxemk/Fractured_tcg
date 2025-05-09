@@ -27,6 +27,12 @@ func safe_get_node(base: Node, path: String) -> Node:
 	else:
 		push_warning("Missing node at path: '%s' in %s" % [path, base])
 		return null
+func create_card_instance_by_name(card_name: String) -> Node:
+	var card_data = CardDatabase.get_card_data(card_name)
+	var card_scene = load(card_data["scene_path"])
+	var card_instance = card_scene.instantiate()
+	card_instance.init_from_data(card_data)
+	return card_instance
 
 func initialize_troops():
 	var troop_slots = [troop_slot1, troop_slot2, troop_slot3]

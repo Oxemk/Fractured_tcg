@@ -110,9 +110,9 @@ func _on_back2() -> void:
 
 
 func _on_p1p2() -> void:
-	Globals.vs_mode = "P1vsP2"
+	Globals.vs_mode = Globals.VSMode.P1vsP2
 	get_tree().change_scene_to_file("res://Scenes/Battle/VSDeckSelector.tscn")
 
 func _on_vscomp() -> void:
-	Globals.vs_mode = "P1vsComputer"
+	Globals.vs_mode = Globals.VSMode.P1vsComputer
 	get_tree().change_scene_to_file("res://Scenes/Battle/VSDeckSelector.tscn")

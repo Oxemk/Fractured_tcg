@@ -64,16 +64,18 @@ func _prepare_pools() -> void:
 	])
 
 # Initialize card data and prepare pools
-func _ready() -> void:
-	# Randomize and load the data
-	randomize()
-	card_data = load_data("res://data/card_database.json").get("cards", {})
-	if card_data.is_empty():
-		print("Card data is empty. Exiting...")
-		return  # Exit early if data is empty, to prevent further issues
-
-	print("Loaded Card Data: %s" % card_data)  # Debugging: Check data
-	_prepare_pools()
+func _ready():
+	var card_file = FileAccess.open("res://data/card_database.json", FileAccess.READ)
+	if card_file:
+		var card_data = JSON.parse_string(card_file.get_as_text())
+		if card_data:
+			Globals.card_database = card_data
+		else:
+			print("Card data is empty. Exiting...")
+			get_tree().quit()
+	else:
+		print("Card database file not found. Exiting...")
+		get_tree().quit()
 
 # Function to generate a deck based on difficulty and mode
 func generate_deck(diff: String, mode: String) -> Array:

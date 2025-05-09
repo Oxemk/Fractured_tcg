@@ -1,3 +1,5 @@
+res://Scenes/Battle/VSDeckSelector2.tscn
+res://managers/AIManager.gd
 res://Scenes/LoginUI/LoginUI.tscn
 res://Scenes/DeckEditor/NewDeckPopup.tscn
 res://Scenes/DeckEditor/DeckEditor.tscn
@@ -14,14 +16,13 @@ res://cards/BaseCard/basecard.tscn
 res://Scenes/MainMenu/CardCollection.tscn
 res://Scenes/DeckEditor/DeckSelector.tscn
 res://Scenes/Battle/VSDeckSelector.tscn
-res://Scenes/Battle/VSDeckSelector2.tscn
 res://Scenes/Battle/GameBoard.tscn
 res://Scenes/Battle/DifficultyPopup.tscn
-res://Battle/GameBoard.gd
-res://managers/AIManager.gd
-res://data/decks.json
-res://data/card_database.json
+res://Scenes/PackOpenerUI.tscn
+res://Battle/VSDeckSelector.gd
+res://cards/WeaponCard/WeaponCard.gd
 res://Battle/BoardSide.gd
-res://managers/CardLoader.gd
-res://phases/StartupPhase.gd
-res://phases/CombatPhase.gd
+res://Scenes/DeckEditor/SmallCard.tscn
+res://DeckEditor/DeckEditor.gd
+res://Scenes/DeckEditor/small_card.gd
+res://DeckEditor/NewDeckPopup.gd
