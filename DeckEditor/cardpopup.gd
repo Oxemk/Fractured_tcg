@@ -21,7 +21,7 @@ var card_scenes = {
 	"Class":     preload("res://cards/ClassCard/ClassCard.tscn")
 }
 
-func setup(card_id: String, data: Dictionary) -> void:
+func setup(card_id: String, data: Dictionary, current_cards: Array) -> void:
 	current_card_id = card_id
 	current_card_data = data
 
@@ -39,11 +39,9 @@ func setup(card_id: String, data: Dictionary) -> void:
 	if inst.has_method("initialize_card"):
 		inst.initialize_card(data)
 
-	# Buttons
-	add_button.visible    = not (card_id in Globals.selected_deck.cards)
-	remove_button.visible = (card_id in Globals.selected_deck.cards)
+	add_button.visible    = not (card_id in current_cards)
+	remove_button.visible = (card_id in current_cards)
 
-	# Connect using Godot 4.x syntax
 	if not add_button.pressed.is_connected(_on_add_pressed):
 		add_button.pressed.connect(_on_add_pressed)
 	if not remove_button.pressed.is_connected(_on_remove_pressed):
@@ -51,6 +49,7 @@ func setup(card_id: String, data: Dictionary) -> void:
 
 	popup_centered()
 	anim_player.play("open_popup")
+
 
 func _on_add_pressed() -> void:
 	emit_signal("add_card_to_deck", current_card_id)

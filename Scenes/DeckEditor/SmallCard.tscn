@@ -2,40 +2,20 @@
 
 [ext_resource type="Script" uid="uid://b3if2jhed01ex" path="res://Scenes/DeckEditor/small_card.gd" id="1_tj1n5"]
 
-[node name="SmallCard" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="SmallCard" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.523
+anchor_bottom = 0.594
+offset_right = 549.504
+offset_bottom = 263.088
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tj1n5")
 
-[node name="Thumbnail" type="TextureButton" parent="."]
-custom_minimum_size = Vector2(64, 80)
+[node name="CardContainer" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CardName" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(0.361084, 0.361084)
-text = "ssssssssss"
-
-[node name="CardType" type="Label" parent="."]
-layout_mode = 0
-offset_top = 23.0
-offset_right = 78.0
-offset_bottom = 46.0
-scale = Vector2(0.361084, 0.361084)
-text = "ssssssssss"
-
-[node name="CardEffect" type="Label" parent="."]
-layout_mode = 0
-offset_top = 23.0
-offset_right = 78.0
-offset_bottom = 46.0
-scale = Vector2(0.361084, 0.361084)
-text = "ssssssssss"
+offset_left = 216.0
+offset_top = 33.0
+offset_right = 256.0
+offset_bottom = 73.0
+scale = Vector2(10.7871, 10.7871)

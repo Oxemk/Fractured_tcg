@@ -32,6 +32,7 @@ PackManager="*res://managers/PackManager.gd"
 EffectManager="*res://managers/EffectManager.gd"
 DataUtils="*res://scripts/DataUtils.gd"
 CardDatabase="*res://managers/CardDatabase.gd"
+PhaseManager="*res://managers/PhaseManager.gd"
 
 [rendering]
 

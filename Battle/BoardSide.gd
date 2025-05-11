@@ -10,8 +10,10 @@ extends Node2D
 @export var troop_slot1      : Node2D
 @export var troop_slot2      : Node2D
 @export var troop_slot3      : Node2D
-
+@export var Bodyguard_Slot1      : Node2D
+@export var Bodyguard_Slot2      : Node2D
 # Variables to handle card setup and interactions
+var character_cards        = []
 var weapon_cards        = []
 var armor_cards         = []
 var class_cards         = []
@@ -38,17 +40,41 @@ func initialize_troops():
 	var troop_slots = [troop_slot1, troop_slot2, troop_slot3]
 	for i in range(troop_slots.size()):
 		var slot = troop_slots[i]
-		if slot == null:
-			push_warning("Troop slot %d is null." % i)
+		if not slot:
+			# If no slot, skip or assign a placeholder
+			push_warning("Troop slot %d is empty, assigning default card." % i)
+			var placeholder_card = Sprite2D.new()
+			placeholder_card.texture = preload("res://charcard.png")
+			add_child(placeholder_card)
 			continue
 
+		# Attempt to fetch the card nodes from each slot
 		var weap = safe_get_node(slot, "Weapon/weapcard") as Sprite2D
 		var arm  = safe_get_node(slot, "Armor/Armcard") as Sprite2D
 		var cls  = safe_get_node(slot, "Class/Classcard") as Sprite2D
 
-		if weap: weap.texture = preload("res://charcard.png")
-		if arm:  arm.texture  = preload("res://charcard.png")
-		if cls:  cls.texture  = preload("res://charcard.png")
+		# Assign textures or placeholders to the card slots if they are valid
+		if weap: 
+			weap.texture = preload("res://charcard.png")  # Placeholder texture for weapon
+		else:
+			weap = Sprite2D.new()  # Create a new placeholder if missing
+			weap.texture = preload("res://charcard.png")
+			slot.add_child(weap)
+		
+		if arm:  
+			arm.texture  = preload("res://charcard.png")  # Placeholder texture for armor
+		else:
+			arm = Sprite2D.new()
+			arm.texture = preload("res://charcard.png")
+			slot.add_child(arm)
+		
+		if cls:  
+			cls.texture  = preload("res://charcard.png")  # Placeholder texture for class
+		else:
+			cls = Sprite2D.new()
+			cls.texture = preload("res://charcard.png")
+			slot.add_child(cls)
+
 
 func initialize_deck():
 	if deck_zone:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp4smp3yukxms"]
 
-[ext_resource type="Script" uid="uid://c4kwmhhkjgmc2" path="res://cards/SupportCard/SupportCard.gd" id="1_1pxud"]
+[ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_1pxud"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="1_3x7rb"]
 
 [node name="SupportCard" type="Control"]

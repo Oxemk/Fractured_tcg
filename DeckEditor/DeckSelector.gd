@@ -99,8 +99,11 @@ func update_deck(index: int, new_deck: Dictionary) -> void:
 func _on_delete_deck() -> void:
 	if selected_index >= 0 and selected_index < deck_data.size():
 		deck_data.remove_at(selected_index)
+		selected_index = -1
 		save_decks()
 		display_decks()
+		print("Current deck count: ", deck_data.size())
+
 
 func _on_back() -> void:
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/MainMenu.tscn")

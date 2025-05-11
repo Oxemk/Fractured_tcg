@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bybfy2wqmi30m"]
 
-[ext_resource type="Script" uid="uid://g7241dnb8htx" path="res://cards/CharacterCard/CharacterCard.gd" id="1_iyyag"]
+[ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_iyyag"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_sb8jb"]
 
 [node name="Charcard" type="Control"]
@@ -9,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 scale = Vector2(1.29584, 1.29584)
 script = ExtResource("1_iyyag")
+health = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -165,8 +166,7 @@ layout_mode = 2
 text = "turns"
 
 [node name="CardImage" type="TextureRect" parent="CanvasLayer"]
-offset_left = 46.0
-offset_top = 33.7662
-offset_right = 86.0
-offset_bottom = 73.7662
-scale = Vector2(3.52807, 3.52807)
+offset_left = 23.0
+offset_top = 22.0
+offset_right = 63.0
+offset_bottom = 62.0

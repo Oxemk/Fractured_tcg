@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://37c3gqok7yx7"]
 
-[ext_resource type="Script" uid="uid://dc8whdj3vunkw" path="res://cards/ClassCard/ClassCard.gd" id="1_sjhta"]
+[ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_ho2tk"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_f8m6e"]
 
 [node name="ClassCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(3.64746, 3.64746)
-script = ExtResource("1_sjhta")
+script = ExtResource("1_ho2tk")
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false

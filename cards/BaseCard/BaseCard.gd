@@ -1,79 +1,148 @@
 extends Control
 class_name BaseCard
 
-@export var card_name: String        = "Unnamed"
-@export var card_type: String        = "Unknown"
-@export var race: String             = "none"
-@export var description: String      = ""
-@export var level: int               = 1
-@export var image_path: String       = "res://assets/Images/placeholder.png"
-@export var special_ability: String  = "None"
-@export var attack_move: Dictionary  = {}
-@export var cooldown: int            = 0
-@export var effect: String           = "none"
+# --- Common Exports ---
+@export var card_name = "Unnamed"
+@export var card_type = "Unknown"
+@export var race = "none"
+@export var description = ""
+@export var level = 1
+@export var image_path = "res://assets/Images/placeholder.png"
+@export var special_ability = "None"
+@export var attack_move: Dictionary = {}
+@export var cooldown = 0
+@export var effect = "none"
+@export var health = 10
+@export var max_health = 10
+@export var defense = 0
 
-var card_data: Dictionary = {}
+# --- Class Specific Exports ---
+@export var class_type: String = ""
+@export var class_ability: String = ""
+
+# --- Field Specific ---
+@export var field_effect: Dictionary = {}
+
+# --- Support Specific ---
+@export var support_benefit: Dictionary = {}
+
+# --- Trap Specific ---
+@export var trigger_condition: String = ""
+@export var trap_effect: Dictionary = {}
+
+# --- Weapon Specific ---
+@export var attack: int = 5
+
+const EffectDataResource = preload("res://managers/EffectData.gd")
+const EffectType = preload("res://managers/EffectTypes.gd").EffectType
+
+var card_data = {}
+var active_effects: Array = []
 
 func _ready():
-	pass
+	update_ui()
 
-# Safe value getters
-func get_safe_string(dict: Dictionary, key: String, fallback: String) -> String:
-	var value = dict.get(key)
-	return value if typeof(value) == TYPE_STRING and value != null else fallback
-
-func get_safe_int(dict: Dictionary, key: String, fallback: int) -> int:
-	var value = dict.get(key)
-	return value if typeof(value) == TYPE_INT and value != null else fallback
-
-func get_safe_dict(dict: Dictionary, key: String, fallback: Dictionary) -> Dictionary:
-	var value = dict.get(key)
-	return value if typeof(value) == TYPE_DICTIONARY and value != null else fallback
-
-# Main initializer
 func initialize_card(data: Dictionary) -> void:
 	card_data = data
+	card_name = data.get("name", card_name)
+	card_type = data.get("card_type", card_type)
+	race = data.get("race", race)
+	description = data.get("description", description)
+	level = data.get("level", level)
+	image_path = data.get("image_path", image_path)
+	special_ability = data.get("special_ability", special_ability)
+	attack_move = data.get("attack_move", attack_move)
+	cooldown = data.get("cooldown", cooldown)
+	effect = data.get("effect", effect)
+	health = data.get("health", health)
+	max_health = data.get("health", max_health)
+	defense = data.get("defense", defense)
+	attack = data.get("attack", attack)
+	class_type = data.get("class_type", class_type)
+	class_ability = data.get("class_ability", class_ability)
+	field_effect = data.get("field_effect", field_effect)
+	support_benefit = data.get("support_benefit", support_benefit)
+	trigger_condition = data.get("trigger_condition", trigger_condition)
+	trap_effect = data.get("trap_effect", trap_effect)
 
-	card_name       = get_safe_string(data, "name", card_name)
-	card_type       = get_safe_string(data, "card_type", card_type)
-	race            = get_safe_string(data, "race", race)
-	description     = get_safe_string(data, "description", description)
-	level           = get_safe_int(data, "level", level)
-	image_path      = get_safe_string(data, "image_path", image_path)
-	special_ability = get_safe_string(data, "special_ability", special_ability)
-	attack_move     = get_safe_dict(data, "attack_move", attack_move)
-	cooldown        = get_safe_int(data, "cooldown", cooldown)
-	effect          = get_safe_string(data, "effect", effect)
+	update_ui()
 
-	# Safe UI updates
-	var name_lbl := get_node_or_null("CanvasLayer/CardName") as Label
-	if name_lbl:
-		name_lbl.text = card_name
-	else:
-		push_error("BaseCard: 'CardName' not found!")
+func update_ui() -> void:
+	var h_lbl = get_node_or_null("CanvasLayer/HealthLabel") as Label
+	if h_lbl:
+		h_lbl.text = "%d/%d" % [health, max_health]
 
-	var race_lbl := get_node_or_null("CanvasLayer/Race") as Label
-	if race_lbl:
-		race_lbl.text = race.capitalize()
-	else:
-		push_error("BaseCard: 'Race' not found!")
+	var d_lbl = get_node_or_null("CanvasLayer/DefenseLabel") as Label
+	if d_lbl:
+		d_lbl.text = str(defense)
 
-	# --- Guarded image loading ---
-	var img_node := get_node_or_null("CanvasLayer/CardImage") as TextureRect
-	if img_node:
-		if image_path != "" and ResourceLoader.exists(image_path, "Texture"):
-			var texture = load(image_path)
-			if texture is Texture2D:
-				img_node.texture = texture
-			else:
-				push_error("BaseCard: Resource at '%s' is not a Texture2D." % image_path)
-		else:
-			push_warning("BaseCard: Skipping image load; invalid or missing path '%s'" % image_path)
-	else:
-		push_error("BaseCard: 'CardImage' not found!")
+	var lvl_lbl = get_node_or_null("CanvasLayer/LevelLabel") as Label
+	if lvl_lbl:
+		lvl_lbl.text = "Lvl %d" % level
 
-	var desc_lbl := get_node_or_null("CanvasLayer/description") as Label
-	if desc_lbl:
-		desc_lbl.text = description
-	else:
-		push_error("BaseCard: 'Description' not found!")
+	var atk_lbl = get_node_or_null("HBoxContainer/Attack")
+	if atk_lbl:
+		atk_lbl.text = str(attack)
+
+	var type_lbl = get_node_or_null("CanvasLayer/ClassType")
+	if type_lbl:
+		type_lbl.text = class_type.capitalize()
+
+	var abil_lbl = get_node_or_null("CanvasLayer/ClassAbility")
+	if abil_lbl:
+		abil_lbl.text = class_ability
+
+	var def_lbl = get_node_or_null("CanvasLayer/Defense")
+	if def_lbl:
+		def_lbl.text = str(defense)
+
+func apply_damage(amount: int) -> void:
+	var spill = max(amount - defense, 0)
+	defense = max(defense - amount, 0)
+	health = max(health - spill, 0)
+	update_ui()
+
+func heal(amount: int) -> void:
+	health = min(health + amount, max_health)
+	update_ui()
+
+func add_effect_duration(effect_type: int, value: int, duration: int) -> void:
+	var e = EffectDataResource.new(effect_type, value, duration)
+	active_effects.append(e)
+
+func update_effects() -> void:
+	for e in active_effects.duplicate():
+		match e.type:
+			EffectType.POISON:
+				apply_damage(e.value)
+		e.duration -= 1
+		if e.duration <= 0:
+			active_effects.erase(e)
+	update_ui()
+
+func repair_armor(amount: int) -> void:
+	defense += amount
+	print(card_name, "repaired", amount)
+
+func use_support(target: Node) -> void:
+	var benefit_type = support_benefit.get("type", "")
+	var amount = support_benefit.get("amount", 0)
+	if benefit_type == "healing" and target.has_variable("health"):
+		target.health += amount
+	elif benefit_type == "repair" and target.has_variable("defense"):
+		target.defense += amount
+	print(card_name, "used", benefit_type, amount)
+
+func apply_field_effect() -> void:
+	if field_effect.has("effect") and field_effect["effect"].has_method("apply"):
+		field_effect["effect"].apply(self)
+		print(card_name, "field effect applied")
+
+func check_trigger(trigger: String) -> void:
+	if trigger == trigger_condition:
+		apply_trap_effect()
+
+func apply_trap_effect() -> void:
+	if trap_effect.has("effect") and trap_effect["effect"].has_method("apply"):
+		trap_effect["effect"].apply(self)
+		print(card_name, "trap triggered")

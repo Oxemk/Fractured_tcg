@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3xqi3lkrtwlh"]
 
-[ext_resource type="Script" uid="uid://bvq8nk3f55diu" path="res://cards/ArmorCard/ArmorCard.gd" id="1_3l7p6"]
+[ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_3l7p6"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_6npli"]
 
 [node name="ArmorCard" type="Control"]

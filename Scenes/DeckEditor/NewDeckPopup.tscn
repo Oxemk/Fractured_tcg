@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://byjar7g120tam" path="res://DeckEditor/NewDeckPopup.gd" id="1_o1g4n"]
 
 [node name="NewDeckPopup" type="Popup"]
-size = Vector2i(180, 147)
+size = Vector2i(184, 148)
 visible = true
 script = ExtResource("1_o1g4n")
 
@@ -23,7 +23,7 @@ layout_mode = 2
 
 [node name="ModeLabel" type="Label" parent="VBoxContainer/mode"]
 layout_mode = 2
-text = "Select Game Mode"
+text = "Select game rules"
 
 [node name="ModeSelector" type="OptionButton" parent="VBoxContainer/mode"]
 layout_mode = 2

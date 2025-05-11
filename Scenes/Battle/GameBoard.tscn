@@ -1,14 +1,324 @@
-[gd_scene load_steps=4 format=3 uid="uid://26uc2ddnegbh"]
+[gd_scene load_steps=3 format=3 uid="uid://26uc2ddnegbh"]
 
 [ext_resource type="Script" uid="uid://bhbsn087py0cc" path="res://Battle/GameBoard.gd" id="1_oq6j5"]
-[ext_resource type="Script" uid="uid://c0ld7vlcia765" path="res://Battle/BoardSide.gd" id="2_106lg"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="3_oq6j5"]
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource("1_oq6j5")
 
-[node name="CanvasLayer" type="HSlider" parent="."]
-visible = false
+[node name="Charcard" type="Sprite2D" parent="."]
+position = Vector2(76.8771, 337.32)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard" type="Sprite2D" parent="."]
+position = Vector2(11.0761, 337.319)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard" type="Sprite2D" parent="."]
+position = Vector2(143.723, 337.32)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard" type="Sprite2D" parent="."]
+position = Vector2(76.8774, 248.54)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard2" type="Sprite2D" parent="."]
+position = Vector2(278.458, 337.321)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard2" type="Sprite2D" parent="."]
+position = Vector2(212.657, 337.32)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard2" type="Sprite2D" parent="."]
+position = Vector2(345.303, 337.321)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard2" type="Sprite2D" parent="."]
+position = Vector2(278.458, 248.541)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard3" type="Sprite2D" parent="."]
+position = Vector2(480.039, 337.321)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard3" type="Sprite2D" parent="."]
+position = Vector2(414.238, 337.321)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard3" type="Sprite2D" parent="."]
+position = Vector2(546.884, 337.322)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard3" type="Sprite2D" parent="."]
+position = Vector2(480.039, 248.542)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard4" type="Sprite2D" parent="."]
+position = Vector2(278.457, 514.701)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard4" type="Sprite2D" parent="."]
+position = Vector2(212.656, 514.701)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard4" type="Sprite2D" parent="."]
+position = Vector2(345.303, 514.701)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard4" type="Sprite2D" parent="."]
+position = Vector2(278.457, 425.922)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard5" type="Sprite2D" parent="."]
+position = Vector2(278.457, 514.701)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard5" type="Sprite2D" parent="."]
+position = Vector2(212.656, 514.701)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard5" type="Sprite2D" parent="."]
+position = Vector2(345.303, 514.701)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard5" type="Sprite2D" parent="."]
+position = Vector2(278.457, 425.922)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap" type="Sprite2D" parent="."]
+position = Vector2(476.904, 514.702)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap2" type="Sprite2D" parent="."]
+position = Vector2(90.4543, 514.7)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard6" type="Sprite2D" parent="."]
+position = Vector2(278.251, 693.768)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard6" type="Sprite2D" parent="."]
+position = Vector2(212.45, 693.767)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard6" type="Sprite2D" parent="."]
+position = Vector2(345.096, 693.768)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard6" type="Sprite2D" parent="."]
+position = Vector2(278.251, 604.988)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Tscard" type="Sprite2D" parent="."]
+position = Vector2(476.698, 693.768)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="TScard" type="Sprite2D" parent="."]
+position = Vector2(90.2477, 693.767)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="deck" type="Sprite2D" parent="."]
+position = Vector2(595.956, 690.089)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Retired" type="Sprite2D" parent="."]
+position = Vector2(595.956, 690.089)
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard7" type="Sprite2D" parent="."]
+position = Vector2(1105.12, 336.683)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard7" type="Sprite2D" parent="."]
+position = Vector2(1170.92, 336.683)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard7" type="Sprite2D" parent="."]
+position = Vector2(1038.28, 336.683)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard7" type="Sprite2D" parent="."]
+position = Vector2(1105.12, 425.462)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard8" type="Sprite2D" parent="."]
+position = Vector2(903.54, 336.684)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard8" type="Sprite2D" parent="."]
+position = Vector2(969.341, 336.683)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Retired2" type="Sprite2D" parent="."]
+position = Vector2(591.343, 106.879)
+rotation = 3.13783
+scale = Vector2(0.0874037, 0.0874037)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard8" type="Sprite2D" parent="."]
+position = Vector2(836.695, 336.684)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard8" type="Sprite2D" parent="."]
+position = Vector2(903.54, 425.463)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard9" type="Sprite2D" parent="."]
+position = Vector2(701.959, 336.684)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard9" type="Sprite2D" parent="."]
+position = Vector2(767.76, 336.684)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard9" type="Sprite2D" parent="."]
+position = Vector2(635.114, 336.684)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard9" type="Sprite2D" parent="."]
+position = Vector2(701.96, 425.463)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard10" type="Sprite2D" parent="."]
+position = Vector2(903.54, 159.303)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard10" type="Sprite2D" parent="."]
+position = Vector2(969.341, 159.303)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard10" type="Sprite2D" parent="."]
+position = Vector2(836.694, 159.303)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard10" type="Sprite2D" parent="."]
+position = Vector2(903.54, 248.082)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Tscard2" type="Sprite2D" parent="."]
+position = Vector2(705.092, 159.303)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="TScard2" type="Sprite2D" parent="."]
+position = Vector2(1091.54, 159.303)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Charcard11" type="Sprite2D" parent="."]
+position = Vector2(903.745, -19.7634)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="weapcard11" type="Sprite2D" parent="."]
+position = Vector2(969.546, -19.7636)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Armcard11" type="Sprite2D" parent="."]
+position = Vector2(836.9, -19.7632)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Classcard11" type="Sprite2D" parent="."]
+position = Vector2(903.745, 69.0157)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="Tscard3" type="Sprite2D" parent="."]
+position = Vector2(705.298, -19.7629)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="TScard3" type="Sprite2D" parent="."]
+position = Vector2(1091.75, -19.7639)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap3" type="Sprite2D" parent="."]
+position = Vector2(1091.54, 159.303)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="support_trap4" type="Sprite2D" parent="."]
+position = Vector2(592.72, -5.15414)
+rotation = 3.14159
+scale = Vector2(0.0836832, 0.0836832)
+texture = ExtResource("3_oq6j5")
+
+[node name="2" type="HSlider" parent="."]
 offset_left = 33.0
 offset_top = 46.0
 offset_right = 41.0
@@ -18,477 +328,195 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="Button_P2" type="Button" parent="CanvasLayer"]
-layout_mode = 0
-offset_left = 164.0
-offset_top = -46.0
-offset_right = 232.0
-offset_bottom = -15.0
-text = "P2 View"
-
-[node name="Button_P1" type="Button" parent="CanvasLayer"]
-layout_mode = 0
-offset_left = -22.0
-offset_top = -296.0
-offset_right = 46.0
-offset_bottom = -265.0
-text = "P1 View"
-
-[node name="Button_Center" type="Button" parent="CanvasLayer"]
-layout_mode = 0
-offset_left = 53.0
-offset_top = 422.0
-offset_right = 154.0
-offset_bottom = 453.0
-text = "Center View"
-
-[node name="ZoomSlider" type="HSlider" parent="CanvasLayer"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
-
 [node name="PlayerBoard" type="Node2D" parent="."]
 position = Vector2(-315, 65)
 rotation = 6.28319
 scale = Vector2(1.04446, 1.04446)
-script = ExtResource("2_106lg")
 
-[node name="TroopRow" type="Node2D" parent="PlayerBoard"]
+[node name="troop_row" type="Node2D" parent="PlayerBoard"]
 position = Vector2(569.197, 258.726)
 
-[node name="TroopSlot1" type="Node2D" parent="PlayerBoard/TroopRow"]
+[node name="troop_slot1" type="Node2D" parent="PlayerBoard/troop_row"]
 position = Vector2(-193, 0)
 
-[node name="Charcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+[node name="Weapon" type="Node2D" parent="PlayerBoard/troop_row/troop_slot1"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+[node name="armor" type="Node2D" parent="PlayerBoard/troop_row/troop_slot1"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot1"]
+[node name="Class" type="Node2D" parent="PlayerBoard/troop_row/troop_slot1"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot1/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
+[node name="troop_slot2" type="Node2D" parent="PlayerBoard/troop_row"]
 
-[node name="TroopSlot2" type="Node2D" parent="PlayerBoard/TroopRow"]
-
-[node name="Charcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+[node name="Weapon" type="Node2D" parent="PlayerBoard/troop_row/troop_slot2"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+[node name="armor" type="Node2D" parent="PlayerBoard/troop_row/troop_slot2"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot2"]
+[node name="Class" type="Node2D" parent="PlayerBoard/troop_row/troop_slot2"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot2/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="TroopSlot3" type="Node2D" parent="PlayerBoard/TroopRow"]
+[node name="troop_slot3" type="Node2D" parent="PlayerBoard/troop_row"]
 position = Vector2(193, 0)
 
-[node name="Charcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+[node name="Weapon" type="Node2D" parent="PlayerBoard/troop_row/troop_slot3"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+[node name="armor" type="Node2D" parent="PlayerBoard/troop_row/troop_slot3"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="PlayerBoard/TroopRow/TroopSlot3"]
+[node name="Class" type="Node2D" parent="PlayerBoard/troop_row/troop_slot3"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/TroopRow/TroopSlot3/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="BodyguardRow" type="Node2D" parent="PlayerBoard"]
+[node name="bodyguard_zone" type="Node2D" parent="PlayerBoard"]
 position = Vector2(569.197, 428.556)
 
-[node name="DeckmasterSlot" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+[node name="Bodyguard_Slot1" type="Node2D" parent="PlayerBoard/bodyguard_zone"]
 
-[node name="Charcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
+[node name="Weapon" type="Node2D" parent="PlayerBoard/bodyguard_zone/Bodyguard_Slot1"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
+[node name="armor" type="Node2D" parent="PlayerBoard/bodyguard_zone/Bodyguard_Slot1"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot"]
+[node name="Class" type="Node2D" parent="PlayerBoard/bodyguard_zone/Bodyguard_Slot1"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
+[node name="Bodyguard_Slot2" type="Node2D" parent="PlayerBoard/bodyguard_zone"]
 
-[node name="DeckmasterSlot2" type="Node2D" parent="PlayerBoard/BodyguardRow"]
-
-[node name="Charcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+[node name="Weapon" type="Node2D" parent="PlayerBoard/bodyguard_zone/Bodyguard_Slot2"]
 position = Vector2(-63, -3.05176e-05)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+[node name="armor" type="Node2D" parent="PlayerBoard/bodyguard_zone/Bodyguard_Slot2"]
 position = Vector2(64, -3.05176e-05)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2"]
+[node name="Class" type="Node2D" parent="PlayerBoard/bodyguard_zone/Bodyguard_Slot2"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/BodyguardRow/DeckmasterSlot2/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="support_trap2" type="Node2D" parent="PlayerBoard/BodyguardRow"]
+[node name="support_trap" type="Node2D" parent="PlayerBoard/bodyguard_zone"]
 position = Vector2(190, 0)
 
-[node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/support_trap2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerBoard/BodyguardRow"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="support_trap" type="Node2D" parent="PlayerBoard/BodyguardRow/VBoxContainer"]
+[node name="support_trap2" type="Node2D" parent="PlayerBoard/bodyguard_zone"]
 position = Vector2(-180, -3.05176e-05)
 
-[node name="support_trap" type="Sprite2D" parent="PlayerBoard/BodyguardRow/VBoxContainer/support_trap"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="DeckmasterRow" type="Node2D" parent="PlayerBoard"]
+[node name="deckmaster_row" type="Node2D" parent="PlayerBoard"]
 position = Vector2(569, 600)
 
-[node name="DeckmasterSlot" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+[node name="deckmaster_slot" type="Node2D" parent="PlayerBoard/deckmaster_row"]
 
-[node name="Charcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/DeckmasterSlot"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="weapon" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+[node name="weapon" type="Node2D" parent="PlayerBoard/deckmaster_row"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+[node name="armor" type="Node2D" parent="PlayerBoard/deckmaster_row"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="class" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+[node name="class" type="Node2D" parent="PlayerBoard/deckmaster_row"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="support_trap" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+[node name="support_trap" type="Node2D" parent="PlayerBoard/deckmaster_row"]
 position = Vector2(190, 0)
 
-[node name="Tscard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/support_trap"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="support_trap2" type="Node2D" parent="PlayerBoard/DeckmasterRow"]
+[node name="support_trap2" type="Node2D" parent="PlayerBoard/deckmaster_row"]
 position = Vector2(-180, 0)
 
-[node name="TScard" type="Sprite2D" parent="PlayerBoard/DeckmasterRow/support_trap2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
+[node name="deck_zone" type="Node2D" parent="PlayerBoard"]
+position = Vector2(873.181, 596.477)
+
+[node name="retired_zone" type="Node2D" parent="PlayerBoard"]
+position = Vector2(873.181, 596.477)
 
 [node name="EnemyBoard" type="Node2D" parent="."]
 position = Vector2(1497, 609)
 rotation = 3.14159
 scale = Vector2(1.04446, 1.04446)
-script = ExtResource("2_106lg")
 
-[node name="TroopRow" type="Node2D" parent="EnemyBoard"]
+[node name="troop_row" type="Node2D" parent="EnemyBoard"]
 position = Vector2(569.197, 258.726)
 
-[node name="TroopSlot1" type="Node2D" parent="EnemyBoard/TroopRow"]
+[node name="troopslot_1" type="Node2D" parent="EnemyBoard/troop_row"]
 position = Vector2(-193, 0)
 
-[node name="Charcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+[node name="Weapon" type="Node2D" parent="EnemyBoard/troop_row/troopslot_1"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+[node name="armor" type="Node2D" parent="EnemyBoard/troop_row/troopslot_1"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot1"]
+[node name="Class" type="Node2D" parent="EnemyBoard/troop_row/troopslot_1"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot1/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
+[node name="TroopSlot2" type="Node2D" parent="EnemyBoard/troop_row"]
 
-[node name="TroopSlot2" type="Node2D" parent="EnemyBoard/TroopRow"]
-
-[node name="Charcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+[node name="Weapon" type="Node2D" parent="EnemyBoard/troop_row/TroopSlot2"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+[node name="armor" type="Node2D" parent="EnemyBoard/troop_row/TroopSlot2"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot2"]
+[node name="Class" type="Node2D" parent="EnemyBoard/troop_row/TroopSlot2"]
 position = Vector2(0, -85)
 
-[node name="Classcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot2/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="TroopSlot3" type="Node2D" parent="EnemyBoard/TroopRow"]
+[node name="TroopSlot3" type="Node2D" parent="EnemyBoard/troop_row"]
 position = Vector2(193, 0)
 
-[node name="Charcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Weapon" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+[node name="Weapon" type="Node2D" parent="EnemyBoard/troop_row/TroopSlot3"]
 position = Vector2(-63, 0)
 
-[node name="weapcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="armor" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+[node name="armor" type="Node2D" parent="EnemyBoard/troop_row/TroopSlot3"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
-[node name="Class" type="Node2D" parent="EnemyBoard/TroopRow/TroopSlot3"]
+[node name="Class" type="Node2D" parent="EnemyBoard/troop_row/TroopSlot3"]
 position = Vector2(0, -85)
-
-[node name="Classcard" type="Sprite2D" parent="EnemyBoard/TroopRow/TroopSlot3/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
 
 [node name="BodyGuardRow" type="Node2D" parent="EnemyBoard"]
 position = Vector2(569.197, 428.556)
 
 [node name="DeckmasterSlot" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
 
-[node name="Charcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/DeckmasterSlot"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
 [node name="Weapon" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
 position = Vector2(-63, 0)
-
-[node name="weapcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
 
 [node name="armor" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
 [node name="Class" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
 position = Vector2(0, -85)
-
-[node name="Classcard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
 
 [node name="support_trap" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
 position = Vector2(190, 0)
 
-[node name="Tscard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/support_trap"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
 [node name="support_trap2" type="Node2D" parent="EnemyBoard/BodyGuardRow"]
 position = Vector2(-180, 0)
-
-[node name="TScard" type="Sprite2D" parent="EnemyBoard/BodyGuardRow/support_trap2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
 
 [node name="DeckmasterRow" type="Node2D" parent="EnemyBoard"]
 position = Vector2(569, 600)
 
 [node name="DeckmasterSlot" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
 
-[node name="Charcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/DeckmasterSlot"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
 [node name="Weapon" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
 position = Vector2(-63, 0)
-
-[node name="weapcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/Weapon"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
 
 [node name="armor" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
 position = Vector2(64, 0)
 
-[node name="Armcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/armor"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
 [node name="Class" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
 position = Vector2(0, -85)
-
-[node name="Classcard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/Class"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
 
 [node name="support_trap" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
 position = Vector2(190, 0)
 
-[node name="Tscard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/support_trap"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
-
 [node name="support_trap2" type="Node2D" parent="EnemyBoard/DeckmasterRow"]
 position = Vector2(-180, 0)
 
-[node name="TScard" type="Sprite2D" parent="EnemyBoard/DeckmasterRow/support_trap2"]
-position = Vector2(-1, 1.99998)
-scale = Vector2(0.080121, 0.080121)
-texture = ExtResource("3_oq6j5")
+[node name="deckzone" type="Node2D" parent="EnemyBoard"]
+position = Vector2(866.785, 586.013)
+
+[node name="retired_zone" type="Node2D" parent="EnemyBoard"]
+position = Vector2(867.093, 477.877)
+rotation = -0.00376391
 
 [node name="Player1" type="Node" parent="."]
 
@@ -513,32 +541,113 @@ metadata/_edit_use_anchors_ = true
 [node name="Player2" type="Node" parent="."]
 
 [node name="PlayerHand" type="ItemList" parent="Player2"]
-offset_left = 110.0
-offset_right = 150.0
-offset_bottom = 40.0
+offset_left = 102.0
+offset_top = 26.0
+offset_right = 142.0
+offset_bottom = 66.0
 max_columns = 7
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D_Player1" type="Camera2D" parent="."]
-position = Vector2(603, 337)
+position = Vector2(603, 336)
 ignore_rotation = false
 zoom = Vector2(0.929, 0.8)
 drag_horizontal_offset = -0.1
 
 [node name="Camera2D_Player2" type="Camera2D" parent="."]
-position = Vector2(603, 337)
+position = Vector2(603, 336)
 ignore_rotation = false
 zoom = Vector2(0.929, 0.8)
 drag_horizontal_offset = -0.1
 
 [node name="Camera2D_Center" type="Camera2D" parent="."]
-position = Vector2(603, 337)
+position = Vector2(603, 336)
 ignore_rotation = false
 zoom = Vector2(0.929, 0.8)
 drag_horizontal_offset = -0.1
 
 [node name="Camera2D_Main" type="Camera2D" parent="."]
-position = Vector2(603, 337)
+position = Vector2(603, 336)
 ignore_rotation = false
 zoom = Vector2(0.929, 0.8)
 drag_horizontal_offset = -0.1
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Button_Draw" type="Button" parent="."]
+offset_left = 571.0
+offset_top = 216.0
+offset_right = 621.0
+offset_bottom = 247.0
+text = "Draw"
+
+[node name="Button_End" type="Button" parent="."]
+offset_left = 571.0
+offset_top = 435.0
+offset_right = 609.0
+offset_bottom = 466.0
+text = "End"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PhaseBar" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 321.0
+offset_top = 389.0
+offset_right = 668.0
+offset_bottom = 429.0
+
+[node name="Button_Draw" type="Button" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+text = "Draw"
+
+[node name="Button_Standby" type="Button" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+text = "Standby"
+
+[node name="Button_Main1" type="Button" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+text = "Main"
+
+[node name="Button_Battle" type="Button" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+text = "Battle"
+
+[node name="Button_Main2" type="Button" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+text = "Main 2"
+
+[node name="Button_End" type="Button" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+text = "End"
+
+[node name="Label_Timer" type="Label" parent="CanvasLayer/PhaseBar"]
+layout_mode = 2
+
+[node name="Button_P2" type="Button" parent="CanvasLayer"]
+offset_left = 197.0
+offset_top = 44.0
+offset_right = 265.0
+offset_bottom = 75.0
+text = "P2 View"
+
+[node name="Button_P1" type="Button" parent="CanvasLayer"]
+offset_left = 11.0
+offset_top = 103.0
+offset_right = 79.0
+offset_bottom = 134.0
+text = "P1 View"
+
+[node name="Button_Center" type="Button" parent="CanvasLayer"]
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 187.0
+offset_bottom = 136.0
+text = "Center View"
+
+[node name="ZoomSlider" type="HSlider" parent="CanvasLayer"]
+offset_left = 33.0
+offset_top = 46.0
+offset_right = 41.0
+offset_bottom = 62.0
+
+[node name="TickTimer" type="Timer" parent="."]

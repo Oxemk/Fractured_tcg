@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmev8geei6i2f"]
 
-[ext_resource type="Script" uid="uid://cf648of6in22s" path="res://cards/TrapCard/TrapCard.gd" id="1_0tiue"]
+[ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_gp2ob"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_vmir4"]
 
 [node name="TrapCard" type="Control"]
@@ -8,7 +8,7 @@ custom_minimum_size = Vector2(180, 240)
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(1.29365, 1.29365)
-script = ExtResource("1_0tiue")
+script = ExtResource("1_gp2ob")
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false

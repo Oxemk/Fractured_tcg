@@ -1,30 +1,64 @@
 extends Node
-class_name CombatPhase
+class_name EndPhase
 
-func start_phase(gameboard) -> void:
-	# 1) Enable any combat‐specific UI
-	gameboard.enable_combat_ui()
+var gameboard: Node
 
-	# 2) Example combat logic: each side deals damage to the other
-	#    (You can replace this with your own turn‐based or simultaneous logic.)
+func start_phase(gameboard_instance: Node) -> void:
+	print("[EndPhase] Starting End Phase")
+	gameboard = gameboard_instance
 
-	# Gather all card nodes under each board
-	var players = gameboard.PlayerBoard.get_children()
-	var enemies = gameboard.EnemyBoard.get_children()
+	print("[EndPhase] Resolving end-of-turn effects")
+	_resolve_end_of_turn_effects(gameboard.PlayerBoard)
+	_resolve_end_of_turn_effects(gameboard.EnemyBoard)
 
-	# Each player card attacks each enemy card (example)
-	for p_card in players:
-		if p_card.has_method("get_attack_power"):
-			var atk = p_card.get_attack_power()
-			for e_card in enemies:
-				CombatManager.apply_damage(e_card, atk)
+	print("[EndPhase] Cleaning up turn state")
+	_cleanup_after_turn(gameboard.PlayerBoard)
+	_cleanup_after_turn(gameboard.EnemyBoard)
 
-	# Each enemy card retaliates against each player card
-	for e_card in enemies:
-		if e_card.has_method("get_attack_power"):
-			var atk = e_card.get_attack_power()
-			for p_card in players:
-				CombatManager.apply_damage(p_card, atk)
+	if _check_victory_condition(gameboard.PlayerBoard):
+		print("[EndPhase] Victory check: Player loses, AI wins")
+		_end_game("AI Wins!")
+		return
+	elif _check_victory_condition(gameboard.EnemyBoard):
+		print("[EndPhase] Victory check: AI loses, Player wins")
+		_end_game("Player Wins!")
+		return
 
-	# 3) After resolving all combat actions, advance to EndPhase
-	gameboard.switch_to_phase(preload("res://phases/EndPhase.gd").new())
+	print("[EndPhase] No victory yet, transitioning to DrawPhase")
+	_transition_to_next_phase()
+
+
+func _resolve_end_of_turn_effects(board: Node) -> void:
+	for card in board.get_children():
+		if card.has_method("resolve_end_of_turn_effects"):
+			print("[EndPhase] Resolving end-of-turn effects for card: %s" % card.name)
+			card.resolve_end_of_turn_effects()
+
+
+func _cleanup_after_turn(board: Node) -> void:
+	for card in board.get_children():
+		if card.has_method("cleanup_after_turn"):
+			print("[EndPhase] Cleaning up card: %s" % card.name)
+			card.cleanup_after_turn()
+
+
+func _check_victory_condition(board: Node) -> bool:
+	for card in board.get_children():
+		if card.has_method("get_role") and card.get_role() == "deckmaster":
+			var hp = card.get_hp() if card.has_method("get_hp") else 9999
+			print("[EndPhase] Checking HP of deckmaster: %d" % hp)
+			if hp <= 0:
+				return true
+	return false
+
+
+func _end_game(winner_message: String) -> void:
+	push_warning("[EndPhase] Game over: %s" % winner_message)
+	gameboard.show_game_over_screen(winner_message)
+	# Optional: Disable player interaction, stop timers, etc.
+
+
+func _transition_to_next_phase() -> void:
+	print("[EndPhase] Switching to DrawPhase")
+	var next_phase = preload("res://phases/DrawPhase.gd").new()
+	gameboard._switch_to_phase(next_phase)

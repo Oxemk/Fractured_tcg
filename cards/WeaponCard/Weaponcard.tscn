@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3l8igx6euhcn"]
 
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="1_fgepq"]
-[ext_resource type="Script" uid="uid://d180if4nuscr6" path="res://cards/WeaponCard/WeaponCard.gd" id="1_ita6o"]
+[ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_ita6o"]
 
 [node name="Weaponcard" type="Control"]
 custom_minimum_size = Vector2(180, 240)

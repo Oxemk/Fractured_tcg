@@ -38,10 +38,11 @@ scale = Vector2(9.00051, 13.8043)
 [node name="CardPoolScroll2" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(350, 500)
 layout_mode = 0
-offset_left = 339.0
-offset_top = 81.0
-offset_right = 689.0
-offset_bottom = 624.0
+offset_left = 28.0
+offset_top = 72.0
+offset_right = 378.0
+offset_bottom = 615.0
+scale = Vector2(1.4, 0.8)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardPoolScroll2"]
 layout_mode = 2

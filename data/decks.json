@@ -21,7 +21,7 @@
 	{
 		"card_limit": 50,
 		"cards": [
-			"char_001",
+			"char_Human_001",
 			"char_wraithkin_001",
 			"char_runeborn_001",
 			"char_wolven_001",
@@ -40,7 +40,7 @@
 	{
 		"card_limit": 50,
 		"cards": [
-			"char_001",
+			"char_Human_001",
 			"char_wraithkin_001",
 			"char_runeborn_001",
 			"char_wolven_001",
