@@ -1,8 +1,5 @@
 res://Scenes/Battle/GameBoard.tscn
 res://Battle/GameBoard.gd
 res://phases/MainPhase.gd
-res://phases/DrawPhase.gd
 res://phases/CombatPhase.gd
 res://phases/EndPhase.gd
-res://phases/StandbyPhase.gd
-res://managers/PhaseManager.gd

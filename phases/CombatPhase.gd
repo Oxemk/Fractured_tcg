@@ -1,64 +1,79 @@
+# CombatPhase.gd
 extends Node
-class_name EndPhase
+class_name CombatPhase
 
 var gameboard: Node
 
 func start_phase(gameboard_instance: Node) -> void:
-	print("[EndPhase] Starting End Phase")
+	print("[CombatPhase] start_phase")
 	gameboard = gameboard_instance
 
-	print("[EndPhase] Resolving end-of-turn effects")
-	_resolve_end_of_turn_effects(gameboard.PlayerBoard)
-	_resolve_end_of_turn_effects(gameboard.EnemyBoard)
+	# Player attack
+	var attacker = _select_attacker_from_front_row(gameboard.PlayerBoard)
+	if attacker:
+		var target = _select_target(gameboard.EnemyBoard)
+		if target:
+			print("[CombatPhase] Player attacker %s hits %s" % [attacker.name, target.name])
+			_perform_attack(attacker, target)
 
-	print("[EndPhase] Cleaning up turn state")
-	_cleanup_after_turn(gameboard.PlayerBoard)
-	_cleanup_after_turn(gameboard.EnemyBoard)
+	# AI attack
+	var ai_attacker = _select_attacker_from_front_row(gameboard.EnemyBoard)
+	if ai_attacker:
+		var ai_target = _select_target(gameboard.PlayerBoard)
+		if ai_target:
+			print("[CombatPhase] AI attacker %s hits %s" % [ai_attacker.name, ai_target.name])
+			_perform_attack(ai_attacker, ai_target)
 
-	if _check_victory_condition(gameboard.PlayerBoard):
-		print("[EndPhase] Victory check: Player loses, AI wins")
-		_end_game("AI Wins!")
-		return
-	elif _check_victory_condition(gameboard.EnemyBoard):
-		print("[EndPhase] Victory check: AI loses, Player wins")
-		_end_game("Player Wins!")
-		return
+	# Next
+	print("[CombatPhase] Transition to EndPhase")
+	gameboard._switch_to_phase(preload("res://phases/EndPhase.gd").new())
 
-	print("[EndPhase] No victory yet, transitioning to DrawPhase")
-	_transition_to_next_phase()
+func _select_attacker_from_front_row(board: Node) -> Node:
+	# adjust these paths as needed
+	for zone in ["troop_slot1", "troop_slot2", "troop_slot3", "Bodyguard_Slot", "DeckMaster_Slot"]:
+		var row = board.get_node_or_null(zone)
+		if row and row.get_child_count() > 0:
+			for card in row.get_children():
+				if card.has_method("get_attack_power"):
+					return card
+	return null
 
+func _select_target(board: Node) -> Node:
+	for zone in board.get_children():
+		for card in zone.get_children():
+			return card
+	return null
 
-func _resolve_end_of_turn_effects(board: Node) -> void:
-	for card in board.get_children():
-		if card.has_method("resolve_end_of_turn_effects"):
-			print("[EndPhase] Resolving end-of-turn effects for card: %s" % card.name)
-			card.resolve_end_of_turn_effects()
+func _perform_attack(attacker: Node, defender: Node) -> void:
+	var atk = _calculate_attack_power(attacker)
+	var defp = _calculate_defense_power(defender)
+	var dmg = max(atk - defp, 0)
+	print("[CombatPhase] Calculated damage: %d" % dmg)
+	_apply_damage(defender, dmg)
 
+func _calculate_attack_power(card: Node) -> int:
+	var total = card.get_attack_power()
+	for child in card.get_children():
+		if child.has_method("get_attack_power"):
+			total += child.get_attack_power()
+	return total
 
-func _cleanup_after_turn(board: Node) -> void:
-	for card in board.get_children():
-		if card.has_method("cleanup_after_turn"):
-			print("[EndPhase] Cleaning up card: %s" % card.name)
-			card.cleanup_after_turn()
+func _calculate_defense_power(card: Node) -> int:
+	var total = card.get_defense_power()
+	for child in card.get_children():
+		if child.has_method("get_defense_power"):
+			total += child.get_defense_power()
+	return total
 
-
-func _check_victory_condition(board: Node) -> bool:
-	for card in board.get_children():
-		if card.has_method("get_role") and card.get_role() == "deckmaster":
-			var hp = card.get_hp() if card.has_method("get_hp") else 9999
-			print("[EndPhase] Checking HP of deckmaster: %d" % hp)
-			if hp <= 0:
-				return true
-	return false
-
-
-func _end_game(winner_message: String) -> void:
-	push_warning("[EndPhase] Game over: %s" % winner_message)
-	gameboard.show_game_over_screen(winner_message)
-	# Optional: Disable player interaction, stop timers, etc.
-
-
-func _transition_to_next_phase() -> void:
-	print("[EndPhase] Switching to DrawPhase")
-	var next_phase = preload("res://phases/DrawPhase.gd").new()
-	gameboard._switch_to_phase(next_phase)
+func _apply_damage(defender: Node, damage: int) -> void:
+	var defp = defender.get_defense_power()
+	if defp > 0:
+		var spill = max(damage - defp, 0)
+		defender.set_defense_power(0)
+		damage = spill
+	var hp = defender.get_hp() - damage
+	defender.set_hp(hp)
+	print("[CombatPhase] %s HP now %d" % [defender.name, hp])
+	if hp <= 0:
+		print("[CombatPhase] %s defeated" % defender.name)
+		defender.queue_free()

@@ -522,28 +522,18 @@ rotation = -0.00376391
 
 [node name="PlayerHand" type="ItemList" parent="Player1"]
 offset_left = 643.0
-offset_top = 593.0
+offset_top = 517.0
 offset_right = 683.0
-offset_bottom = 633.0
-max_columns = 7
-metadata/_edit_use_anchors_ = true
-
-[node name="Player3" type="Node" parent="."]
-
-[node name="PlayerHand" type="ItemList" parent="Player3"]
-offset_left = 643.0
-offset_top = 593.0
-offset_right = 683.0
-offset_bottom = 633.0
+offset_bottom = 557.0
 max_columns = 7
 metadata/_edit_use_anchors_ = true
 
 [node name="Player2" type="Node" parent="."]
 
 [node name="PlayerHand" type="ItemList" parent="Player2"]
-offset_left = 102.0
+offset_left = 169.0
 offset_top = 26.0
-offset_right = 142.0
+offset_right = 209.0
 offset_bottom = 66.0
 max_columns = 7
 metadata/_edit_use_anchors_ = true
@@ -575,26 +565,26 @@ drag_horizontal_offset = -0.1
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
 [node name="Button_Draw" type="Button" parent="."]
-offset_left = 571.0
-offset_top = 216.0
-offset_right = 621.0
-offset_bottom = 247.0
+offset_left = -123.0
+offset_top = 179.0
+offset_right = -73.0
+offset_bottom = 210.0
 text = "Draw"
 
 [node name="Button_End" type="Button" parent="."]
-offset_left = 571.0
-offset_top = 435.0
-offset_right = 609.0
-offset_bottom = 466.0
+offset_left = -123.0
+offset_top = 398.0
+offset_right = -85.0
+offset_bottom = 429.0
 text = "End"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PhaseBar" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 321.0
-offset_top = 389.0
-offset_right = 668.0
-offset_bottom = 429.0
+offset_left = 707.0
+offset_top = 689.0
+offset_right = 1054.0
+offset_bottom = 729.0
 
 [node name="Button_Draw" type="Button" parent="CanvasLayer/PhaseBar"]
 layout_mode = 2
@@ -624,30 +614,30 @@ text = "End"
 layout_mode = 2
 
 [node name="Button_P2" type="Button" parent="CanvasLayer"]
-offset_left = 197.0
-offset_top = 44.0
-offset_right = 265.0
-offset_bottom = 75.0
+offset_left = -112.0
+offset_top = 104.0
+offset_right = -44.0
+offset_bottom = 135.0
 text = "P2 View"
 
 [node name="Button_P1" type="Button" parent="CanvasLayer"]
-offset_left = 11.0
-offset_top = 103.0
-offset_right = 79.0
-offset_bottom = 134.0
+offset_left = -298.0
+offset_top = 102.0
+offset_right = -230.0
+offset_bottom = 133.0
 text = "P1 View"
 
 [node name="Button_Center" type="Button" parent="CanvasLayer"]
-offset_left = 86.0
-offset_top = 105.0
-offset_right = 187.0
-offset_bottom = 136.0
+offset_left = -223.0
+offset_top = 104.0
+offset_right = -122.0
+offset_bottom = 135.0
 text = "Center View"
 
 [node name="ZoomSlider" type="HSlider" parent="CanvasLayer"]
-offset_left = 33.0
-offset_top = 46.0
-offset_right = 41.0
-offset_bottom = 62.0
+offset_left = -276.0
+offset_top = 45.0
+offset_right = -268.0
+offset_bottom = 61.0
 
 [node name="TickTimer" type="Timer" parent="."]

@@ -21,7 +21,6 @@ class_name GameBoard
 # --- PHASE MANAGER ---
 var phase_manager: PhaseManager
 
-
 # --- TIMER & TURNS ---
 @onready var tick_timer : Timer = $TickTimer
 var turn_count          : int = 1
@@ -50,9 +49,6 @@ var draw_count_per_turn: int = 5
 var target_pos         : Vector2
 
 func _ready() -> void:
-	# Remove the call to reset here
-	# phase_manager.reset(self)  # Remove this line
-
 	print("[GameBoard] _ready")
 
 	# Setup UI & Cameras
@@ -77,18 +73,8 @@ func _ready() -> void:
 	populate_hand(player_deck, PlayerHand)
 	populate_hand(ai_deck, EnemyHand)
 
-	_start_new_turn()
-
-	# Game Initialization
-	_load_config()
-	player_deck = build_deck(config.cards)
-	ai_deck = build_ai_deck(config)
-	player_deck.shuffle()
-	ai_deck.shuffle()
-	initialize_troops()
-	initialize_deck()
-	populate_hand(player_deck, PlayerHand)
-	populate_hand(ai_deck, EnemyHand)
+	# 🚨 Fix: Assign phase_manager from autoload
+	phase_manager = PhaseManager
 
 	_start_new_turn()
 
@@ -98,8 +84,6 @@ func _start_new_turn() -> void:
 	_update_timer_label()
 	_update_battle_button()
 	phase_manager.reset(self)
-
-
 
 func _on_tick_timer_timeout() -> void:
 	turn_time_left = max(0, turn_time_left - 1)
@@ -150,7 +134,7 @@ func draw_cards(count: int, is_player: bool = true) -> void:
 		if data.size() == 0:
 			push_error("No data for %s" % cid)
 			continue
-		var node = CardLoader.load_card_data(data)
+		var node = sCardLoader.load_card_data(data)
 		if node:
 			hand.add_child(node)
 		else:
@@ -165,16 +149,23 @@ func build_deck(ids: Array) -> Array:
 
 func build_ai_deck(cfg: Dictionary) -> Array:
 	match cfg.get("ai_difficulty", "easy"):
-		"easy":   return ["char_1","weapon_1","armor_1","trap_1","support_1"]
+		"easy":   return ["char_1","weap_001","armor_1","trap_1","support_1"]
 		"medium": return ["char_2","weapon_2","armor_2","trap_2","support_2"]
 		"hard":   return ["char_3","weapon_3","armor_3","trap_3","support_3"]
 		_:        push_warning("Unknown AI difficulty %s" % cfg.get("ai_difficulty")); return []
 
 func populate_hand(deck: Array, hand: Node) -> void:
 	for cid in deck:
-		var node = CardLoader.load_card_data(_load_card_json(cid))
+		var data = _load_card_json(cid)
+		if data.size() == 0:
+			push_warning("No card data found for: %s" % cid)
+			continue
+		var node = sCardLoader.load_card_data(data)
 		if node:
 			hand.add_child(node)
+			node.scale = Vector2(0.4, 0.4) # <— adjust this value as needed
+		else:
+			push_warning("Failed to load card node for: %s" % cid)
 
 func initialize_troops() -> void:
 	print("[InitTroops] Setting up character slots")
@@ -191,7 +182,7 @@ func initialize_deck() -> void:
 
 func _populate_char_slot(slot: Node2D, id: String) -> void:
 	if slot:
-		var node = CardLoader.load_card_data(_load_card_json(id))
+		var node = sCardLoader.load_card_data(_load_card_json(id))
 		if node:
 			slot.add_child(node)
 
