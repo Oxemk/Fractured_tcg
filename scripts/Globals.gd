@@ -1,10 +1,12 @@
-### Globals.gd
 extends Node
 enum VSMode { P1vsP2, P1vsComputer }
 
 var is_offline: bool = false
 var current_mode: String = ""    # "story", "casual", "ranked"
 var vs_mode: int = VSMode.P1vsComputer
+var vs_player: bool = false
+var vs_ai: bool = false
+
 var p1_deck: Dictionary = {}
 var p2_deck: Dictionary = {}
 var selected_deck: Dictionary = {}

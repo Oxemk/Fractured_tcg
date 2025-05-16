@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://37c3gqok7yx7"]
+[gd_scene load_steps=3 format=3 uid="uid://dkhdpldti1s0f"]
 
 [ext_resource type="Script" uid="uid://ci2qv8yonm5i0" path="res://cards/BaseCard/BaseCard.gd" id="1_ho2tk"]
 [ext_resource type="Texture2D" uid="uid://b5dwj1ahq2vvn" path="res://charcard.png" id="2_f8m6e"]
@@ -161,4 +161,4 @@ offset_left = 46.0
 offset_top = 33.7662
 offset_right = 86.0
 offset_bottom = 73.7662
-scale = Vector2(3.52807, 3.52807)
+scale = Vector2(0.393721, 0.393721)

@@ -1,99 +1,103 @@
+# --- MainPhase.gd ---
 extends Node
-class_name StartupPhase
+class_name MainPhase
 
-func start_phase(gameboard) -> void:
-	var id_data_pairs := []
-	
-	# Filter Level 1 character cards from the player's deck
-	for id in gameboard.player_deck:
-		var data = gameboard._load_card_json(id)
-		if data.size() > 0:
-			if data["card_type"] == "Character" and int(data.get("level", 0)) == 1:
-				id_data_pairs.append({ "id": id, "data": data })
-			else:
-				push_warning("StartupPhase: Skipping non-character or non-level-1 card with ID %s" % id)
-		else:
-			push_warning("StartupPhase: Missing data for card ID %s" % id)
-	
-	if id_data_pairs.is_empty():
-		push_error("ERROR: No Level-1 character cards found!")
-		return
-	
-	# Continue as usual with the rest of the code...
+var gameboard: GameBoard = null
 
+func start_phase(board: Node) -> void:
+	gameboard = board
+	print("[MainPhase] start_phase - Owner:", gameboard.current_turn_owner)
 
-	# Shuffle the Level-1 cards
-	id_data_pairs.shuffle()
-	
-	# Draw 5 cards (limit to 5 if less than 5 available)
-	var draw_count = min(5, id_data_pairs.size())
-	var drawn_pairs = id_data_pairs.slice(0, draw_count)
-
-	# Remove drawn cards from the player's deck
-	for pair in drawn_pairs:
-		gameboard.player_deck.erase(pair.id)
-
-	# Determine the game mode (PvP, Duelist, Bodyguard, Commander)
-	var is_pvp = gameboard.config.get("game_type", "pvp") == "pvp"
-	var mode = gameboard.config.get("mode", "duelist").to_lower()
-
-	# Place cards based on game mode
-	if is_pvp:
-		# PvP Mode: Add each drawn card to the player's hand
-		var hand = gameboard.get_node_or_null("Player1/PlayerHand")
-		if not hand:
-			push_warning("StartupPhase: PlayerHand not found at 'Player1/PlayerHand'")
-		
-		# Add each drawn card to the player's hand
-		for pair in drawn_pairs:
-			var c = CardLoader.load_card_data(pair.data)
-			if c and hand:
-				hand.add_child(c)
-			else:
-				push_error("StartupPhase: Failed to instantiate PvP card %s" % pair.id)
+	if gameboard.current_turn_owner == gameboard.TurnOwner.PLAYER1:
+		_enter_player_main()
 	else:
-		# Non-PvP Mode: Place the drawn cards in appropriate zones based on the game mode
-		for i in range(drawn_pairs.size()):
-			var pair = drawn_pairs[i]
-			var c = CardLoader.load_card_data(pair.data)
-			if not c:
-				push_error("StartupPhase: Failed to instantiate AI card %s" % pair.id)
-				continue
-			
-			# Add cards to specific zones based on mode
-			match mode:
-				"duelist":
-					_add_to_zone(gameboard, "PlayerBoard/deckmaster_row", c)
-				"bodyguard":
-					if i == 0:
-						_add_to_zone(gameboard, "PlayerBoard/deckmaster_row", c)
-					elif i == 1:
-						_add_to_zone(gameboard, "PlayerBoard/bodyguard_zone", c)
-				"commander":
-					if i == 0:
-						_add_to_zone(gameboard, "PlayerBoard/deckmaster_row", c)
-					elif i == 1:
-						_add_to_zone(gameboard, "PlayerBoard/bodyguard_zone", c)
-					elif i == 2:
-						_add_to_zone(gameboard, "PlayerBoard/troop_slot1", c)
+		await _enter_ai_main()
 
-	# Return the drawn cards back to the deck and shuffle
-	for pair in drawn_pairs:
-		gameboard.player_deck.append(pair.id)
+func _enter_player_main() -> void:
+	# Disable phase UI buttons
+	gameboard.btn_main1.disabled = true
+	gameboard.btn_battle.disabled = true
+	gameboard.btn_main2.disabled = true
+	gameboard.btn_end.disabled = true
 
-	# Shuffle the deck
-	gameboard.player_deck.shuffle()
-
-	# Draw 5 more cards for the player from the shuffled deck
-	gameboard.draw_cards(5, true)  # Draw 5 cards for the player (true indicates it's for the player)
-
-	# Move to the next phase (Draw Phase)
-	gameboard._switch_to_phase(DrawPhase.new())
-
-# Helper function to add a card to a specified zone
-func _add_to_zone(gameboard: Node, path: String, card: Node) -> void:
-	var zone = gameboard.get_node_or_null(path)
-	if zone:
-		zone.add_child(card)
+	# Player plays up to 2 cards or performs an upgrade
+	var player_hand = gameboard.get_node_or_null("Player1/PlayerHand")
+	var player_board = gameboard.get_node_or_null("PlayerBoard")
+	if player_hand and player_board:
+		var cards_played := 0
+		# Play cards
+		for card in player_hand.get_children():
+			if cards_played < 2 and _can_play_card(card, player_board):
+				player_hand.remove_child(card)
+				player_board.add_child(card)
+				cards_played += 1
+		# Try upgrade if fewer than 2 plays
+		if cards_played < 2:
+			var lvl1 = _find_level_1_card_on_board(player_board)
+			if lvl1:
+				var up = _upgrade_card(lvl1)
+				if up:
+					player_board.remove_child(lvl1)
+					player_board.add_child(up)
 	else:
-		push_warning("StartupPhase: Zone not found at '%s'" % path)
+		push_error("MainPhase: Missing PlayerHand or PlayerBoard")
+
+	# Enable End Turn button
+	gameboard.btn_end.disabled = false
+	gameboard.btn_end.connect("pressed", Callable(self, "_on_player_end"))
+	print("[MainPhase] Player main done, waiting for end-phase input")
+
+func _on_player_end() -> void:
+	# Cleanup and notify phase complete
+	gameboard.btn_end.disconnect("pressed", Callable(self, "_on_player_end"))
+	gameboard.btn_end.disabled = true
+	print("[MainPhase] Player ended turn")
+	PhaseManager.notify_phase_complete()
+
+func _enter_ai_main() -> void:
+	print("[MainPhase] AI actions start")
+	var ai_hand = gameboard.get_node_or_null("Player2/PlayerHand")
+	var ai_board = gameboard.get_node_or_null("EnemyBoard")
+	if ai_hand and ai_board:
+		var ai_played := 0
+		for card in ai_hand.get_children():
+			if ai_played < 2 and _can_play_card(card, ai_board):
+				ai_hand.remove_child(card)
+				ai_board.add_child(card)
+				ai_played += 1
+		if ai_played < 2:
+			var ai_lvl1 = _find_level_1_card_on_board(ai_board)
+			if ai_lvl1:
+				var ai_up = _upgrade_card(ai_lvl1)
+				if ai_up:
+					ai_board.remove_child(ai_lvl1)
+					ai_board.add_child(ai_up)
+	else:
+		push_error("MainPhase: Missing AIHand or EnemyBoard")
+
+	# Simulate AI thinking
+	await get_tree().create_timer(1.0).timeout
+	print("[MainPhase] AI actions done")
+	PhaseManager.notify_phase_complete()
+
+func _can_play_card(card: Node, board: Node) -> bool:
+	return board.get_child_count() < 5
+
+func _find_level_1_card_on_board(board: Node) -> Node:
+	for card in board.get_children():
+		if card.has_method("get_level") and card.get_level() == 1:
+			return card
+	return null
+
+func _upgrade_card(level_1_card: Node) -> Node:
+	if not level_1_card:
+		return null
+	var type = level_1_card.get_card_type()
+	var next_lvl = level_1_card.get_level() + 1
+	# Load upgraded card data from CardDatabase
+	var key = type + "_lvl" + str(next_lvl)
+	var data = CardDatabase.cards.get(key, {})
+	if data.size() == 0:
+		push_warning("No data for upgraded %s level %d" % [type, next_lvl])
+		return null
+	return CardLoader.load_card_data(data)

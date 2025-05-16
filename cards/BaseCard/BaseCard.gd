@@ -146,3 +146,5 @@ func apply_trap_effect() -> void:
 	if trap_effect.has("effect") and trap_effect["effect"].has_method("apply"):
 		trap_effect["effect"].apply(self)
 		print(card_name, "trap triggered")
+func _input(event):
+	CardDragManager.handle_card_input(self, event)

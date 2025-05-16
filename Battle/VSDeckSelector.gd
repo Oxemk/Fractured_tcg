@@ -9,10 +9,10 @@ class_name VSDeckSelector
 
 var popup: Window
 
-var user_decks: Array          = []
-var ai_decks: Array            = []
+var user_decks: Array = []
+var ai_decks: Array = []
 var filtered_user_decks: Array = []
-var filtered_ai_decks: Array   = []
+var filtered_ai_decks: Array = []
 
 var random_decks = [
 	{"name":"Random Easy",   "mode":"", "level":"easy",   "random":true},
@@ -20,38 +20,28 @@ var random_decks = [
 	{"name":"Random Hard",   "mode":"", "level":"hard",   "random":true},
 ]
 
-var selected_index_p1: int        = -1
-var selected_index_p2: int        = -1
+var selected_index_p1: int = -1
+var selected_index_p2: int = -1
 var selecting_random_for_p1: bool = true
 
 func _ready() -> void:
-	# Instantiate difficulty popup
 	popup = preload("res://Scenes/Battle/DifficultyPopup.tscn").instantiate()
 	add_child(popup)
 	popup.connect("difficulty_selected", Callable(self, "_on_difficulty_selected"))
 
-	# Wire Start/Back buttons
 	start_btn.connect("pressed", Callable(self, "_on_start"))
 	back_btn.connect("pressed", Callable(self, "_on_back"))
 
-	# Load decks from JSON
 	user_decks = _load_array("user://decks.json")
 	ai_decks   = _load_array("res://data/decks.json")
 
-	# Filter decks by mode
 	var mode_lc = Globals.current_mode.to_lower()
-	filtered_user_decks = user_decks.filter(func(d):
-		return d.get("mode", "").to_lower() == mode_lc
-	)
-	filtered_ai_decks = ai_decks.filter(func(d):
-		return d.get("mode", "").to_lower() == mode_lc
-	)
+	filtered_user_decks = user_decks.filter(func(d): return d.get("mode", "").to_lower() == mode_lc)
+	filtered_ai_decks   = ai_decks.filter(func(d): return d.get("mode", "").to_lower() == mode_lc)
 
-	# Tag random decks with mode
 	for entry in random_decks:
 		entry["mode"] = Globals.current_mode
 
-	# Build the UI lists
 	_populate_buttons()
 	_update_start()
 
@@ -82,7 +72,7 @@ func _populate_buttons() -> void:
 	var rng_count = random_decks.size()
 	var usr_count = filtered_user_decks.size()
 
-	for i in all_decks.size():
+	for i in range(all_decks.size()):
 		var d = all_decks[i]
 		var prefix = ""
 		if d.has("random"):
@@ -92,7 +82,7 @@ func _populate_buttons() -> void:
 		else:
 			prefix = "AI"
 
-		var label = "[%s] %s" % [prefix, d.name]
+		var label = "[%s] %s" % [prefix, d.get("name", "Unnamed")]
 		p1_container.add_item(label)
 		p2_container.add_item(label)
 		p1_container.set_item_metadata(p1_container.get_item_count() - 1, i)
@@ -109,8 +99,8 @@ func _on_p1_item_selected(idx: int) -> void:
 		_select_deck(idx, true)
 
 func _on_p2_item_selected(idx: int) -> void:
+	selecting_random_for_p1 = false
 	if _is_random_index(idx):
-		selecting_random_for_p1 = false
 		popup.popup_centered()
 	else:
 		_select_deck(idx, false)
@@ -120,6 +110,7 @@ func _select_deck(idx: int, is_p1: bool) -> void:
 	if entry.size() == 0:
 		return
 	var deck_copy = entry.duplicate()
+
 	if is_p1:
 		selected_index_p1 = idx
 		Globals.p1_deck = deck_copy
@@ -159,10 +150,7 @@ func _on_difficulty_selected(level: String) -> void:
 func _show_deck_info(idx: int) -> void:
 	var info: Dictionary
 	if _is_random_index(idx):
-		if selecting_random_for_p1:
-			info = Globals.p1_deck
-		else:
-			info = Globals.p2_deck
+		info = Globals.p1_deck if selecting_random_for_p1 else Globals.p2_deck
 	else:
 		info = _get_entry(idx)
 
@@ -170,17 +158,19 @@ func _show_deck_info(idx: int) -> void:
 	var mode  = info.get("mode", "")
 	var lvl   = info.get("level", "N/A")
 	var cards = info.get("cards", [])
-	var rows  = info.get("rows", 0)
 
-	deck_info_label.text = "Name: %s\nMode: %s\nLevel: %s\nSize: %d\nRows: %d" % [
-	deck_name, mode, lvl, cards.size(), rows
-]
-
+	deck_info_label.text = "Deck Name: %s\nMode: %s\nLevel: %s\nCard Count: %d" % [deck_name, mode, lvl, cards.size()]
 
 func _update_start() -> void:
-	start_btn.disabled = (selected_index_p1 < 0 or selected_index_p2 < 0)
+	start_btn.disabled = (selected_index_p1 == -1) or (selected_index_p2 == -1)
 
 func _on_start() -> void:
+	if selected_index_p1 == -1 or selected_index_p2 == -1:
+		return
+
+	Globals.vs_player = true
+	Globals.vs_ai = true
+
 	get_tree().change_scene_to_file("res://Scenes/Battle/GameBoard.tscn")
 
 func _on_back() -> void:

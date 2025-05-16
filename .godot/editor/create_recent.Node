@@ -1,3 +1,5 @@
+Node2D
+Node
 Timer
 CanvasLayer
 Label
@@ -10,6 +12,3 @@ Control
 ItemList
 Window
 DifficultyPopup
-VBoxContainer
-Node
-Node3D

@@ -520,22 +520,14 @@ rotation = -0.00376391
 
 [node name="Player1" type="Node" parent="."]
 
-[node name="PlayerHand" type="ItemList" parent="Player1"]
-offset_left = 643.0
-offset_top = 517.0
-offset_right = 683.0
-offset_bottom = 557.0
-max_columns = 7
+[node name="PlayerHand" type="Node2D" parent="Player1"]
+position = Vector2(747, 636)
 metadata/_edit_use_anchors_ = true
 
 [node name="Player2" type="Node" parent="."]
 
-[node name="PlayerHand" type="ItemList" parent="Player2"]
-offset_left = 169.0
-offset_top = 26.0
-offset_right = 209.0
-offset_bottom = 66.0
-max_columns = 7
+[node name="PlayerHand" type="Node2D" parent="Player2"]
+position = Vector2(208, 26)
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D_Player1" type="Camera2D" parent="."]
@@ -581,10 +573,10 @@ text = "End"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PhaseBar" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 707.0
-offset_top = 689.0
-offset_right = 1054.0
-offset_bottom = 729.0
+offset_left = 531.0
+offset_top = 484.0
+offset_right = 878.0
+offset_bottom = 524.0
 
 [node name="Button_Draw" type="Button" parent="CanvasLayer/PhaseBar"]
 layout_mode = 2

@@ -1,16 +1,18 @@
 extends Node
 class_name endphase
 
-
-var gameboard : Node
+var gameboard: Node
 
 func start_phase(gameboard_instance: Node) -> void:
 	print("[EndPhase] start_phase")
 	gameboard = gameboard_instance
+
 	_resolve_end_of_turn_effects(gameboard.PlayerBoard)
 	_resolve_end_of_turn_effects(gameboard.EnemyBoard)
+
 	_cleanup_after_turn(gameboard.PlayerBoard)
 	_cleanup_after_turn(gameboard.EnemyBoard)
+
 	if _check_victory_condition(gameboard.PlayerBoard):
 		print("[EndPhase] Player wins!")
 		_end_game("Player Wins!")
@@ -19,6 +21,7 @@ func start_phase(gameboard_instance: Node) -> void:
 		print("[EndPhase] AI wins!")
 		_end_game("AI Wins!")
 		return
+
 	print("[EndPhase] Transition to next phase")
 	_transition_to_next_phase()
 
@@ -45,5 +48,5 @@ func _end_game(winner_message: String) -> void:
 	# Optionally disable inputs here
 
 func _transition_to_next_phase() -> void:
-	var nxt = preload("res://phases/DrawPhase.gd").new()
-	gameboard._switch_to_phase(nxt)
+	# Force the PhaseManager to switch to DrawPhase
+	PhaseManager.force_phase(preload("res://phases/DrawPhase.gd"))

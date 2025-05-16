@@ -40,7 +40,6 @@ offset_right = 157.92
 offset_bottom = 336.0
 scale = Vector2(1.32734, 0.837593)
 theme_override_font_sizes/font_size = 10
-text = "ssss"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -81,7 +80,6 @@ offset_right = 253.053
 offset_bottom = 33.0
 rotation = 0.823759
 scale = Vector2(0.773472, 0.773472)
-text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -26,7 +26,8 @@ func start_phase(gameboard_instance: Node) -> void:
 
 	# Next
 	print("[CombatPhase] Transition to EndPhase")
-	gameboard._switch_to_phase(preload("res://phases/EndPhase.gd").new())
+	PhaseManager.force_phase(preload("res://phases/EndPhase.gd"))
+
 
 func _select_attacker_from_front_row(board: Node) -> Node:
 	# adjust these paths as needed

@@ -1,109 +1,110 @@
 extends Node
 
-var card_data: Dictionary = {}
 var easy_pool: Array = []
 var medium_pool: Array = []
 var hard_pool: Array = []
 
-# Function to safely load data from JSON file
-func load_data(file_path: String) -> Dictionary:
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	var data = {}
-	if file:
-		var file_contents = file.get_as_text()
-		var json = JSON.new()
-		var parse_result = json.parse(file_contents)
-		if parse_result == OK:
-			data = json.get_data()
-		else:
-			print("Error parsing JSON: %s" % parse_result)
-		file.close()
-	else:
-		print("Error opening file: %s" % file_path)
-		return {}  # Return an empty dictionary if the file can't be opened
+var card_data: Dictionary = {}
 
-	return data
+const MODE_SIZES = {
+	"duelist": 20,
+	"bodyguard": 30,
+	"commander": 40
+}
 
-# Function to prepare card pools based on rarity and category
+@export var random_decks: Array = []
+@export var filtered_user_decks: Array = []
+@export var filtered_ai_decks: Array = []
+
+@export var p1_container: OptionButton
+@export var p2_container: OptionButton
+
+func _ready() -> void:
+	randomize()
+
+	card_data = DataUtils.load_data("res://data/card_database.json").get("cards", {})
+	if card_data.size() == 0:
+		push_warning("Card data is empty. Deck generation will fail.")
+		return
+
+	_prepare_pools()
+
+	if p1_container:
+		p1_container.connect("item_selected", Callable(self, "_on_p1_item_selected"))
+	if p2_container:
+		p2_container.connect("item_selected", Callable(self, "_on_p2_item_selected"))
+
+
 func _prepare_pools() -> void:
-	# Clear existing pools to prevent old data from interfering
 	easy_pool.clear()
 	medium_pool.clear()
 	hard_pool.clear()
 
-	# Categories to loop through
-	var categories = ["Character", "Class", "Weapon", "Armor", "Field", "Trap", "Support"]
-	
-	# Iterate over each category to populate the pools
-	for category in categories:
-		if card_data.has(category):
-			var cards = card_data[category]
-			for card in cards:
-				# Safety checks for missing fields
-				if not card.has("id") or not card.has("rarity"):
-					print("Skipping card due to missing required fields: %s" % card)
-					continue
+	for cid in card_data.keys():
+		var rarity = card_data[cid].get("rarity", "common").to_lower()
+		match rarity:
+			"common":
+				easy_pool.append(cid)
+			"uncommon":
+				medium_pool.append(cid)
+			_:
+				hard_pool.append(cid)
 
-				# Get the rarity field and assign cards to the correct pool
-				var rarity = card.get("rarity", "Unknown")
-				if rarity == "Common":
-					easy_pool.append(card["id"])
-				elif rarity == "Uncommon":
-					medium_pool.append(card["id"])
-				elif rarity == "Rare" or rarity == "Epic":
-					hard_pool.append(card["id"])
-				else:
-					print("Unknown rarity for card '%s'. Skipping card." % card["name"])
+	print("Pools prepared: Easy=%d, Medium=%d, Hard=%d" % [
+		easy_pool.size(), medium_pool.size(), hard_pool.size()])
 
-	# Debugging: Print pool sizes after population
-	print("Easy Pool: %d cards" % easy_pool.size())  # Print pool sizes
-	print("Medium Pool: %d cards" % medium_pool.size())
-	print("Hard Pool: %d cards" % hard_pool.size())
-	print("Pool sizes => Easy: %d, Medium: %d, Hard: %d" % [
-		easy_pool.size(), medium_pool.size(), hard_pool.size()
-	])
 
-# Initialize card data and prepare pools
-func _ready():
-	var card_file = FileAccess.open("res://data/card_database.json", FileAccess.READ)
-	if card_file:
-		var card_data = JSON.parse_string(card_file.get_as_text())
-		if card_data:
-			Globals.card_database = card_data
-		else:
-			print("Card data is empty. Exiting...")
-			get_tree().quit()
-	else:
-		print("Card database file not found. Exiting...")
-		get_tree().quit()
+func get_deck(diff: String, mode: String) -> Array:
+	var pool: Array
+	match diff.to_lower():
+		"easy":
+			pool = easy_pool.duplicate()
+		"medium":
+			pool = (easy_pool + medium_pool).duplicate()
+		"hard":
+			pool = (easy_pool + medium_pool + hard_pool).duplicate()
+		_:
+			print("Invalid difficulty requested: %s" % diff)
+			return []
 
-# Function to generate a deck based on difficulty and mode
-func generate_deck(diff: String, mode: String) -> Array:
-	# Ensure there are enough cards in the pools
-	if diff == "easy" and easy_pool.size() > 0:
-		var deck = generate_deck_from_pool(easy_pool)
-		print("Generated easy deck: %s" % deck)
-		return deck
-	elif diff == "medium" and medium_pool.size() > 0:
-		var deck = generate_deck_from_pool(medium_pool)
-		print("Generated medium deck: %s" % deck)
-		return deck
-	elif diff == "hard" and hard_pool.size() > 0:
-		var deck = generate_deck_from_pool(hard_pool)
-		print("Generated hard deck: %s" % deck)
-		return deck
-	else:
-		print("Not enough cards in pool for difficulty: %s" % diff)
-		return []  # Return an empty deck if there are no cards for the difficulty
+	pool.shuffle()
+	var size = MODE_SIZES.get(mode.to_lower(), 20)
+	return pool.slice(0, min(size, pool.size()))
 
-# Helper function to generate a deck from the given pool
-func generate_deck_from_pool(pool: Array) -> Array:
-	var deck = []
-	var card_limit = 20  # Max cards per deck
 
-	# Randomly select cards for the deck
-	for i in range(min(pool.size(), card_limit)):
-		var card_id = pool[randi() % pool.size()]
-		deck.append(card_id)
+func _populate_buttons() -> void:
+	if not p1_container or not p2_container:
+		print("Warning: UI containers not assigned.")
+		return
 
-	return deck
+	p1_container.clear()
+	p2_container.clear()
+
+	var all_decks = random_decks + filtered_user_decks + filtered_ai_decks
+	var count_rng = random_decks.size()
+	var count_user = filtered_user_decks.size()
+
+	for i in range(all_decks.size()):
+		var d = all_decks[i]
+		var prefix = "RNG" if d.has("random") else ("P" if i < count_rng + count_user else "AI")
+		var deck_name = d.get("name", "Unnamed Deck")
+
+		p1_container.add_item("[%s] %s" % [prefix, deck_name])
+		p2_container.add_item("[%s] %s" % [prefix, deck_name])
+
+		p1_container.set_item_metadata(p1_container.get_item_count() - 1, i)
+		p2_container.set_item_metadata(p2_container.get_item_count() - 1, i)
+
+	print("Deck buttons populated.")
+
+
+func _on_p1_item_selected(index: int) -> void:
+	var deck_index = p1_container.get_item_metadata(index)
+	print("Player 1 selected deck index: %d" % deck_index)
+	# Your deck selection logic here
+
+
+func _on_p2_item_selected(index: int) -> void:
+	var deck_index = p2_container.get_item_metadata(index)
+	print("Player 2 selected deck index: %d" % deck_index)
+	# Your deck selection logic here

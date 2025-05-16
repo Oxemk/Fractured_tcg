@@ -1,5 +1,5 @@
 extends Node
-class_name MainPhase
+
 
 func start_phase(gameboard) -> void:
 	print("[MainPhase] start_phase")
@@ -48,7 +48,9 @@ func start_phase(gameboard) -> void:
 					ai_board.add_child(ai_up)
 
 	print("[MainPhase] Transition to CombatPhase")
-	gameboard._switch_to_phase(preload("res://phases/CombatPhase.gd").new())
+	PhaseManager.force_phase(preload("res://phases/CombatPhase.gd"))
+
+
 
 func _can_play_card(card: Node, board: Node) -> bool:
 	return board.get_child_count() < 5

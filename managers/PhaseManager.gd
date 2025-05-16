@@ -8,12 +8,16 @@ var current_phase: Node = null
 func init(board: Node) -> void:
 	gameboard = board
 	phase_queue.clear()
+	
+	# Run StartupPhase once, then continue with the normal cycle
+	var startup_phase = preload("res://phases/StartupPhase.gd").new()
+	start_phase(startup_phase)
 	enqueue_standard_cycle()
-	start_next_phase()
 
 # Enqueue standard phases in the cycle
 func enqueue_standard_cycle() -> void:
 	phase_queue = [
+		preload("res://phases/StartupPhase.gd").new(),
 		preload("res://phases/DrawPhase.gd").new(),
 		preload("res://phases/MainPhase.gd").new(),
 		preload("res://phases/CombatPhase.gd").new(),
@@ -29,9 +33,11 @@ func start_phase(phase: Node) -> void:
 	gameboard.add_child(current_phase)
 	# Start the phase (ensure that each phase has this method)
 	current_phase.call_deferred("start_phase", gameboard)
+
 func reset(gameboard: Node) -> void:
 	print("PhaseManager reset")
 	# Reset logic here, like starting a new turn or phase
+
 # Start the next phase in the cycle
 func start_next_phase() -> void:
 	if phase_queue.is_empty():

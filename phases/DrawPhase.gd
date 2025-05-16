@@ -3,7 +3,7 @@ class_name DrawPhase
 
 func start_phase(gameboard) -> void:
 	print("[DrawPhase] start_phase")
-	gameboard.draw_cards(1, true)
-	gameboard.draw_cards(1, false)
+	gameboard.draw_cards(1, true)  # Player 1
+	gameboard.draw_cards(1, false) # Player 2 (AI or second player)
 	print("[DrawPhase] Transition to MainPhase")
-	gameboard._switch_to_phase(preload("res://phases/MainPhase.gd").new())
+	PhaseManager.force_phase(preload("res://phases/MainPhase.gd"))
