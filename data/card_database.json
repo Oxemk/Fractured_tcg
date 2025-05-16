@@ -12,7 +12,7 @@
 	  "health": 30,
 	  "defense": 20,
 	  "attack_move": { "type": "Unarmed Strike", "power": 5 },
-	  "cooldown": 0,
+	  "cooldown": 1,
 	  "special_ability": "none",
 	  "effect": "none",
 	  "rarity": "Common"
@@ -29,7 +29,7 @@
 	  "health": 30,
 	  "defense": 25,
 	  "attack_move": { "type": "Unarmed Strike", "power": 5 },
-	  "cooldown": 0,
+	  "cooldown": 1,
 	  "special_ability": "none",
 	  "effect": "none",
 	  "rarity": "Common"
@@ -37,8 +37,8 @@
 	{
 	  "id": "char_hobgoblin_001",
 	  "card_type": "Character",
-	  "name": "Hobgoblin Slave – Crimson Banner",
-	  "description": "A Hobgoblin slaver under the rule of a Crimson Banner.",
+	  "name": "Hobgoblin Slave ",
+	  "description": "A mindless Hobgoblin slaver under the rule of a Crimson Banner.",
 	  "race": "Hobgoblin",
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "faction": "Crimson Banner",
@@ -46,7 +46,7 @@
 	  "health": 40,
 	  "defense": 30,
 	  "attack_move": { "type": "Unarmed Strike", "power": 5 },
-	  "cooldown": 0,
+	  "cooldown": 1,
 	  "special_ability": "none",
 	  "effect": "none",
 	  "rarity": "Common"
@@ -63,7 +63,7 @@
 	  "health": 20,
 	  "defense": 20,
 	  "attack_move": { "type": "Unarmed Strike", "power": 4 },
-	  "cooldown": 0,
+	  "cooldown": 1,
 	  "special_ability": "none",
 	  "effect": "none",
 	  "rarity": "Common"
@@ -80,7 +80,7 @@
 	  "health": 25,
 	  "defense": 30,
 	  "attack_move": { "type": "Unarmed Strike", "power": 4 },
-	  "cooldown": 0,
+	  "cooldown": 1,
 	  "special_ability": "none",
 	  "effect": "none",
 	  "rarity": "Common"
@@ -98,7 +98,7 @@
 	  "health": 26,
 	  "defense": 42,
 	  "attack_move": { "type": "Unarmed Strike", "power": 6 },
-	  "cooldown": 0,
+	  "cooldown": 1,
 	  "special_ability": "none",
 	  "effect": "none",
 	  "rarity": "Common"
@@ -197,10 +197,23 @@
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "special_ability": "Quick Jab",
 	  "attack_move": { "damage": 4, "move_type": "Physical" },
-	  "cooldown": 0,
+	  "cooldown": 2,
 	  "effect": "none",
 	  "rarity": "Common"
 	}
+	{
+	  "id": "wpn_002",
+	  "card_type": "Weapon",
+	  "name": "Rotting Club",
+	  "level": 1,
+	  "attack": 4,
+	  "image_path": "res://assets/Images/placeholder.png",
+	  "special_ability": "Quick bash",
+	  "attack_move": { "damage": 5, "move_type": "Physical" },
+	  "cooldown": 2,
+	  "effect": "none",
+	  "rarity": "Common"
+	},
   ],
   "Armor": [
 	{
@@ -235,8 +248,8 @@
 	{
 	  "id": "trap_001",
 	  "card_type": "Trap",
-	  "name": "Pitfall Trap",
-	  "description": "A hidden pit snares the unwary.",
+	  "name": "bearfall Trap",
+	  "description": "A bear trap to snares the unwary.",
 	  "level": 1,
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "trigger_condition": "OnEnter",
