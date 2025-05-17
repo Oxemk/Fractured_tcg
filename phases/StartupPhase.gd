@@ -2,60 +2,69 @@ extends Node
 class_name StartupPhase
 
 func start_phase(gameboard: Node, is_player1: bool = true) -> void:
-	var deck: Array = gameboard.p1_deck if is_player1 else (gameboard.p2_deck if gameboard.game_mode == gameboard.GameMode.PVP else gameboard.ai_deck)
-	var id_data_pairs: Array[Dictionary] = []
+	print("[StartupPhase] start_phase – is_player1 = %s" % is_player1)
 
-	# Step 1: Filter Level 1 Character cards
-	for id in deck.duplicate():
-		var data: Dictionary = gameboard._load_card_json(id)
-		if data.size() == 0:
-			push_warning("StartupPhase: Missing data for card ID %s" % id)
-			continue
-
-		if data.get("card_type", "") == "Character" and int(data.get("level", 0)) == 1:
-			id_data_pairs.append({ "id": id, "data": data })
+	# 1️⃣ Determine deck for this side
+	var deck: Array
+	if is_player1:
+		deck = gameboard.p1_deck
+	else:
+		if gameboard.game_mode == gameboard.GameMode.PVP:
+			deck = gameboard.p2_deck
 		else:
-			push_warning("StartupPhase: Skipping non-character or non-level-1 card with ID %s" % id)
+			deck = gameboard.ai_deck
+	print("[StartupPhase] Initial deck size: %d" % deck.size())
 
-	if id_data_pairs.is_empty():
-		push_error("StartupPhase: No Level-1 character cards found in deck!")
+	# 2️⃣ Collect level-1 characters
+	var id_data_pairs: Array = []
+	for cid in deck.duplicate():
+		var data: Dictionary = gameboard._load_card_json(cid)
+		if data.size() == 0:
+			push_warning("[StartupPhase] Missing data for ID %s" % cid)
+			continue
+		if data.get("card_type", "") == "Character" and int(data.get("level", 0)) == 1:
+			id_data_pairs.append({"id": cid, "data": data})
+		else:
+			push_warning("[StartupPhase] Skipping non-level-1 card %s" % cid)
+	print("[StartupPhase] Found %d lvl-1 chars" % id_data_pairs.size())
+	if id_data_pairs.size() == 0:
+		push_error("[StartupPhase] No Level-1 character cards found!")
 		return
 
-	# Step 2: Shuffle and select up to 5 Level 1 Character cards
+	# 3️⃣ Shuffle & draw up to 5
 	id_data_pairs.shuffle()
 	var draw_count: int = min(5, id_data_pairs.size())
-	var drawn_pairs: Array[Dictionary] = id_data_pairs.slice(0, draw_count)
+	var drawn: Array = id_data_pairs.slice(0, draw_count)
+	print("[StartupPhase] Drawing %d cards" % draw_count)
 
-	# Step 3: Remove drawn cards from the deck
-	for pair in drawn_pairs:
+	# 4️⃣ Remove from deck
+	for pair in drawn:
 		deck.erase(pair["id"])
+	print("[StartupPhase] Deck size after removal: %d" % deck.size())
 
-	# Step 4: Determine game mode
-	var is_pvp: bool = gameboard.game_mode == gameboard.GameMode.PVP
-	var mode: String = str(gameboard.config.get("mode", "duelist")).to_lower() if gameboard.has_method("config") else "duelist"
+	# 5️⃣ Deploy: hand for player1 or zones for player2/AI
+	var mode: String = "duelist"
+	if gameboard.config and typeof(gameboard.config) == TYPE_DICTIONARY and gameboard.config.has("mode"):
+		mode = str(gameboard.config["mode"]).to_lower()
+	print("[StartupPhase] Deploy mode: %s" % mode)
 
-	# Step 5: Deploy cards
-	if is_pvp and is_player1:
-		var hand = gameboard.PlayerHand
-		if not hand:
-			push_warning("StartupPhase: PlayerHand not found")
-		else:
-			for pair in drawn_pairs:
-				var card: Node = sCardLoader.load_card_data(pair["data"])
-				if card:
-					hand.add_child(card)
-				else:
-					push_error("StartupPhase: Failed to instantiate card %s" % pair["id"])
+	if is_player1 and gameboard.game_mode == gameboard.GameMode.PVP:
+		print("[StartupPhase] Adding to Player1 hand")
+		for pair in drawn:
+			var card = sCardLoader.load_card_data(pair["data"])
+			if card:
+				gameboard.PlayerHand.add_child(card)
+			else:
+				push_error("[StartupPhase] Failed to load P1 card %s" % pair["id"])
 	else:
-		for i in range(drawn_pairs.size()):
-			var card: Node = sCardLoader.load_card_data(drawn_pairs[i]["data"])
+		print("[StartupPhase] Adding to Player2/AI board")
+		for i in range(drawn.size()):
+			var card = sCardLoader.load_card_data(drawn[i]["data"])
 			if not card:
-				push_error("StartupPhase: Failed to instantiate AI card %s" % drawn_pairs[i]["id"])
+				push_error("[StartupPhase] Failed to load AI card %s" % drawn[i]["id"])
 				continue
-
 			match mode:
-				"duelist":
-					_add_to_zone(gameboard, "PlayerBoard/deckmaster_row", card)
+				"duelist": _add_to_zone(gameboard, "PlayerBoard/deckmaster_row", card)
 				"bodyguard":
 					if i == 0:
 						_add_to_zone(gameboard, "PlayerBoard/deckmaster_row", card)
@@ -69,23 +78,25 @@ func start_phase(gameboard: Node, is_player1: bool = true) -> void:
 					elif i == 2:
 						_add_to_zone(gameboard, "PlayerBoard/troop_slot1", card)
 
-	# Step 6: Return drawn cards to deck and shuffle
-	for pair in drawn_pairs:
+	# 6️⃣ Return drawn IDs & shuffle deck
+	for pair in drawn:
 		deck.append(pair["id"])
-
 	deck.shuffle()
+	print("[StartupPhase] Deck reshuffled; size now %d" % deck.size())
 
-	# Step 7: Draw 5 cards into hand
+	# 7️⃣ Draw opening hand
 	gameboard.draw_cards(5, is_player1)
+	print("[StartupPhase] Opening draw done for is_player1 = %s" % is_player1)
 
-	# Step 8: Transition to Draw Phase
+	# ✔️ End of StartupPhase – now wait for Draw button
+	print("[StartupPhase] Waiting for player to manually start DrawPhase")
+	PhaseManager.pause()
 
-	PhaseManager.(preload("res://phases/DrawPhase.gd"))
-
-# 🔧 Helper
+# 🔧 Helper to place a card into a zone
 func _add_to_zone(gameboard: Node, path: String, card: Node) -> void:
-	var zone := gameboard.get_node_or_null(path)
+	var zone = gameboard.get_node_or_null(path)
 	if zone:
 		zone.add_child(card)
+		print("[StartupPhase] Added %s to %s" % [card.name, path])
 	else:
-		push_warning("StartupPhase: Zone not found at '%s'" % path)
+		push_warning("[StartupPhase] Zone not found: %s" % path)

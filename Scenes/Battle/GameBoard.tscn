@@ -518,16 +518,20 @@ position = Vector2(866.785, 586.013)
 position = Vector2(867.093, 477.877)
 rotation = -0.00376391
 
-[node name="Player1" type="Node" parent="."]
+[node name="Player1" type="HBoxContainer" parent="."]
+offset_left = 803.0
+offset_top = 523.0
+offset_right = 803.0
+offset_bottom = 523.0
 
 [node name="PlayerHand" type="Node2D" parent="Player1"]
-position = Vector2(747, 636)
+position = Vector2(3, -3)
 metadata/_edit_use_anchors_ = true
 
 [node name="Player2" type="Node" parent="."]
 
 [node name="PlayerHand" type="Node2D" parent="Player2"]
-position = Vector2(208, 26)
+position = Vector2(181, 121)
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D_Player1" type="Camera2D" parent="."]

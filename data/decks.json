@@ -2,7 +2,11 @@
 	{
 		"card_limit": 50,
 		"cards": [
+			
 			"char_Human_001",
+			"char_Human_002",
+			"char_goblin_001",
+			"char_goblin_002",
 			"char_wraithkin_001",
 			"char_runeborn_001",
 			"char_wolven_001",
@@ -14,7 +18,7 @@
 			"sup_002"
 		],
 		"mode": "casual",
-		"name": "Easy Deck 1",
+		"name": "slaver Deck commander",
 		"rows": 3,
 		"difficulty": "easy"
 	},
