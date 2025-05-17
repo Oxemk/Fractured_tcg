@@ -16,11 +16,11 @@ visible = true
 script = ExtResource("1_mlxko")
 
 [node name="CardContainer" type="VBoxContainer" parent="."]
-offset_left = 216.0
-offset_top = 33.0
-offset_right = 256.0
-offset_bottom = 73.0
-scale = Vector2(10.7871, 10.7871)
+offset_left = 109.0
+offset_top = 15.0
+offset_right = 149.0
+offset_bottom = 55.0
+scale = Vector2(6.46865, 6.46865)
 
 [node name="AddButton" type="Button" parent="."]
 offset_left = 168.0

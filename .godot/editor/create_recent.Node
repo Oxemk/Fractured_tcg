@@ -1,3 +1,4 @@
+TextureRect
 Node2D
 Node
 Timer
@@ -7,7 +8,6 @@ Button
 HBoxContainer
 CanvasGroup
 Panel
-TextureRect
 Control
 ItemList
 Window

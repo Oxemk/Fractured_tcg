@@ -2,21 +2,22 @@ extends Control
 class_name BaseCard
 
 # --- Common Exports ---
-@export var card_name = "Unnamed"
-@export var card_type = "Unknown"
-@export var race = "none"
-@export var description = ""
-@export var level = 1
-@export var image_path = "res://assets/Images/placeholder.png"
-@export var special_ability = "None"
+@export var card_name: String = "Unnamed"
+@export var card_type: String = "Unknown"
+@export var race: String = "none"
+@export var description: String = ""
+@export var level: int = 1
+@export var image_path: String = "res://assets/Images/placeholder.png"
+@export var special_ability: String = "None"
 @export var attack_move: Dictionary = {}
-@export var cooldown = 0
-@export var effect = "none"
-@export var health = 10
-@export var max_health = 10
-@export var defense = 0
+@export var cooldown: int = 0
+@export var effect: String = "none"
+@export var health: int = 10
+@export var max_health: int = 10
+@export var defense: int = 10
+@export var max_defense: int = 10
 
-# --- Class Specific Exports ---
+# --- Class Specific ---
 @export var class_type: String = ""
 @export var class_ability: String = ""
 
@@ -33,10 +34,11 @@ class_name BaseCard
 # --- Weapon Specific ---
 @export var attack: int = 5
 
+# --- Effect Support ---
 const EffectDataResource = preload("res://managers/EffectData.gd")
 const EffectType = preload("res://managers/EffectTypes.gd").EffectType
 
-var card_data = {}
+var card_data: Dictionary = {}
 var active_effects: Array = []
 
 func _ready():
@@ -55,8 +57,9 @@ func initialize_card(data: Dictionary) -> void:
 	cooldown = data.get("cooldown", cooldown)
 	effect = data.get("effect", effect)
 	health = data.get("health", health)
-	max_health = data.get("health", max_health)
+	max_health = data.get("max_health", max_health)
 	defense = data.get("defense", defense)
+	max_defense = data.get("max_defense", max_defense)
 	attack = data.get("attack", attack)
 	class_type = data.get("class_type", class_type)
 	class_ability = data.get("class_ability", class_ability)
@@ -64,38 +67,54 @@ func initialize_card(data: Dictionary) -> void:
 	support_benefit = data.get("support_benefit", support_benefit)
 	trigger_condition = data.get("trigger_condition", trigger_condition)
 	trap_effect = data.get("trap_effect", trap_effect)
-
 	update_ui()
 
 func update_ui() -> void:
-	var h_lbl = get_node_or_null("CanvasLayer/HealthLabel") as Label
-	if h_lbl:
-		h_lbl.text = "%d/%d" % [health, max_health]
+	var h_lbl := get_node_or_null("CanvasLayer/health") as Label
+	if h_lbl: h_lbl.text = "%d/%d" % [health, max_health]
+	var hc_lbl := get_node_or_null("CanvasLayer/healthc") as Label
+	if hc_lbl: hc_lbl.text = "%d" % [health]
 
-	var d_lbl = get_node_or_null("CanvasLayer/DefenseLabel") as Label
-	if d_lbl:
-		d_lbl.text = str(defense)
+	var d_lbl := get_node_or_null("CanvasLayer/defense") as Label
+	if d_lbl: d_lbl.text = "%d/%d" % [defense, max_defense]
+	var dc_lbl := get_node_or_null("CanvasLayer/defensec") as Label
+	if dc_lbl: dc_lbl.text = "%d" % [defense]
+	
+	var lvl_lbl := get_node_or_null("CanvasLayer/level") as Label
+	if lvl_lbl: lvl_lbl.text = "Lvl %d" % level
 
-	var lvl_lbl = get_node_or_null("CanvasLayer/LevelLabel") as Label
-	if lvl_lbl:
-		lvl_lbl.text = "Lvl %d" % level
+	var cool_lbl := get_node_or_null("CanvasLayer/HBoxContainer/cooldown") as Label
+	if cool_lbl: cool_lbl.text = "%d" % cooldown
 
-	var atk_lbl = get_node_or_null("HBoxContainer/Attack")
-	if atk_lbl:
-		atk_lbl.text = str(attack)
+	var atm_lbl := get_node_or_null("CanvasLayer/HBoxContainer/attack_move") as Label
+	if atm_lbl: atm_lbl.text = str(attack_move.get("name", ""))
 
-	var type_lbl = get_node_or_null("CanvasLayer/ClassType")
-	if type_lbl:
-		type_lbl.text = class_type.capitalize()
+	var rac_lbl := get_node_or_null("CanvasLayer/race") as Label
+	if rac_lbl: rac_lbl.text = race.capitalize()
 
-	var abil_lbl = get_node_or_null("CanvasLayer/ClassAbility")
-	if abil_lbl:
-		abil_lbl.text = class_ability
+	var dec_lbl := get_node_or_null("CanvasLayer/description") as Label
+	if dec_lbl: dec_lbl.text = description
 
-	var def_lbl = get_node_or_null("CanvasLayer/Defense")
-	if def_lbl:
-		def_lbl.text = str(defense)
+	var name_lbl := get_node_or_null("CanvasLayer/card_name") as Label
+	if name_lbl: name_lbl.text = card_name.capitalize()
 
+	var atk_lbl := get_node_or_null("CanvasLayer/HBoxContainer/attack") as Label
+	if atk_lbl: atk_lbl.text = str(attack)
+
+	var type_lbl := get_node_or_null("CanvasLayer/ClassType") as Label
+	if type_lbl: type_lbl.text = class_type.capitalize()
+
+	var abil_lbl := get_node_or_null("CanvasLayer/ClassAbility") as Label
+	if abil_lbl: abil_lbl.text = class_ability
+	
+	var art := get_node_or_null("CanvasLayer/image_path") as TextureRect
+	if art:
+		var img := load(image_path)
+		if img:
+			art.texture = img
+
+	
+	
 func apply_damage(amount: int) -> void:
 	var spill = max(amount - defense, 0)
 	defense = max(defense - amount, 0)
@@ -121,16 +140,16 @@ func update_effects() -> void:
 	update_ui()
 
 func repair_armor(amount: int) -> void:
-	defense += amount
+	defense = min(defense + amount, max_defense)
 	print(card_name, "repaired", amount)
 
 func use_support(target: Node) -> void:
 	var benefit_type = support_benefit.get("type", "")
 	var amount = support_benefit.get("amount", 0)
 	if benefit_type == "healing" and target.has_variable("health"):
-		target.health += amount
+		target.health = min(target.health + amount, target.max_health)
 	elif benefit_type == "repair" and target.has_variable("defense"):
-		target.defense += amount
+		target.defense = min(target.defense + amount, target.max_defense)
 	print(card_name, "used", benefit_type, amount)
 
 func apply_field_effect() -> void:
@@ -143,8 +162,17 @@ func check_trigger(trigger: String) -> void:
 		apply_trap_effect()
 
 func apply_trap_effect() -> void:
+	if trap_effect.has("type"):
+		match trap_effect["type"]:
+			"damage":
+				apply_damage(trap_effect.get("amount", 0))
+			"heal":
+				heal(trap_effect.get("amount", 0))
+		print(card_name, "trap effect applied")
+
 	if trap_effect.has("effect") and trap_effect["effect"].has_method("apply"):
 		trap_effect["effect"].apply(self)
-		print(card_name, "trap triggered")
+		print(card_name, "trap triggered (script)")
+
 func _input(event):
 	CardDragManager.handle_card_input(self, event)

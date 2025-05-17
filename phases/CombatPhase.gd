@@ -1,4 +1,3 @@
-# CombatPhase.gd
 extends Node
 class_name CombatPhase
 
@@ -8,7 +7,6 @@ func start_phase(gameboard_instance: Node) -> void:
 	print("[CombatPhase] start_phase")
 	gameboard = gameboard_instance
 
-	# Player attack
 	var attacker = _select_attacker_from_front_row(gameboard.PlayerBoard)
 	if attacker:
 		var target = _select_target(gameboard.EnemyBoard)
@@ -16,7 +14,6 @@ func start_phase(gameboard_instance: Node) -> void:
 			print("[CombatPhase] Player attacker %s hits %s" % [attacker.name, target.name])
 			_perform_attack(attacker, target)
 
-	# AI attack
 	var ai_attacker = _select_attacker_from_front_row(gameboard.EnemyBoard)
 	if ai_attacker:
 		var ai_target = _select_target(gameboard.PlayerBoard)
@@ -24,13 +21,10 @@ func start_phase(gameboard_instance: Node) -> void:
 			print("[CombatPhase] AI attacker %s hits %s" % [ai_attacker.name, ai_target.name])
 			_perform_attack(ai_attacker, ai_target)
 
-	# Next
 	print("[CombatPhase] Transition to EndPhase")
 	PhaseManager.force_phase(preload("res://phases/EndPhase.gd"))
 
-
 func _select_attacker_from_front_row(board: Node) -> Node:
-	# adjust these paths as needed
 	for zone in ["troop_slot1", "troop_slot2", "troop_slot3", "Bodyguard_Slot", "DeckMaster_Slot"]:
 		var row = board.get_node_or_null(zone)
 		if row and row.get_child_count() > 0:
@@ -68,11 +62,9 @@ func _calculate_defense_power(card: Node) -> int:
 
 func _apply_damage(defender: Node, damage: int) -> void:
 	var defp = defender.get_defense_power()
-	if defp > 0:
-		var spill = max(damage - defp, 0)
-		defender.set_defense_power(0)
-		damage = spill
-	var hp = defender.get_hp() - damage
+	var spill = max(damage - defp, 0)
+	defender.set_defense_power(0)
+	var hp = defender.get_hp() - spill
 	defender.set_hp(hp)
 	print("[CombatPhase] %s HP now %d" % [defender.name, hp])
 	if hp <= 0:

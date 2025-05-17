@@ -17,10 +17,10 @@
 	  "effect": "none",
 	  "rarity": "Common"
 	},
-		{
+	{
 	  "id": "char_Human_002",
 	  "card_type": "Character",
-	  "name": "Human Slaveer",
+	  "name": "Human Slaver",
 	  "description": "A Human slaver.",
 	  "race": "Human",
 	  "image_path": "res://assets/Images/placeholder.png",
@@ -37,7 +37,7 @@
 	{
 	  "id": "char_hobgoblin_001",
 	  "card_type": "Character",
-	  "name": "Hobgoblin Slave ",
+	  "name": "Hobgoblin Slave",
 	  "description": "A mindless Hobgoblin slaver under the rule of a Crimson Banner.",
 	  "race": "Hobgoblin",
 	  "image_path": "res://assets/Images/placeholder.png",
@@ -55,7 +55,7 @@
 	  "id": "char_goblin_001",
 	  "card_type": "Character",
 	  "name": "Goblin Slave",
-	  "description": "A Goblin slave under the rule of Crimson Banner.",
+	  "description": "A Goblin slave under the rule of a Crimson Banner.",
 	  "race": "Goblin",
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "faction": "Crimson Banner",
@@ -68,7 +68,7 @@
 	  "effect": "none",
 	  "rarity": "Common"
 	},
-		{
+	{
 	  "id": "char_goblin_002",
 	  "card_type": "Character",
 	  "name": "Goblin Slaver",
@@ -85,7 +85,6 @@
 	  "effect": "none",
 	  "rarity": "Common"
 	},
-	
 	{
 	  "id": "char_wraithkin_001",
 	  "card_type": "Character",
@@ -123,8 +122,8 @@
 	{
 	  "id": "char_trollkin_001",
 	  "card_type": "Character",
-	  "name": "Trollkin Slave – Crimson Banner",
-	  "description": "A Trollkin slave under the rule of Crimson Banner.",
+	  "name": "Trollkin Slave",
+	  "description": "A Trollkin slave under the rule of a Crimson Banner.",
 	  "race": "Trollkin",
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "faction": "Crimson Banner",
@@ -141,7 +140,7 @@
 	  "id": "char_wolven_001",
 	  "card_type": "Character",
 	  "name": "Wolven Slave",
-	  "description": "A Wolven slave.",
+	  "description": "A Wolven slave under the rule of a Crimson Banner.",
 	  "race": "Wolven",
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "faction": "Crimson Banner",
@@ -200,7 +199,7 @@
 	  "cooldown": 2,
 	  "effect": "none",
 	  "rarity": "Common"
-	}
+	},
 	{
 	  "id": "wpn_002",
 	  "card_type": "Weapon",
@@ -208,12 +207,12 @@
 	  "level": 1,
 	  "attack": 4,
 	  "image_path": "res://assets/Images/placeholder.png",
-	  "special_ability": "Quick bash",
+	  "special_ability": "Quick Bash",
 	  "attack_move": { "damage": 5, "move_type": "Physical" },
 	  "cooldown": 2,
 	  "effect": "none",
 	  "rarity": "Common"
-	},
+	}
   ],
   "Armor": [
 	{
@@ -235,8 +234,8 @@
 	  "id": "field_005",
 	  "card_type": "Field",
 	  "name": "Clockwork Wastes",
-	  "image_path": "res://assets/Images/placeholder.png",
 	  "description": "Machine units gain +1 ATK and +1 DEF; ignore trap effects.",
+	  "image_path": "res://assets/Images/placeholder.png",
 	  "level": 1,
 	  "field_effect": { "type": "buff", "attack": 1, "defense": 1, "immune_to": "Trap" },
 	  "duration": 3,
@@ -248,8 +247,8 @@
 	{
 	  "id": "trap_001",
 	  "card_type": "Trap",
-	  "name": "bearfall Trap",
-	  "description": "A bear trap to snares the unwary.",
+	  "name": "Bearfall Trap",
+	  "description": "A bear trap to snare the unwary.",
 	  "level": 1,
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "trigger_condition": "OnEnter",
@@ -262,7 +261,7 @@
 	{
 	  "id": "sup_001",
 	  "card_type": "Support",
-	  "name": "cracked Healing crystal",
+	  "name": "Cracked Healing Crystal",
 	  "description": "A cracked soothing crystal revitalizes allies.",
 	  "level": 1,
 	  "image_path": "res://assets/Images/placeholder.png",
@@ -270,23 +269,23 @@
 	  "duration": 2,
 	  "effect": "none",
 	  "rarity": "Common"
-	},    
+	},
 	{
 	  "id": "sup_002",
 	  "card_type": "Support",
-	  "name": "Healing crystal",
+	  "name": "Healing Crystal",
 	  "description": "A soothing crystal revitalizes allies.",
 	  "level": 2,
 	  "image_path": "res://assets/Images/placeholder.png",
 	  "support_benefit": { "type": "healing", "amount": 10 },
 	  "duration": 2,
 	  "effect": "none",
-	  "rarity": "UnCommon"
+	  "rarity": "Uncommon"
 	},
 	{
-	  "id": "sup_002",
+	  "id": "sup_003",
 	  "card_type": "Support",
-	  "name": "large Healing crystal",
+	  "name": "Large Healing Crystal",
 	  "description": "A large soothing crystal revitalizes allies.",
 	  "level": 3,
 	  "image_path": "res://assets/Images/placeholder.png",
